@@ -59,3 +59,5 @@ gem 'dotenv-rails'
 # ログイン機能
 # https://kitsune.blog/rails-devise
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
