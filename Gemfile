@@ -55,5 +55,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #railsアプリからのMySQLへの接続
 #https://qiita.com/fuku_tech/items/a380ebb1fd156c14c25b
-
 gem 'dotenv-rails'
+# ログイン機能
+# https://kitsune.blog/rails-devise
+gem 'devise'
