@@ -11,7 +11,7 @@
 #
 default: &default
   adapter: mysql2
-  encoding: utf8mb4
+  encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password:
@@ -19,7 +19,13 @@ default: &default
 
 development:
   <<: *default
-  database: syuwakai_development
+  adapter: mysql2
+  encoding: utf8
+  database: <%= ENV['DATABASE_DEV_NAME'] %>
+  pool: 5
+  username: <%= ENV['DATABASE_DEV_USER'] %>
+  password: <%= ENV['DATABASE_DEV_PASSWORD'] %>
+  host: <%= ENV['DATABASE_DEV_HOST'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
