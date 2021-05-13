@@ -1,0 +1,10 @@
+<%= form_for(@event, url:{ controller: 'events', action: 'update', id: @event.id}) do |f| %>
+  <tr>
+    <td><%= f.text_field :title %></td>
+    <td><%= f.text_field :content %></td>
+    <%= f.submit 'update' %>
+  </tr>
+  
+  <%= link_to 'destroy', event_path(@event), method: :delete %>
+<% end %>
+
