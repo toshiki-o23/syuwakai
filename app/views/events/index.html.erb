@@ -5,7 +5,8 @@
     <tr>
       <td><%= event.title %></td>
       <td><%= event.content %></td>
+      <td><%= link_to 'show', event_path(event) %></td>
     </tr>
   <% end %>
-  
+
 </table>
