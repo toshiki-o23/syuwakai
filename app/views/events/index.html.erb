@@ -8,6 +8,9 @@
       <td><%= event.title %></td>
       <td><%= event.content %></td>
       <td><%= link_to 'show', event_path(event) %></td>
+      <td>
+        <%= render 'partial/bookmark', event: event %>
+      </td>
     </tr>
   <% end %>
 

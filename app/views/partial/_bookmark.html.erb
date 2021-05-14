@@ -1,0 +1,5 @@
+<% if event.already_bookmarked?(current_user) %>
+          <%= link_to '保存をキャンセル', event_bookmarks_path(event), method: :delete %>
+        <% else %>
+          <%= link_to 'イベントを保存', event_bookmarks_path(event), method: :post %>
+        <% end %>
