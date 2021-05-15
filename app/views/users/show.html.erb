@@ -3,4 +3,9 @@
 
 <h3>メールアドレス</h3>
 <%= @user.email %>
+<%= image_tag @user.image.url %>
 
+<% @events.each do |event| %>
+  <%= event.title %>
+  <%= event.content %>
+<% end %>

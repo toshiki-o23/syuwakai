@@ -62,4 +62,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 # プロフィール画像処理
+# https://techtechmedia.com/carrierwave-minimagick-image/
 gem 'carrierwave'
+# 画像自動調整
+gem 'mini_magick'

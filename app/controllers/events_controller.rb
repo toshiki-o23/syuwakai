@@ -10,10 +10,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.create(event_params)
-    if @event.save
-      redirect_to event_path(@event.id)
-    end
+    @event = Event.new(event_params)
+    @event.save
+    redirect_to event_path(@event.id)
   end
 
   def show
@@ -35,7 +34,7 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:title, :content).merge(user_id: current_user.id)
+      params.require(:event).permit(:title, :content, :image ).merge(user_id: current_user.id)
     end
 
     def set_event
