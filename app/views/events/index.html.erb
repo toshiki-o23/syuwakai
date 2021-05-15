@@ -4,7 +4,7 @@
   <% @events.each do |event| %>
     <tr>
       <td><%= event.user.email %></td>
-      <td><%= link_to 'user', user_path(event) %></td>
+      <td><%= link_to 'user', user_path(event.user_id) %></td>
       <td><img src=<%= event.user.image %> class= "icon_image"></td>
       <td><%= event.title %></td>
       <td><%= event.content %></td>

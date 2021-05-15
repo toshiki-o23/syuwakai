@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @events = @user.events
+    @bookmark_events = @user.bookmark_events
   end
 
   # ユーザーがログインしているとき自分のプロフィールを表示
