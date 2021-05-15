@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   # deviseにおけるログイン時の保存条件
   before_action :configure_permitted_parameters, if: :devise_controller?
 
