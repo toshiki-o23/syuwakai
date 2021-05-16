@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # ゲストユーザーを削除しないように
+  # ゲストユーザーを更新と削除しないように
   before_action :ensure_normal_user, only: %i[update destroy]
 
   # パスワードなしでユーザー情報編集
@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.update_without_password(params)
   end
 
-  # ゲストユーザーならば削除しないようにする
+  # ゲストユーザーならば更新と削除しないようにする
   def ensure_normal_user
     if resource.email == 'guest@example.com'
       redirect_to root_path, alert: 'ゲストユーザーは更新・削除できません。'

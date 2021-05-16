@@ -12,9 +12,15 @@
   <h1>ユーザーページ</h1>
 <% end %>
 
+
+<%= render 'relationships/follow_button', user: @user %>
+
 <h3>メールアドレス</h3>
 <%= @user.email %>
-<%= image_tag @user.image.url %>
+<%# もしユーザー画像が登録されているなら表示 %>
+<% if @user.image.url.present? %>
+  <%= image_tag @user.image.url %>
+<% end %>
 
 <% @events.each do |event| %>
   <%= event.title %>
