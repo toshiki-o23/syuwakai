@@ -8,7 +8,9 @@
       <td><img src=<%= event.user.image %> class= "icon_image"></td>
       <td><%= event.title %></td>
       <td><%= event.content %></td>
-      <td><%= image_tag event.image.url %></td>
+      <% if event.image.url.present? %>
+        <td><%= image_tag event.image.url %></td>
+      <% end %>
       <td><%= link_to 'show', event_path(event) %></td>
       <td>
         <%= render 'partial/bookmark', event: event %>

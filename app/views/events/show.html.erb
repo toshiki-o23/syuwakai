@@ -1,4 +1,6 @@
 <%= @event.title %>
 <%= @event.content %>
-<%= image_tag @event.image.url %>
+<% if @event.image.url.present? %>
+  <%= image_tag @event.image.url %>
+<% end %>
 <%= render 'partial/bookmark', event: @event %>
