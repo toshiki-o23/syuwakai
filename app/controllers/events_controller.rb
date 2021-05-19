@@ -10,9 +10,15 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
-    @event.save
-    redirect_to event_path(@event.id)
+    if user_signed_in?
+      @event = Event.new(event_params)
+      @event.save
+      redirect_to event_path(@event.id)
+    else
+      flash[:notice] = '投稿できませんでした!
+      ログインしてください!'
+      redirect_to new_event_path
+    end
   end
 
   def show
