@@ -69,6 +69,6 @@ gem 'devise-i18n-views'
 gem 'carrierwave'
 # 画像自動調整
 gem 'mini_magick'
-
+# bootstrap導入(techpitgram)
 gem 'bootstrap', '~> 4.6'
 gem 'jquery-rails'

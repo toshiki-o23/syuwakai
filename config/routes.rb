@@ -1,20 +1,21 @@
 Rails.application.routes.draw do
 
-  root 'events#index'
-
+  
   # get 'users/show'
   # get 'bookmarks/create'
   # get 'bookmarks/destroy'
   devise_for :users
-
+  
   devise_scope :user do
-    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+    get 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
-
+  
+  root 'events#index'
 
   resources :users do
     get :following, :follower
   end
+
 
   resources :relationships, only: [:create, :destroy]
   get '/mypage' => 'users#mypage'
