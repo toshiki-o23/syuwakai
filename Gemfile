@@ -70,5 +70,7 @@ gem 'carrierwave'
 # 画像自動調整
 gem 'mini_magick'
 # bootstrap導入(techpitgram)
+# https://qiita.com/kazutosato/items/d47b7705ee545de4cb1a
 gem 'bootstrap', '~> 4.6'
 gem 'jquery-rails'
+gem 'uglifier'
