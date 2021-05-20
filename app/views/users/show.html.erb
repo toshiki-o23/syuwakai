@@ -1,12 +1,12 @@
 <% if user_signed_in? && @user == current_user %>
   <h1>マイページ</h1>
+  <h3>ブックマーク</h3>
   <% if @bookmark_events.present? %>
-    ブックマーク一覧
     <% @bookmark_events.each do |bookmark_event| %>
       <%= bookmark_event.title %>
     <% end %>
   <% else %>
-    ブックマークありません
+    なし
   <% end %>
 <% else %>
   <h1>ユーザーページ</h1>
@@ -15,6 +15,12 @@
 
 <h3>名前</h3>
 <%= @user.name %>
+
+<h3>フォロー数</h3>
+<%= @user.followings.count %>
+<h3>フォロワー数</h3>
+<%= @user.followers.count %>
+
 
 <%= render 'relationships/follow_button', user: @user %>
 <%# もしユーザー画像が登録されているなら表示 %>
