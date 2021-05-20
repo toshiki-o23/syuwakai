@@ -13,11 +13,11 @@
 <% end %>
 
 
-<%= render 'relationships/follow_button', user: @user %>
 
 
 <h3>メールアドレス</h3>
 <%= @user.email %>
+<%= render 'relationships/follow_button', user: @user %>
 <%# もしユーザー画像が登録されているなら表示 %>
 <% if @user.image.url.present? %>
   <%= image_tag @user.image.url %>
@@ -25,6 +25,8 @@
 
 
 <% @events.each do |event| %>
+  <h3>タイトル</h3>
   <%= event.title %>
+  <h3>コンテンツ</h3>
   <%= event.content %>
 <% end %>

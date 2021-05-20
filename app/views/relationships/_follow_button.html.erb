@@ -1,4 +1,6 @@
 <% unless current_user == user %>
+  <% if current_user.present? %>
+    
   <% if current_user.following?(user) %>
     <%= form_for(current_user.relationships.find_by(follow_id: user.id), html: { method: :delete }) do |f| %>
       <%= hidden_field_tag :follow_id, user.id %>
@@ -9,5 +11,6 @@
       <%= hidden_field_tag :follow_id, user.id %>
       <%= f.submit 'Follow', class: 'btn btn-primary btn-block' %>
     <% end %>
+  <% end %>
   <% end %>
 <% end %>
