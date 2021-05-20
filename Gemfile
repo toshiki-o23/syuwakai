@@ -40,7 +40,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  
+
   # デバッグ
   gem 'pry-rails'
 end
@@ -69,3 +69,6 @@ gem 'devise-i18n-views'
 gem 'carrierwave'
 # 画像自動調整
 gem 'mini_magick'
+
+gem 'bootstrap', '~> 4.6'
+gem 'jquery-rails'
