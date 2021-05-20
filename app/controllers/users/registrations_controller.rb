@@ -4,20 +4,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # ゲストユーザーを更新と削除しないように
   before_action :ensure_normal_user, only: %i[update destroy]
 
-  # パスワードなしでユーザー情報編集
-  protected
-  def update_resource(resource, params)
-    resource.update_without_password(params)
-  end
-
-  # ゲストユーザーならば更新と削除しないようにする
-  def ensure_normal_user
-    if resource.email == 'guest@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーは更新・削除できません。'
-    end
-  end
-
-
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -32,9 +18,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    if 
+    super
+  end
 
   # PUT /resource
   # def update
@@ -76,4 +63,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+    
+  # パスワードなしでユーザー情報編集
+  protected
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+  # ゲストユーザーならば更新と削除しないようにする
+  def ensure_normal_user
+    if resource.email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーは更新・削除できません。'
+    end
+  end
 end
