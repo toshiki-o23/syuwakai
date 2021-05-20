@@ -3,8 +3,7 @@
   <% if user.email.present? %>
     <table>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= link_to '詳細', user_path(user) %></td>
+        <td><%= link_to user.name, user_path(user) %></td>
       </tr>
     </table>
   <% else %>
