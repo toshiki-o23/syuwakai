@@ -23,11 +23,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(空でも大丈夫)</i><br />
+    <%= f.label :current_password %> (必須)<br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>(空でも大丈夫)<br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> 文字以上</em>
+      <%= @minimum_password_length %> 文字以上
     <% end %>
   </div>
 
@@ -36,18 +40,13 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(必須記入)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+  
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "更新する" %>
   </div>
 <% end %>
 
-<h3>アカウント削除</h3>
-
-<p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p><%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>

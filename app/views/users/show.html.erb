@@ -17,12 +17,15 @@
 <%= @user.name %>
 <%= render 'relationships/follow_button', user: @user %>
 
-<div>
+<h3>自己紹介</h3>
+<%= @user.introduce %>
+
+<p>
   <%= link_to 'フォロー', user_following_path(@user.id) %>
   <%= @user.followings.count %>
   <%= link_to 'フォロワー', user_follower_path(@user.id) %>
   <%= @user.followers.count %>
-</div>
+</p>
 
 
 <%# もしユーザー画像が登録されているなら表示 %>
