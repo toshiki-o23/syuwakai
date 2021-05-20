@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # sign_up時ストロングパラメータ追加
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :encrypted_password,  :image])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :encrypted_password, :image])
     # アカウント編集時ストロングパラメータ追加
-    devise_parameter_sanitizer.permit(:account_update, keys: [:email, :encrypted_password, :image])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :encrypted_password, :image])
   end
 
 end

@@ -13,10 +13,9 @@
 <% end %>
 
 
+<h3>名前</h3>
+<%= @user.name %>
 
-
-<h3>メールアドレス</h3>
-<%= @user.email %>
 <%= render 'relationships/follow_button', user: @user %>
 <%# もしユーザー画像が登録されているなら表示 %>
 <% if @user.image.url.present? %>

@@ -1,10 +1,10 @@
-<%= link_to 'new', new_event_path %>
+<h1>イベント投稿一覧</h1>
+<%= link_to '新規投稿', new_event_path %>
 <table>
 
   <% @events.each do |event| %>
     <tr>
-      <td><%= event.user.email %></td>
-      <td><%= link_to 'user', user_path(event.user_id) %></td>
+      <td><%= link_to event.user.name, user_path(event.user_id) %></td>
       <td><img src=<%= event.user.image %> class= "icon_image"></td>
       <td><%= event.title %></td>
       <td><%= event.content %></td>

@@ -1,7 +1,13 @@
+<h1>投稿詳細ページ</h1>
+
+<td><%= link_to @event.user.name, user_path(@event.user_id) %></td>
+
 <%= @event.title %>
 <%= @event.content %>
 <% if @event.image.url.present? %>
   <%= image_tag @event.image.url %>
 <% end %>
+
+
 
 <%= render 'partial/bookmark', event: @event %>
