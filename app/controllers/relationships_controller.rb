@@ -1,7 +1,7 @@
 class RelationshipsController < ApplicationController
   # https://qiita.com/mitsumitsu1128/items/e41e2ff37f143db81897
 
-  before_action :set_user, only: [:create, :destroy]
+  before_action :set_user
 
   def create
     following = current_user.follow(@user)
@@ -24,8 +24,6 @@ class RelationshipsController < ApplicationController
       redirect_to @user
     end
   end
-
-
 
 
   private

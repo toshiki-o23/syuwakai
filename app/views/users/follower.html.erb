@@ -4,9 +4,12 @@
     <table>
       <tr>
         <td><%= link_to user.name, user_path(user) %></td>
+        
       </tr>
     </table>
   <% else %>
     <p>フォローしていません</p>
   <% end %>
 <% end %>
+
+<%= link_to 'フォロー一覧', user_following_path(@user.id) %>
