@@ -19,8 +19,10 @@
 <div>
   <p>フォロー数</p>
   <%= @user.followings.count %>
+  <%= link_to 'フォロー', user_following_path(@user.id) %>
   <p>フォロワー数</p>
   <%= @user.followers.count %>
+  <%= link_to 'フォロワー', user_follower_path(@user.id) %>
 </div>
 
 

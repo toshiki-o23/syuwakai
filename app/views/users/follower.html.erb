@@ -1,0 +1,12 @@
+<%= @user.name %>のフォロワー一覧
+<% @users.each do |user| %>
+  <% if user.email.present? %>
+    <table>
+      <tr>
+        <td><%= link_to user.name, user_path(user) %></td>
+      </tr>
+    </table>
+  <% else %>
+    <p>フォローしていません</p>
+  <% end %>
+<% end %>

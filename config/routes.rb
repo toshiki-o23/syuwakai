@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   end
 
 
-  resources :users
+  resources :users do
+    get :following, :follower
+  end
 
   resources :relationships, only: [:create, :destroy]
   get '/mypage' => 'users#mypage'
