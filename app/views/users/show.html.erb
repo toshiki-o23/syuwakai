@@ -3,7 +3,7 @@
   <h3>ブックマーク</h3>
   <% if @bookmark_events.present? %>
     <% @bookmark_events.each do |bookmark_event| %>
-      <%= bookmark_event.title %>
+    <%= link_to bookmark_event.title, event_path(bookmark_event) %>
     <% end %>
   <% else %>
     なし
@@ -16,10 +16,12 @@
 <h3>名前</h3>
 <%= @user.name %>
 
-<h3>フォロー数</h3>
-<%= @user.followings.count %>
-<h3>フォロワー数</h3>
-<%= @user.followers.count %>
+<div>
+  <p>フォロー数</p>
+  <%= @user.followings.count %>
+  <p>フォロワー数</p>
+  <%= @user.followers.count %>
+</div>
 
 
 <%= render 'relationships/follow_button', user: @user %>
@@ -30,8 +32,8 @@
 
 
 <% @events.each do |event| %>
-  <h3>タイトル</h3>
+  <h3>イベント</h3>
   <%= event.title %>
-  <h3>コンテンツ</h3>
+  <h3>内容</h3>
   <%= event.content %>
 <% end %>

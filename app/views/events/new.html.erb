@@ -1,6 +1,19 @@
 <%= form_with model: @event, url: '/events', method: :post, local: true do |f| %>
-    <%= f.text_field :title %>
-    <%= f.text_field :content %>
-    <%= f.file_field :image %>
-    <%= f.submit "create" %>
+
+    <div class=field>
+        <%= f.label :タイトル %><br />
+        <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+        <%= f.label :内容 %><br />
+        <%= f.text_field :content %>
+    </div>
+
+    <div class="field">
+        <%= f.label :image %><br />
+        <%= f.file_field :image %>
+    </div>
+
+    <%= f.submit "新規投稿" %>
 <% end %>

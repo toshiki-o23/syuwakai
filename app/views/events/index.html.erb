@@ -1,12 +1,16 @@
-<h1>イベント投稿一覧</h1>
 <%= link_to '新規投稿', new_event_path %>
+<h1>イベント投稿一覧</h1>
 <table>
 
   <% @events.each do |event| %>
     <tr>
       <td><%= link_to event.user.name, user_path(event.user_id) %></td>
-      <td><img src=<%= event.user.image %> class= "icon_image"></td>
+      <% if event.user.image.present? %>
+        <td><img src=<%= event.user.image %>></td>
+      <% end %>
+      <td><p>イベント</p></td>
       <td><%= event.title %></td>
+      <td><p>内容</p></td>
       <td><%= event.content %></td>
       <% if event.image.url.present? %>
         <td><%= image_tag event.image.url %></td>
