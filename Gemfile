@@ -71,6 +71,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 # bootstrap導入(techpitgram)
 # https://qiita.com/kazutosato/items/d47b7705ee545de4cb1a
-gem 'bootstrap', '~> 4.6'
+gem 'bootstrap', '4.6.0'
 gem 'jquery-rails'
 gem 'uglifier'
