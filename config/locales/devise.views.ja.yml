@@ -7,7 +7,7 @@ ja:
         email: "メールアドレス"
         introduce: "自己紹介文"
         image: "画像"
-        password: "新規パスワード"
+        password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
     models:

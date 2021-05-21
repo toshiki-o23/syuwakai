@@ -1,19 +1,21 @@
 <%= form_with model: @event, url: '/events', method: :post, local: true do |f| %>
 
-    <div class=field>
-        <%= f.label :タイトル %><br />
-        <%= f.text_field :title %>
+    <div class="field form-group">
+        <%= f.label :タイトル %>
+        <%= f.text_field :title, class: "form-control" %>
     </div>
 
-    <div class="field">
-        <%= f.label :内容 %><br />
-        <%= f.text_field :content %>
+    <div class="field form-group">
+        <%= f.label :内容 %>
+        <%= f.text_area  :content, class: "form-control", rows: "3" %>
     </div>
 
-    <div class="field">
-        <%= f.label :image %><br />
-        <%= f.file_field :image %>
+    <div class="field form-group">
+        <%= f.label :画像 %>
+        <%= f.file_field :image, class: "form-control-file" %>
     </div>
 
-    <%= f.submit "新規投稿" %>
+    <div class="actions form-group">
+      <%= f.submit "新規投稿", class: "btn btn-info" %>
+    </div>
 <% end %>
