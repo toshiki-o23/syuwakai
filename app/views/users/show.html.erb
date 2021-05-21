@@ -33,16 +33,17 @@
   <%= image_tag @user.image.url %>
 <% end %>
 
+<div class="container">
+  <% @events.each do |event| %>
+    <div class="card-body row row-cols-2 border rounded-pill">
+      <h5 class="card-title col">
+        <%= event.title %>
+      </h5>
 
-<% @events.each do |event| %>
-  <div class="card-body">
-    <h5 class="card-title">
-      <%= event.title %>
-    </h5>
-
-    <p class="card-text">
-      <%= event.content %>
-    </p>
-    <%= link_to 'show', event_path(event) %>
-  </div>
-<% end %>
+      <p class="card-text col">
+        <%= event.content %>
+      </p>
+      <%= link_to 'show', event_path(event), class: "btn btn-info ml-auto btn-sm rounded-pill" %>
+    </div>
+  <% end %>
+</div>
