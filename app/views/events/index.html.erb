@@ -1,25 +1,32 @@
-<%= link_to '新規投稿', new_event_path %>
-<h1 class="">イベント投稿一覧</h1>
+
+<h1>イベント投稿一覧</h1>
 
 <div class="row row-cols-2">
 
   <% @events.each do |event| %>
-    <div class="col">
-      <td><%= link_to event.user.name, user_path(event.user_id) %></td>
-      <% if event.user.image.present? %>
-        <td><img src=<%= event.user.image %>></td>
-      <% end %>
-      <td><p>イベント</p></td>
-      <td><%= event.title %></td>
-      <td><p>内容</p></td>
-      <td><%= event.content %></td>
+    <div class="col card">
+
       <% if event.image.url.present? %>
-        <td><%= image_tag event.image.url %></td>
+        <td><%= image_tag event.image.url, class: "card-img-top img-fluid rounded-lg" %></td>
       <% end %>
-      <td><%= link_to 'show', event_path(event) %></td>
-      <td>
+
+      <div class="card-body">
+        <h5 class="card-title"><%= event.title %></h5>
+        <p class="card-text"><%= event.content %></p>
+      </div>
+
+      <ul class="list-group list-group-flush">
+        <%= link_to event.user.name, user_path(event.user_id) %>
+        <% if event.user.image.present? %>
+          <img src=<%= event.user.image %>>
+        <% end %>
+      </ul>
+
+      <div class="card-body">
+        <%= link_to '詳細', event_path(event), class: "btn btn-info card-link" %>
         <%= render 'partial/bookmark', event: event %>
-      </td>
+      </div>
+
     </div>
   <% end %>
 </div>
