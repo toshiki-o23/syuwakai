@@ -5,6 +5,7 @@ ja:
         current_password: "現在のパスワード"
         name: "名前"
         email: "メールアドレス"
+        introduce: "自己紹介文"
         image: "画像"
         password: "新規パスワード"
         password_confirmation: "確認用パスワード"

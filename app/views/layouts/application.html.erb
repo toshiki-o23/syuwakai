@@ -10,10 +10,12 @@
   </head>
 
   <body>
-    <%= render 'partial/header' %>
+    <div class="container">
+      <%= render 'partial/header' %>
 
-    <%= render 'partial/flash_messages' %>
+      <%= render 'partial/flash_messages' %>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>

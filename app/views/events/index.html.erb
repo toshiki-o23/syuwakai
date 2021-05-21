@@ -1,9 +1,10 @@
 <%= link_to '新規投稿', new_event_path %>
-<h1>イベント投稿一覧</h1>
-<table>
+<h1 class="">イベント投稿一覧</h1>
+
+<div class="row row-cols-2">
 
   <% @events.each do |event| %>
-    <tr>
+    <div class="col">
       <td><%= link_to event.user.name, user_path(event.user_id) %></td>
       <% if event.user.image.present? %>
         <td><img src=<%= event.user.image %>></td>
@@ -19,7 +20,8 @@
       <td>
         <%= render 'partial/bookmark', event: event %>
       </td>
-    </tr>
+    </div>
   <% end %>
+</div>
 
-</table>
+
