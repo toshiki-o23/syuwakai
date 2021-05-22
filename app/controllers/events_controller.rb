@@ -16,7 +16,7 @@ class EventsController < ApplicationController
   end
 
   def create
-      @event = Event.new(event_params)
+    @event = Event.new(event_params)
       @event.save
       redirect_to event_path(@event.id)
   end
@@ -39,11 +39,11 @@ class EventsController < ApplicationController
 
   private
 
-    def event_params
-      params.require(:event).permit(:title, :content, :image ).merge(user_id: current_user.id)
-    end
+  def event_params
+    params.require(:event).permit(:title, :content, :image).merge(user_id: current_user.id)
+  end
 
-    def set_event
-      @event = Event.find(params[:id])
-    end
+  def set_event
+    @event = Event.find(params[:id])
+  end
 end

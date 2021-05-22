@@ -74,3 +74,8 @@ gem 'mini_magick'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'uglifier'
+# 静的解析ツール
+gem 'rubocop', require: false
+gem 'rubocop-performance', require: false
+gem 'rubocop-rails', require: false
+gem 'rubocop-discourse'
