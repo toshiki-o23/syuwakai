@@ -1,5 +1,7 @@
 
 <h1>イベント投稿一覧</h1>
+<i class="fas fa-arrow-alt-circle-right"></i>
+
 
 <div class="row row-cols-2">
 
@@ -23,7 +25,7 @@
       </ul>
 
       <div class="card-body">
-        <%= link_to '詳細', event_path(event), class: "btn btn-info card-link" %>
+        <%= link_to '詳細', event_path(event), class: "btn btn-info" %>
         <%= render 'partial/bookmark', event: event %>
       </div>
 

@@ -1,0 +1,40 @@
+current directory: /Users/toshiki/Documents/syuwakai/syuwakai/vendor/bundle/ruby/2.7.0/gems/mini_racer-0.4.0/ext/mini_racer_extension
+/Users/toshiki/.rbenv/versions/2.7.2/bin/ruby -I /Users/toshiki/.rbenv/versions/2.7.2/lib/ruby/2.7.0 -r ./siteconf20210522-41333-1i0w8v0.rb extconf.rb
+checking for -lpthread... yes
+checking for -lobjc... yes
+creating Makefile
+
+current directory: /Users/toshiki/Documents/syuwakai/syuwakai/vendor/bundle/ruby/2.7.0/gems/mini_racer-0.4.0/ext/mini_racer_extension
+make "DESTDIR=" clean
+
+current directory: /Users/toshiki/Documents/syuwakai/syuwakai/vendor/bundle/ruby/2.7.0/gems/mini_racer-0.4.0/ext/mini_racer_extension
+make "DESTDIR="
+compiling mini_racer_extension.cc
+clang: warning: argument unused during compilation: '-rdynamic' [-Wunused-command-line-argument]
+mini_racer_extension.cc:546:13: warning: ignoring return value of function declared with 'warn_unused_result' attribute [-Wunused-result]
+            array->Set(context, i, convert_ruby_to_v8(isolate, context, rb_ary_entry(value, i)));
+            ^~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mini_racer_extension.cc:555:13: warning: ignoring return value of function declared with 'warn_unused_result' attribute [-Wunused-result]
+            object->Set(context, convert_ruby_to_v8(isolate, context, rb_ary_entry(pair, 0)),
+            ^~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mini_racer_extension.cc:1085:14: warning: 'rb_rescue2' is deprecated: Use of ANYARGS in this function is deprecated [-Wdeprecated-declarations]
+    result = rb_rescue2((VALUE(*)(...))&protected_callback, (VALUE)(&callback_data),
+             ^
+/Users/toshiki/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/backward/cxxanyargs.hpp:207:1: note: 'rb_rescue2' has been explicitly marked deprecated here
+RUBY_CXX_DEPRECATED("Use of ANYARGS in this function is deprecated")
+^
+/Users/toshiki/.rbenv/versions/2.7.2/include/ruby-2.7.0/x86_64-darwin20/ruby/config.h:150:49: note: expanded from macro 'RUBY_CXX_DEPRECATED'
+#define RUBY_CXX_DEPRECATED(msg) __attribute__((__deprecated__(msg)))
+                                                ^
+mini_racer_extension.cc:1160:13: warning: ignoring return value of function declared with 'warn_unused_result' attribute [-Wunused-result]
+            context->Global()->Set(
+            ^~~~~~~~~~~~~~~~~~~~~~
+mini_racer_extension.cc:1185:25: warning: ignoring return value of function declared with 'warn_unused_result' attribute [-Wunused-result]
+                        value.As<Object>()->Set(
+                        ^~~~~~~~~~~~~~~~~~~~~~~
+5 warnings generated.
+linking shared-object mini_racer_extension.bundle
+
+current directory: /Users/toshiki/Documents/syuwakai/syuwakai/vendor/bundle/ruby/2.7.0/gems/mini_racer-0.4.0/ext/mini_racer_extension
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 mini_racer_extension.bundle ./.gem.20210522-41333-19dhq4l

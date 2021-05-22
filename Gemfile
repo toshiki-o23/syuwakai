@@ -79,3 +79,6 @@ gem 'rubocop', require: false
 gem 'rubocop-performance', require: false
 gem 'rubocop-rails', require: false
 gem 'rubocop-discourse'
+# Font awesome
+gem 'font-awesome-sass'
+gem 'mini_racer'

@@ -24,3 +24,4 @@ Rails.application.routes.draw do
     resource :bookmarks, only: [:create, :destroy]
   end
 end
+
