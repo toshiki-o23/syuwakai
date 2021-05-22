@@ -1,12 +1,15 @@
+<div class="float-end">
 
   <% if user_signed_in? && current_user.id != event.user_id %>
     <% if event.already_bookmarked?(current_user) %>
       <%= button_to event_bookmarks_path(event), method: :delete do %>
-        <i class="fas fa-bookmark fa-2x"></i>
+        <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>
+        <i class="fas fa-bookmark"></i>
       <% end %>
     <% else %>
       <%= button_to event_bookmarks_path(event), method: :post do %>
-        <i class="fas fa-biking"></i>
+        <i class="far fa-bookmark"></i>
       <% end %>
     <% end %>
   <% end %>
+</div>

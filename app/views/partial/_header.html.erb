@@ -1,47 +1,50 @@
 <header>
-  <nav class="navbar navbar-expand navbar-light">
-    <ul class="mr-auto">
-      <%= link_to image_tag('syuwakai.png', width: '200px'), root_path, class: 'navbar-brand' %>
-    </ul>
+  <nav class="navbar navbar-light">
+    
+      <ul class="navbar-nav">
+        <%= link_to image_tag('syuwakai.png', width: '200px'), root_path, class: 'navbar-brand' %>
+      </ul>
+    
 
-    <ul>
-      <div id="Navber">
-        <ul class="navbar-nav">
-          <% if user_signed_in? %>
-            <li class="nav-item active">
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-            </li>
-            <li class="nav-item active">
-              <%= link_to 'プロフィール', mypage_path, class: 'nav-link' %>
-            </li>
-            <% if current_user.email != 'guest@example.com' %>
+
+      <ul class="navbar-nav ml-auto">
+        <div id="Navber">
+          <ul class="navbar-nav">
+            <% if user_signed_in? %>
               <li class="nav-item active">
-                <%= link_to 'アカウント編集', edit_user_registration_path, class: 'nav-link' %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
               </li>
-            <% else %>
               <li class="nav-item active">
-                <div class="nav-link disabled">アカウント編集不可</div>
+                <%= link_to 'プロフィール', mypage_path, class: 'nav-link' %>
+              </li>
+              <% if current_user.email != 'guest@example.com' %>
+                <li class="nav-item active">
+                  <%= link_to 'アカウント編集', edit_user_registration_path, class: 'nav-link' %>
+                </li>
+              <% else %>
+                <li class="nav-item active">
+                  <div class="nav-link disabled">アカウント編集不可</div>
+                </li>
+              <% end %>
+              <li>
+                <div class="nav-item active">
+                  <%= link_to '新規投稿', new_event_path, class: "btn btn-outline-info" %>
+                </div>
+              </li>
+          <% else %>
+              <li class="nav-item active">
+                <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item active">
+                <%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item active">
+                <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'nav-link' %>
               </li>
             <% end %>
-            <li>
-              <div class="nav-item active">
-                <%= link_to '新規投稿', new_event_path, class: "btn btn-outline-info" %>
-              </div>
-            </li>
-        <% else %>
-            <li class="nav-item active">
-              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item active">
-              <%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item active">
-              <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'nav-link' %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </ul>
+          </ul>
+        </div>
+      </ul>
   </nav>
 </header>
 
