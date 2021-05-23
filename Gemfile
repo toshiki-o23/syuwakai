@@ -73,6 +73,7 @@ gem 'mini_magick'
 # https://qiita.com/kazutosato/items/d47b7705ee545de4cb1a
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'devise-bootstrap-views', '~> 1.0'
 gem 'uglifier'
 # 静的解析ツール
 gem 'rubocop', require: false

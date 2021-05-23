@@ -13,7 +13,8 @@ module Syuwakai
 
     # deviseの日本語化
     config.i18n.default_locale = :ja
-    
+    # config/locales内のymlファイルを読み取る
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

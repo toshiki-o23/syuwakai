@@ -26,7 +26,7 @@
     <%= f.file_field :image, autofocus: true, autocomplete: "image", class: "form-control-file custom-file-input", id: "customFile" %>
   </div>
 
-  <div class="row">
+  <div class="row ">
     <div class="field col form-group">
       <%= f.label :password %>
       <% if @minimum_password_length %>
@@ -39,10 +39,11 @@
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
     </div>
-  </div>
 
-  <div class="actions form-group">
-    <%= f.submit "新規登録", class: "btn btn-info" %>
+    <div class="actions col form-group">
+      <br />
+      <%= f.submit "新規登録", class: "btn btn-info" %>
+    </div>
   </div>
 
 <% end %>
