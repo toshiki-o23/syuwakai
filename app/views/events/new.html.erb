@@ -1,3 +1,9 @@
+<% if @event.errors.any? %>
+  <%= @event.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <%= form_with model: @event, url: '/events', method: :post, local: true do |f| %>
 
     <div class="field form-group">
