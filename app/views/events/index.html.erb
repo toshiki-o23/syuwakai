@@ -21,7 +21,7 @@
           <ul class="list-group list-group-flush">
             <%= link_to event.user.name, user_path(event.user_id) %>
             <% if event.user.image.present? %>
-              <img src=<%= event.user.image %>>
+              <img src=<%= event.user.image %> class="img-circle" width="200" height="200">
             <% end %>
           </ul>
 

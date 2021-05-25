@@ -16,7 +16,7 @@ class User < ApplicationRecord
   validates :password, presence: true
 
   # プロフィール画像許可
-  mount_uploader :image, ImageUploader
+  mount_uploader :image, UserImageUploader
   # mount_uploader :user_image, UserImageUploader
 
   # ゲストログイン機能
