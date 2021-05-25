@@ -1,30 +1,32 @@
 
-<div class="row row-cols-2">
-
+<div class="row">
   <% @events.each do |event| %>
-    <div class="col card">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
 
-      <% if event.image.url.present? %>
-        <td><%= image_tag event.image.url, class: "card-img-top img-fluid rounded-lg" %></td>
-      <% end %>
+          <% if event.image.url.present? %>
+            <td><%= image_tag event.image.url, class: "card-img-top img-fluid rounded-lg" %></td>
+          <% end %>
 
-      <div class="card-body">
-        <h5 class="card-title"><%= event.title %></h5>
-        <p class="card-text"><%= event.content %></p>
+          <div class="card-body">
+            <%= link_to event_path(event) do %>
+              <h5 class="card-title"><%= event.title %></h5>
+              <p class="card-text"><%= event.content %></p>
+            <% end %>
+            <%= render 'partial/bookmark', event: event %>
+          </div>
+          
+
+          <ul class="list-group list-group-flush">
+            <%= link_to event.user.name, user_path(event.user_id) %>
+            <% if event.user.image.present? %>
+              <img src=<%= event.user.image %>>
+            <% end %>
+          </ul>
+
+        </div>
       </div>
-
-      <ul class="list-group list-group-flush">
-        <%= link_to event.user.name, user_path(event.user_id) %>
-        <% if event.user.image.present? %>
-          <img src=<%= event.user.image %>>
-        <% end %>
-      </ul>
-
-      <div class="card-body">
-        <%= link_to '詳細', event_path(event), class: "btn btn-info" %>
-        <%= render 'partial/bookmark', event: event %>
-      </div>
-
     </div>
   <% end %>
 </div>
