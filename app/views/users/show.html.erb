@@ -1,5 +1,8 @@
+<%= @user.name %>
+<%= render 'relationships/follow_button', user: @user %>
+<%= @user.introduce %>
+
 <% if user_signed_in? && @user == current_user %>
-  <h1>マイページ</h1>
   <h2>ブックマーク</h2>
   <% if @bookmark_events.present? %>
     <% @bookmark_events.each do |bookmark_event| %>
@@ -8,17 +11,8 @@
   <% else %>
     <span>なし</span>
   <% end %>
-<% else %>
-  <h1>ユーザーページ</h1>
 <% end %>
 
-
-<h2>名前</h2>
-<%= @user.name %>
-<%= render 'relationships/follow_button', user: @user %>
-
-<h2>自己紹介</h2>
-<%= @user.introduce %>
 
 <p>
   <%= link_to 'フォロー', user_following_path(@user.id) %>
@@ -39,7 +33,6 @@
       <h5 class="card-title col">
         <%= event.title %>
       </h5>
-
       <p class="card-text col">
         <%= event.content %>
       </p>

@@ -1,14 +1,11 @@
-<%= @user.name %>のフォロー一覧
-<% @users.each do |user| %>
-  <% if user.email.present? %>
-    <table>
-      <tr>
-        <td><%= link_to user.name, user_path(user) %></td>
-      </tr>
-    </table>
-  <% else %>
-    <p>フォローしていません</p>
+<%= link_to @user.name, user_path(@user) %>  フォロー
+<%= link_to 'フォロワー一覧', user_follower_path(@user.id), class: "btn btn-primary btn-sm" %><br />
+
+<% if @users.present? %>
+  <% @users.each do |user| %>
+    <%= link_to user.name, user_path(user) %>
   <% end %>
+<% else %>
+  フォローしていません
 <% end %>
 
-<%= link_to 'フォロワー一覧', user_follower_path(@user.id) %>
