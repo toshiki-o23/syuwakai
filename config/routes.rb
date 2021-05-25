@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   root 'events#index'
 
   resources :users do
+    get :bookmarks
     get :following, :follower
   end
 

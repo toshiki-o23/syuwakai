@@ -22,6 +22,12 @@ class UsersController < ApplicationController
     @users = @user.followers
   end
 
+  def bookmarks
+    @user = User.find(params[:user_id])
+    @events = @user.events
+    @bookmark_events = @user.bookmark_events
+  end
+
   private
 
   def set_user

@@ -28,7 +28,12 @@
               <% end %>
               <li>
                 <div class="nav-item active">
-                  <%= link_to '新規投稿', new_event_path, class: "btn btn-outline-info" %>
+                  <%= link_to 'ブックマーク', user_bookmarks_path(current_user), class: "nav-link" %>
+                </div>
+              </li>
+              <li>
+                <div class="nav-item active">
+                  <%= link_to '新規投稿', new_event_path, class: "btn btn-outline-primary" %>
                 </div>
               </li>
           <% else %>

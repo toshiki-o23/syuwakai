@@ -2,15 +2,7 @@
 <%= render 'relationships/follow_button', user: @user %>
 <%= @user.introduce %><br />
 
-<% if user_signed_in? && @user == current_user %>
-  <% if @bookmark_events.present? %>
-    <% @bookmark_events.each do |bookmark_event| %>
-      <%= link_to bookmark_event.title, event_path(bookmark_event), class: "btn btn-primary btn-sm" %>
-    <% end %>
-  <% else %>
-    <span>なし</span>
-  <% end %>
-<% end %>
+
 
 
 <p>
@@ -35,7 +27,7 @@
       <p class="card-text col">
         <%= event.content %>
       </p>
-      <%= link_to 'show', event_path(event), class: "btn btn-info ml-auto btn-sm rounded-pill" %>
+      <%= link_to 'show', event_path(event), class: "btn btn-primary ml-auto btn-sm rounded-pill" %>
     </div>
   <% end %>
 </div>

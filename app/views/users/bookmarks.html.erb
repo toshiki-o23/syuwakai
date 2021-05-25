@@ -1,0 +1,9 @@
+<% if user_signed_in? && @user == current_user %>
+  <% if @bookmark_events.present? %>
+    <% @bookmark_events.each do |bookmark_event| %>
+      <%= link_to bookmark_event.title, event_path(bookmark_event), class: "btn btn-primary btn-sm" %>
+    <% end %>
+  <% else %>
+    <span>なし</span>
+  <% end %>
+<% end %>
