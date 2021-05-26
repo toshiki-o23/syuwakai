@@ -1,10 +1,52 @@
-<%= form_for(@event, url:{ controller: 'events', action: 'update', id: @event.id}) do |f| %>
-  <tr>
-    <td><%= f.text_field :title %></td>
-    <td><%= f.text_field :content %></td>
-    <%= f.submit 'update' %>
-  </tr>
-  
-  <%= link_to 'destroy', event_path(@event), method: :delete %>
+<% if @event.errors.any? %>
+  <%= @event.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
 <% end %>
+
+<%= form_with model: @event, url: event_path(@event), method: :put do |f| %>
+
+  
+  <div class="field form-group">
+      <%= f.label :タイトル %>
+      <%= f.text_field :title, autofocus: true, autocomplete: "title", class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+      <%= f.label :内容 %>
+      <%= f.text_area  :content, autofocus: true, autocomplete: "content", class: "form-control", rows: "3" %>
+  </div>
+
+  <div class="field form-group">
+      <%= f.label :画像 %>
+      <%= f.file_field :image, class: "form-control-file" %>
+  </div>
+    
+  <div class="actions form-group">
+    <%= f.submit "更新する", class: "btn btn-primary" %>
+  </div>
+  
+<% end %>
+
+  <div class="float-end">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    投稿を削除する
+  </button>
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">アカウントを削除しますか？</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+        <%= button_to "削除", event_path(@event), class: "btn btn-primary", method: :delete %>
+      </div>
+    </div>
+  </div>
+</div>
+
 

@@ -1,6 +1,4 @@
-<h1>投稿詳細ページ</h1>
-
-<td><%= link_to @event.user.name, user_path(@event.user_id) %></td>
+<%= link_to @event.user.name, user_path(@event.user_id) %>
 
 <%= @event.title %>
 <%= @event.content %>
@@ -8,5 +6,6 @@
   <%= image_tag @event.image.url %>
 <% end %>
 
+<%= link_to 'イベント投稿編集', edit_event_path(@event) %>
 
 <%= render 'partial/bookmark', event: @event %>
