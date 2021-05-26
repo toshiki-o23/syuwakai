@@ -1,34 +1,37 @@
 
-<div class="row">
-  <% @events.each do |event| %>
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
+<div class="container px-4">
+  <div class="row gx-5">
+    <% @events.each do |event| %>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body list-group list-group-flush">
 
-          <% if event.image.url.present? %>
-            <td><%= image_tag event.image.url, class: "card-img-top img-fluid rounded-lg" %></td>
-          <% end %>
+            <div class="list-group-item">
+              <%= link_to event_path(event), class: "text-decoration-none text-dark" do %>
+                <% if event.image.url.present? %>
+                  <td><%= image_tag event.image.url, class: "card-img-top img-fluid rounded-lg" %></td>
+                <% end %>
+                <h5 class="card-title"><%= event.title %></h5>
+                <p class="card-text"><%= event.content %></p>
+              <% end %>
+              <%= render 'partial/bookmark', event: event %>
+            </div>
+            
 
-          <div class="card-body">
-            <%= link_to event_path(event) do %>
-              <h5 class="card-title"><%= event.title %></h5>
-              <p class="card-text"><%= event.content %></p>
-            <% end %>
-            <%= render 'partial/bookmark', event: event %>
+            <div class="list-group-item">
+              <%= link_to event.user.name, user_path(event.user_id), class: "btn btn-primary" %>
+
+              <% if event.user.image.present? %>
+                <img src=<%= event.user.image %> class="rounded-circle" width="200" height="200">
+              <% end %>
+            </div>
+
           </div>
-          
-
-          <ul class="list-group list-group-flush">
-            <%= link_to event.user.name, user_path(event.user_id) %>
-            <% if event.user.image.present? %>
-              <img src=<%= event.user.image %> class="img-circle" width="200" height="200">
-            <% end %>
-          </ul>
-
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
+
 
 
