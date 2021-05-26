@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :baria_user, only: [:edit, :destroy]
 
   def index
     @events = Event.all
@@ -51,4 +52,14 @@ class EventsController < ApplicationController
   def set_event
     @event = Event.find(params[:id])
   end
+
+  # 投稿者以外投稿を編集削除しないように
+  # https://asalworld.com/1534/
+  def baria_user
+    unless Event.find_by(id: params[:id]).user_id == current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to posts_path
+    end
+  end
+
 end

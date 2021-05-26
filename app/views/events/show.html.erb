@@ -6,6 +6,7 @@
   <%= image_tag @event.image.url %>
 <% end %>
 
-<%= link_to 'イベント投稿編集', edit_event_path(@event) %>
-
+<% if user_signed_in? && current_user.id == @event.user_id %>
+  <%= link_to 'イベント投稿編集', edit_event_path(@event), class: "btn btn-primary" %>
+<% end %>
 <%= render 'partial/bookmark', event: @event %>
