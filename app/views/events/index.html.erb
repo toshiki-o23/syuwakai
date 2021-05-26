@@ -12,7 +12,7 @@
                   <td><%= image_tag event.image.url, class: "card-img-top img-fluid rounded-lg" %></td>
                 <% end %>
                 <h5 class="card-title"><%= event.title %></h5>
-                <p class="card-text"><%= event.content %></p>
+                <p class="card-text"><%= safe_join(event.content.split("\n"),tag(:br)) %></p>
               <% end %>
               <%= render 'partial/bookmark', event: event %>
             </div>

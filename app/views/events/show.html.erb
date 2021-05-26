@@ -1,7 +1,7 @@
 <%= link_to @event.user.name, user_path(@event.user_id) %>
 
 <%= @event.title %>
-<%= @event.content %>
+<%= safe_join( @event.content.split("\n"),tag(:br) )%>
 <% if @event.image.url.present? %>
   <%= image_tag @event.image.url %>
 <% end %>
