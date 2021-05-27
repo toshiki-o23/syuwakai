@@ -150,7 +150,10 @@ GEM
     parallel (1.20.1)
     parser (3.0.1.1)
       ast (~> 2.4.1)
+    pluginator (1.5.0)
     popper_js (2.9.2)
+    pre-commit (0.39.0)
+      pluginator (~> 1.5)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -212,19 +215,10 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.5.0)
       parser (>= 3.0.1.1)
-    rubocop-discourse (2.4.1)
-      rubocop (>= 1.1.0)
-      rubocop-rspec (>= 2.0.0)
-    rubocop-performance (1.11.3)
-      rubocop (>= 1.7.0, < 2.0)
-      rubocop-ast (>= 0.4.0)
     rubocop-rails (2.10.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
-    rubocop-rspec (2.3.0)
-      rubocop (~> 1.0)
-      rubocop-ast (>= 1.1.0)
     ruby-progressbar (1.11.0)
     ruby-vips (2.1.2)
       ffi (~> 1.12)
@@ -308,12 +302,11 @@ DEPENDENCIES
   mini_magick
   mini_racer
   mysql2 (>= 0.4.4)
+  pre-commit
   pry-rails
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
   rubocop
-  rubocop-discourse
-  rubocop-performance
   rubocop-rails
   sass-rails (>= 6)
   selenium-webdriver

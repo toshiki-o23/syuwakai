@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :baria_user, only: [:edit, :destroy]
+  before_action :baria_user, only: %i[edit destroy]
+  before_action :set_event, only: %i[show edit update destroy]
 
   def index
     @events = Event.all
@@ -25,11 +25,9 @@ class EventsController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @event.update(event_params)
@@ -40,8 +38,6 @@ class EventsController < ApplicationController
     @event.destroy
     redirect_to events_path
   end
-
-
 
   private
 
@@ -56,10 +52,9 @@ class EventsController < ApplicationController
   # 投稿者以外投稿を編集削除しないように
   # https://asalworld.com/1534/
   def baria_user
-    unless Event.find_by(id: params[:id]).user_id == current_user.id
-      flash[:notice] = "権限がありません"
-      redirect_to posts_path
+    return unless Event.find(params[:id]).user_id == current_user.id do;
+      flash[:notice] = '権限がありません'
+      redirect_to events_path
     end
   end
-
 end

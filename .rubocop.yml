@@ -1,6 +1,9 @@
 # 参考サイト
 # https://kitsune.blog/rails-rubocop
 
+Rails:
+  Enabled: true
+
 # 将来的には対応する規約の読込
 inherit_from: .rubocop_todo.yml
 
@@ -10,7 +13,7 @@ require:
 
 AllCops:
   # Rubyバージョン指定
-  TargetRubyVersion: 2.7.2
+  TargetRubyVersion: 2.7
   # 除外
   Exclude:
     - 'config.ru'
@@ -21,17 +24,65 @@ AllCops:
     - 'script/**/*'
     - !ruby/regexp /old_and_unused\.rb$/
     - 'vendor/**/*'
+    - 'node_modules'
   NewCops: enable
 
+# trueかfalseを設定しないと警告が出る
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
 
+##################### Style ##################################
 
-# 文字リテラルのイミュータブル宣言を無視（freezeになるのはRuby3以降）
+# 日本語のコメントを許可する
+Style/AsciiComments:
+  Enabled: false
+
+# ドキュメントの無いpublic classを許可する
+Style/Documentation:
+  Enabled: false
+
+# !! のイディオムを許可
+Style/DoubleNegation:
+  Enabled: false
+
+#文字列をfreezeするか
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-inherit_gem:
-  rubocop-discourse: default.yml
-
-# 文字リテラルのイミュータブル宣言を無視（freezeになるのはRuby3以降）
-Style/FrozenStringLiteralComment:
+# selfが無くても良い時に省略するか。model内において、ローカル変数とメソッド呼び出しの区別をつけた方が分かりやすい場合が多い
+Style/RedundantSelf:
   Enabled: false
+
+##################### Lint ##################################
+
+
+
+##################### Metrics ##################################
+
+# 変数の代入(A)、メソッドの呼び出し等(B)、条件分岐(C)から算出される複雑度
+Metrics/AbcSize:
+  Max: 30
+
+# 循環的複雑度 ≒ 分岐の数
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+# 1行の文字数
+Metrics/LineLength:
+  Max: 160
+  Exclude:
+    - "db/migrate/*.rb"
+
+# メソッドの行数
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - "db/migrate/*.rb"
+
+ClassAndModuleChildren:
+  EnforcedStyle: nested
+  EnforcedStyle: compact

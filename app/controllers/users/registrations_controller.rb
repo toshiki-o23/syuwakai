@@ -2,7 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   # ゲストユーザーを更新と削除しないように
-  before_action :ensure_normal_user, only: %i[update destroy]
+  # before_action :ensure_normal_user, only: %i[update destroy]
 
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -64,15 +64,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # パスワードなしでユーザー情報編集
-  protected
-  def update_resource(resource, params)
-    resource.update_without_password(params)
-  end
+  # protected
 
-  # ゲストユーザーならば更新と削除しないようにする
-  def ensure_normal_user
-    if resource.email == 'guest@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーは更新・削除できません。'
-    end
-  end
+  # def update_resource(resource, params)
+  #   resource.update_without_password(params)
+  # end
+
+  # # ゲストユーザーならば更新と削除しないようにする
+  # def ensure_normal_user
+  #   redirect_to root_path, alert: 'ゲストユーザーは更新・削除できません。' if resource.email == 'guest@example.com'
+  # end
 end

@@ -1,13 +1,11 @@
 class ApplicationController < ActionController::Base
-
   # deviseにおけるログイン時の保存条件
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
     # sign_up時ストロングパラメータ追加
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :introduce, :encrypted_password, :image])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name email introduce encrypted_password image])
     # アカウント編集時ストロングパラメータ追加
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :introduce, :encrypted_password, :image])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name email introduce encrypted_password image])
   end
-
 end
