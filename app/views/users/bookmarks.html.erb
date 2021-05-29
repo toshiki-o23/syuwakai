@@ -1,7 +1,27 @@
 <% if user_signed_in? && @user == current_user %>
   <% if @bookmark_events.present? %>
     <% @bookmark_events.each do |bookmark_event| %>
-      <%= link_to bookmark_event.title, event_path(bookmark_event), class: "btn btn-primary btn-sm" %>
+      <div class="card">
+        <div class="card-body list-group list-group-flush">
+          <div class="list-group-item">
+            <%= link_to event_path(bookmark_event), class: "text-decoration-none text-dark" do %>
+              <% if bookmark_event.image.url.present? %>
+                <td><%= image_tag bookmark_event.image.url, class: "card-img-top img-fluid rounded-lg" %></td>
+              <% end %>
+              <h5 class="card-title"><%= bookmark_event.title %></h5>
+              <p class="card-text"><%= safe_join(bookmark_event.content.split("\n"),tag(:br)) %></p>
+            <% end %>
+              <%= render 'partial/bookmark', event: bookmark_event %>
+            </div>
+              <div class="list-group-item">
+                <%= link_to bookmark_event.user.name, user_path(bookmark_event.user_id), class: "btn btn-primary" %>
+
+                <% if bookmark_event.user.image.present? %>
+                  <img src=<%= bookmark_event.user.image %> class="rounded-circle" width="200" height="200">
+                <% end %>
+              </div>
+        </div>
+      </div>
     <% end %>
   <% else %>
     <span>ブックマークしていません</span>
