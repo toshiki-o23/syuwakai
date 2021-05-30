@@ -1,5 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe "User" do
+  it "is valid with a name and email" # name と email を保持していることが正である
+  it "is invalid without a name"
 end
