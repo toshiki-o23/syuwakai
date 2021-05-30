@@ -25,7 +25,7 @@ AllCops:
     - !ruby/regexp /old_and_unused\.rb$/
     - 'vendor/**/*'
     - 'node_modules'
-    - 'spec/**'
+    - 'spec/**/*'
   NewCops: enable
 
 # trueかfalseを設定しないと警告が出る
