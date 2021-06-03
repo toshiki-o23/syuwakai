@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :user
 
   validates :name, presence: true, length: { maximum: 10 }
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, length: { maximum: 255 }, uniqueness: { case_sensitive: true }
   validates :password, presence: true
 
   # プロフィール画像許可
