@@ -1,4 +1,5 @@
 require 'rails_helper'
+# https://qiita.com/narimiya/items/8ec3cdc15b1134b04dce
 
 RSpec.describe User, type: :model do
   before do
