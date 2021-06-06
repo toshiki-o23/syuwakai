@@ -33,6 +33,11 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("メールアドレスを入力してください")
       end
+      it "emailが正しくない形式の場合、登録できない" do
+        @user.email = "toshiki"
+        expect(@user).not_to be_valid
+        expect(@user.errors.full_messages).to include("メールアドレスは不正な値です")
+      end
       it "重複したemailが存在する場合、登録できない" do
         @user.save
         another_user = FactoryBot.build(:user)

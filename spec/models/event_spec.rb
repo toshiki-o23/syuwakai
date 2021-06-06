@@ -14,6 +14,10 @@ RSpec.describe Event, type: :model do
         @event.title = 'a' * 30
         expect(@event).to be_valid  
       end
+      it "imageが空の場合でも、投稿が可能" do
+        @event.image = ''
+        expect(@event).to be_valid
+      end
     end
 
     context "新規投稿がうまくいかないとき" do
@@ -21,6 +25,11 @@ RSpec.describe Event, type: :model do
         @event.title = ''
         @event.valid?
         expect(@event.errors.full_messages).to include("タイトルを入力してください")
+      end
+      it "contentが空の場合、投稿できない" do
+        @event.content = ''
+        @event.valid?
+        expect(@event.errors.full_messages).to include("内容を入力してください")
       end
       
     end
