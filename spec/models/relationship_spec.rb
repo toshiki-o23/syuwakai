@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+# https://qiita.com/narimiya/items/11429a0064383fb177ee
 RSpec.describe Relationship, type: :model do
   before do
     @user1 = FactoryBot.build(:user)
@@ -27,5 +27,24 @@ RSpec.describe Relationship, type: :model do
       end
     end
     
+    context "一意性の検証" do
+      before do
+        @relation = FactoryBot.create(:relationship)
+        @user1 = FactoryBot.build(:relationship)
+      end
+      it 'follower_idとfollowed_idの組み合わせは一意でなければ保存できない' do
+        relation2 = FactoryBot.build(:relationship, user_id: @relation.user_id, follow_id: @relation.follow_id)
+        relation2.valid?
+        expect(relation2.errors.full_messages).to include("Userはすでに存在します")
+      end
+      it 'follower_idが同じでもfollowed_idが違うなら保存できる' do
+        relation2 = FactoryBot.build(:relationship, user_id: @relation.follow_id, follow_id: @user1.follow_id)
+        expect(relation2).to be_valid
+      end
+      it 'follower_idが違うならfollowed_idが同じでも保存できる' do
+        relation2 = FactoryBot.build(:relationship, user_id: @user1.user_id, follow_id: @relation.follow_id)
+        expect(relation2).to be_valid
+      end
+    end
   end
 end
