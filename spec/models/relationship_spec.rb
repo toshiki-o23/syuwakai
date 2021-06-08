@@ -32,16 +32,16 @@ RSpec.describe Relationship, type: :model do
         @relation = FactoryBot.create(:relationship)
         @user1 = FactoryBot.build(:relationship)
       end
-      it 'follower_idとfollowed_idの組み合わせは一意でなければ保存できない' do
+      it 'user_idとfollow_idの組み合わせは一意でなければ保存できない' do
         relation2 = FactoryBot.build(:relationship, user_id: @relation.user_id, follow_id: @relation.follow_id)
         relation2.valid?
         expect(relation2.errors.full_messages).to include("Userはすでに存在します")
       end
-      it 'follower_idが同じでもfollowed_idが違うなら保存できる' do
+      it 'user_idが同じでもfollow_idが違うなら保存できる' do
         relation2 = FactoryBot.build(:relationship, user_id: @relation.follow_id, follow_id: @user1.follow_id)
         expect(relation2).to be_valid
       end
-      it 'follower_idが違うならfollowed_idが同じでも保存できる' do
+      it 'user_idが違うならfollow_idが同じでも保存できる' do
         relation2 = FactoryBot.build(:relationship, user_id: @user1.user_id, follow_id: @relation.follow_id)
         expect(relation2).to be_valid
       end
