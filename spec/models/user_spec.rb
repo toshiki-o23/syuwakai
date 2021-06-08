@@ -68,6 +68,14 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe 'アソシエーション' do
+    context 'モデルとの関係' do
+      it 'Event' do
+        expect(User.reflect_on_association(:events).macro).to eq :has_many
+      end
+    end
+  end
 end
 
 

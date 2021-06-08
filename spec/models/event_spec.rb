@@ -31,8 +31,17 @@ RSpec.describe Event, type: :model do
         @event.valid?
         expect(@event.errors.full_messages).to include("内容を入力してください")
       end
-      
     end
-    
+  end
+
+  describe 'アソシエーション' do
+    context 'モデルとの関係' do
+      it 'User' do
+        expect(Event.reflect_on_association(:user).macro).to eq :belongs_to
+      end
+      it 'Bookmark' do
+        expect(Event.reflect_on_association(:bookmarks).macro).to eq :has_many
+      end
+    end
   end
 end
