@@ -7,20 +7,20 @@ RSpec.describe Relationship, type: :model do
     @relationship = FactoryBot.build(:relationship)
   end
 
-  describe '#create' do
-    context '保存できる場合' do
-      it "全てのパラメーターが揃っていれば保存できる" do
+  describe 'フォロー' do
+    context 'フォローが可能の場合' do
+      it "全てのパラメーターが揃っている" do
         expect(@relationship).to be_valid
       end
     end
 
-    context '保存できない場合' do
-      it "user_idがnilの場合、保存できない" do
+    context 'フォローが不可の場合' do
+      it "user_idがnil" do
         @relationship.follow_id = nil
         @relationship.valid?
         expect(@relationship.errors.full_messages).to include("Followを入力してください")
       end
-      it "follow_idがnilの場合、保存できない" do
+      it "follow_idがnil" do
         @relationship.user_id = nil
         @relationship.valid?
         expect(@relationship.errors.full_messages).to include("Userを入力してください")
@@ -47,4 +47,13 @@ RSpec.describe Relationship, type: :model do
       end
     end
   end
+
+  describe 'アソシエーション' do
+    context 'モデルとの関係' do
+      it 'User' do
+        expect(Relationship.reflect_on_association(:user).macro).to eq :belongs_to
+      end
+    end  
+  end
+  
 end

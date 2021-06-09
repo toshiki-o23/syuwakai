@@ -6,30 +6,40 @@ RSpec.describe Event, type: :model do
   end
 
   describe '新規投稿' do
-    context '新規投稿ができたとき' do
+    context '新規投稿が可能の場合' do
       it "内容に問題ない場合" do
         expect(@event).to be_valid  
       end
-      it "titleが30文字以下の投稿が可能" do
+      it "titleが30文字以下" do
         @event.title = 'a' * 30
         expect(@event).to be_valid  
       end
-      it "imageが空の場合でも、投稿が可能" do
+      it "imageが空" do
         @event.image = ''
         expect(@event).to be_valid
       end
     end
 
-    context "新規投稿がうまくいかないとき" do
-      it "titleが空の場合、投稿できない" do
+    context "新規投稿が不可の場合" do
+      it "titleが空" do
         @event.title = ''
         @event.valid?
         expect(@event.errors.full_messages).to include("タイトルを入力してください")
       end
-      it "contentが空の場合、投稿できない" do
+      it "titleが31文字以上" do
+        @event.title = 'a' * 31
+        @event.valid?
+        expect(@event.errors.full_messages).to include("タイトルは30文字以内で入力してください")
+      end
+      it "contentが空" do
         @event.content = ''
         @event.valid?
         expect(@event.errors.full_messages).to include("内容を入力してください")
+      end
+      it "contentが1001文字以上" do
+        @event.content = 'a' * 1001
+        @event.valid?
+        expect(@event.errors.full_messages).to include("内容は1000文字以内で入力してください")
       end
     end
   end
