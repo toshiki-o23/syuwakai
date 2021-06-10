@@ -15,7 +15,7 @@ jobs:
 #  ②注意！！ circleCIは仮想環境を構築するので、そのときに使うデータベースを指定する必要があります。
           - RAILS_ENV: 'test'
       # Mysqlのバージョン5.6で動かしていたため、5.6を指定
-      - image: circleci/mysql:5.6
+      - image: circleci/mysql:8.0.23
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           - MYSQL_ROOT_HOST: '%'
@@ -41,7 +41,7 @@ jobs:
           name: install dependencies
           command: 
             gem install bundler -v 2.0.2
-            bundle install --retry=3 --path vendor/bundle
+            bundle install --path vendor/bundle
 
       - save_cache:
           paths:
