@@ -18,6 +18,8 @@ jobs:
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           - MYSQL_ROOT_HOST: '%'
+          - MYSQL_USER: root
+          - MYSQL_DB: circle_test
 
     working_directory: ~/repo
 
