@@ -8,33 +8,21 @@ jobs:
     docker:
       - image: circleci/ruby:2.7.2-node-browsers
         environment:
+          - BUNDLE_JOBS: 3
+          - BUNDLE_RETRY: 3
+          - BUNDLE_PATH: vendor/bundle
           - BUNDLER_VERSION: 2.2.16
           - RAILS_ENV: 'test'
       - image: circleci/mysql:8.0.23
+        comand: mysqld --default-authentication-plugin=mysql_native_password
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           - MYSQL_ROOT_HOST: '%'
-          - MYSQL_ROOT_PASSWORD: root
-          - MYSQL_DATABASE: test_db
-          - MYSQL_USER: user
-          - MYSQL_PASSWORD: password
 
     working_directory: ~/repo
 
     steps:
       - checkout
-
-      - run:
-      # プライマリ コンテナは MySQL ではないため、準備が完了するまで sleep コマンドを実行します。
-          name: MySQL が準備できるまで待機
-          command: |
-            for i in `seq 1 10`;
-            do
-              nc -z 127.0.0.1 3306 && echo Success && exit 0
-              echo -n .
-              sleep 1
-            done
-            echo Failed waiting for MySQL && exit 1
 
       - run:
           name: setup bundler
@@ -43,29 +31,39 @@ jobs:
             sudo gem uninstall bundler
             sudo rm /usr/local/bin/bundle
             sudo rm /usr/local/bin/bundler
-            sudo gem install bundler
+            sudo gem install bundler:2.2.16
+            
+      - run:
+          name: Which bundler?
+          command: bundle -v
 
+      - run:
+          name: Which ruby?
+          command: ruby -v
+      
       - restore_cache:
+          name: bundle install restore
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
             - v1-dependencies-
 
       - run:
-          name: install dependencies
+          name: bundle install
           command: |
-            gem install bundler -v 2.2.16
-            bundle config set --local path 'vendor/bundle'
+            bundle config set path 'vendor/bundle'
+            bundle config set deployment 'true'
             bundle install --jobs=4 --retry=3
 
       - save_cache:
+          name: bundle install cache
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
           paths:
             - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       - run: mv config/database.yml.ci config/database.yml 
 
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      - run: bundle exec rails db:create
+      - run: bundle exec rails db:schema:load
 
       - run:
           name: Rubocop
