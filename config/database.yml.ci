@@ -6,7 +6,7 @@ default: &default
   pool: 5
   host: 127.0.0.1
   port: 3306
-  username: toshiki # .circleci/config.yml のMYSQL_USERと揃える。
+  username: root # .circleci/config.yml のMYSQL_USERと揃える。
   password: password
 
 test:
