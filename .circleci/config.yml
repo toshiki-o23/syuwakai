@@ -94,6 +94,7 @@ jobs:
     macos:
       xcode: 11.3.0
     steps:
+      - run: xcodebuild -version
       - checkout
       - run:
           name: Heroku への master のデプロイ
