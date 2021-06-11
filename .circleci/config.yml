@@ -91,10 +91,9 @@ jobs:
 
 
   deploy:
-    macos:
-      xcode: 11.3.0
+    docker:
+      - image: buildpack-deps:trusty
     steps:
-      - run: xcodebuild -version
       - checkout
       - run:
           name: Heroku への master のデプロイ

@@ -21,7 +21,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "engines": {
-    "node": "10.17.0"
+    "node": "10.17.0",
+    "npm": "6.11.3"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "main": "babel.config.js",
