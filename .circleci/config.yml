@@ -11,7 +11,7 @@ jobs:
           - BUNDLE_JOBS: 3
           - BUNDLE_RETRY: 3
           - BUNDLE_PATH: vendor/bundle
-          - BUNDLER_VERSION: 2.2.16
+          - BUNDLER_VERSION: 2.1.4
           - RAILS_ENV: 'test'
       - image: circleci/mysql:8.0.23
         comand: mysqld --default-authentication-plugin=mysql_native_password
@@ -31,7 +31,7 @@ jobs:
             sudo gem uninstall bundler
             sudo rm /usr/local/bin/bundle
             sudo rm /usr/local/bin/bundler
-            sudo gem install bundler:2.2.16
+            sudo gem install bundler:2.1.4
             
       - run:
           name: Which bundler?
