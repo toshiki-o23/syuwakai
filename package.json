@@ -18,7 +18,8 @@
   "devDependencies": {
     "normalize-url": "^6.0.1",
     "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "webpacker-cli": "^2.2.1"
   },
   "engines": {
     "node": "10.17.0",
