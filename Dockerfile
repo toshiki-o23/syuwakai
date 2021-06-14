@@ -19,6 +19,3 @@ ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
 # Gemfileのbundle install
 RUN bundle install
 ADD . $APP_ROOT
-
-RUN yarn install --check-files
-RUN bundle exec rails webpacker:compile
