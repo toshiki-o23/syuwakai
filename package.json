@@ -35,11 +35,8 @@
     "setup": "npm",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/toshiki-o23/syuwakai.git"
-  },
-  "author": "",
+  "repository": "git+https://github.com/toshiki-o23/syuwakai.git",
+  "author": "toshiki-o23 <tsk.okmt.15@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/toshiki-o23/syuwakai/issues"
