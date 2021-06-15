@@ -89,12 +89,10 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
-
   deploy:
-    macos:
-      xcode: 11.3.0
+    docker:
+      - image: buildpack-deps:trusty
     steps:
-      - run: xcodebuild -version
       - checkout
       - run:
           name: Heroku への master のデプロイ
@@ -105,11 +103,7 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-
       - build
       - deploy:
           requires:
             - build
-          filters:
-            branches:
-              only: master
