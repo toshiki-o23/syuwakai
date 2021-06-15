@@ -1,17 +1,13 @@
-<header>
-  <nav class="navbar navbar-light" >
-    
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <%= link_to image_tag('syuwakai.png', width: '200px'), root_path, class: 'navbar-brand' %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <%= link_to image_tag('syuwakai.png', width: '200px'), root_path, class: 'navbar-brand' %>
-      </ul>
-    
-
-
-      <ul class="navbar-nav navbar-expand ml-auto">
-        <div id="Navber">
-          <ul class="navbar-nav">
-            <% if user_signed_in? %>
-              <li class="nav-item active">
+        <% if user_signed_in? %>
+        <li class="nav-item active">
                 <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
               </li>
               <li class="nav-item active">
@@ -47,9 +43,7 @@
                 <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'nav-link' %>
               </li>
             <% end %>
-          </ul>
-        </div>
       </ul>
-  </nav>
-</header>
-
+    </div>
+  </div>
+</nav>
