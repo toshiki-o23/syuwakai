@@ -22,7 +22,7 @@
     "webpacker-cli": "^2.2.1"
   },
   "engines": {
-    "node": "12.16.3",
+    "node": "14.17.1",
     "yarn": "1.22.10"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
