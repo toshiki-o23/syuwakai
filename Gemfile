@@ -12,7 +12,7 @@ gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '~> 4.3.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -83,7 +83,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 # bootstrap導入(techpitgram)
 # https://qiita.com/kazutosato/items/d47b7705ee545de4cb1a
-gem 'bootstrap'
+gem 'bootstrap', '~> 5.0.0.beta1'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'jquery-rails'
 gem 'uglifier'

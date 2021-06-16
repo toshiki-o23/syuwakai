@@ -321,7 +321,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
-  bootstrap
+  bootstrap (~> 5.0.0.beta1)
   byebug
   capybara (>= 2.15)
   carrierwave
@@ -358,7 +358,7 @@ DEPENDENCIES
   uglifier
   web-console (>= 3.3.0)
   webdrivers
-  webpacker (~> 4.0)
+  webpacker (~> 4.3.0)
 
 RUBY VERSION
    ruby 2.7.2p137
