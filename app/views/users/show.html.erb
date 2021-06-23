@@ -1,19 +1,20 @@
-<%= @user.name %>
-<%= render 'relationships/follow_button', user: @user %>
-<%= @user.introduce %><br />
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to @user.name, user_path(@user), class: "nav-link active" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to  "フォロー #{@user.followings.count}" , user_following_path(@user.id), class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "フォロワー #{@user.followers.count}", user_follower_path(@user.id), class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= render 'relationships/follow_button', user: @user %>
+  </li>
+</ul>
 
+<%= @user.introduce %>
 
-
-
-<p>
-  <%= link_to 'フォロー', user_following_path(@user.id) %>
-  <%= @user.followings.count %>
-  <%= link_to 'フォロワー', user_follower_path(@user.id) %>
-  <%= @user.followers.count %>
-</p>
-
-
-<%# もしユーザー画像が登録されているなら表示 %>
 <% if @user.image.url.present? %>
   <%= image_tag @user.image.url %>
 <% end %>

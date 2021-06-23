@@ -1,5 +1,17 @@
-<%= link_to @user.name, user_path(@user) %>  フォロー
-<%= link_to 'フォロワー一覧', user_follower_path(@user.id), class: "btn btn-primary btn-sm" %><br />
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to @user.name, user_path(@user), class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to  "フォロー #{@user.followings.count}" , user_following_path(@user.id), class: "nav-link active" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "フォロワー #{@user.followers.count}", user_follower_path(@user.id), class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= render 'relationships/follow_button', user: @user %>
+  </li>
+</ul>
 
 <% if @users.present? %>
   <% @users.each do |user| %>
@@ -8,4 +20,3 @@
 <% else %>
   フォローしていません
 <% end %>
-

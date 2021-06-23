@@ -30,7 +30,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  process resize_to_fill: [200, 200, 'Center']
+  process resize_to_fill: [1280, 720]
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
