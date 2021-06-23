@@ -14,9 +14,11 @@
 </ul>
 
 <% if @users.present? %>
-  <% @users.each do |user| %>
-    <%= link_to user.name, user_path(user) %>
-  <% end %>
+  <ul class="list-group list-group-flush">
+    <% @users.each do |user| %>
+      <%= link_to user.name, user_path(user), class: "list-group-item" %>
+    <% end %>
+  </ul>
 <% else %>
   フォローされていません
 <% end %>
