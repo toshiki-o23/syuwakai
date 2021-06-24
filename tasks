@@ -6,7 +6,6 @@ Everyday Rails - RSpecによるRailsテスト入門
 .リクエストスペックでAPIをテスト
 .早いテスト
 .ファイルアップロード
-.
 
 (UI/UX)
 
@@ -19,7 +18,6 @@ Everyday Rails - RSpecによるRailsテスト入門
 1.「EC2上にSSHでログインして手動でRailsアプリケーションを動作させる」
 2.「ローカル環境からCapistranoを使ってRailsアプリケーションをEC2にデプロイする」
 3.「CircleCIからCapistranoを使ってRailsアプリケーションをEC2にデプロイする」
-
 
 
 (demo)
