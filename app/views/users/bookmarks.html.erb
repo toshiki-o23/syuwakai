@@ -1,34 +1,6 @@
 <% if user_signed_in? && @user == current_user %>
   <% if @bookmark_events.present? %>
-      <div class="container px-4">
-        <div class="row gx-5">
-          <% @bookmark_events.each do |bookmark_event| %>
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body list-group list-group-flush">
-                  <div class="list-group-item">
-                    <%= link_to event_path(bookmark_event), class: "text-decoration-none text-dark" do %>
-                      <% if bookmark_event.image.url.present? %>
-                        <td><%= image_tag bookmark_event.image.url, class: "card-img-top img-fluid rounded-lg" %></td>
-                      <% end %>
-                      <h5 class="card-title"><%= bookmark_event.title %></h5>
-                      <p class="card-text"><%= safe_join(bookmark_event.content.split("\n"),tag(:br)) %></p>
-                    <% end %>
-                    <%= render 'partial/bookmark', event: bookmark_event %>
-                  </div>
-                  
-                  <div class="list-group-item">
-                    <% if bookmark_event.user.image.present? %>
-                      <img src=<%= bookmark_event.user.image %> class="rounded-circle" width="20" height="20">
-                    <% end %>
-                    <%= link_to bookmark_event.user.name, user_path(bookmark_event.user_id), class: "btn btn-primary" %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
+      <%= render 'partial/events_index', events: @bookmark_events %>
   <% else %>
     <span>ブックマークしていません</span>
   <% end %>
