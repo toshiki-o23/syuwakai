@@ -29,11 +29,6 @@
 
   <div class="row">
     <div class="field col form-group">
-      <%= f.label :current_password %> (必須)<br />
-      <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
-    </div>
-
-    <div class="field col form-group">
       <%= f.label :password %>(空でも大丈夫)<br />
       <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
       <% if @minimum_password_length %>
