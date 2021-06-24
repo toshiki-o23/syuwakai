@@ -6,6 +6,7 @@
         <div class="card">
           <div class="card-body list-group list-group-flush">
             <div class="list-group-item">
+              <%= render 'partial/bookmark', event: event %>
               <%= link_to event_path(event), class: "text-decoration-none text-dark" do %>
                 <% if event.image.url.present? %>
                   <td><%= image_tag event.image.url, class: "card-img-top img-fluid rounded-lg" %></td>
@@ -13,7 +14,6 @@
                 <h5 class="card-title"><%= event.title %></h5>
                 <p class="card-text"><%= safe_join(event.content.split("\n"),tag(:br)) %></p>
               <% end %>
-              <%= render 'partial/bookmark', event: event %>
             </div>
             
 

@@ -2,14 +2,9 @@
 
   <% if user_signed_in? && current_user.id != event.user_id %>
     <% if event.already_bookmarked?(current_user) %>
-      <%= button_to event_bookmarks_path(event), method: :delete do %>
-        <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>
-        <i class="fas fa-bookmark"></i>
-      <% end %>
+      <%= link_to "bookmark", event_bookmarks_path(event), method: :delete, class: "material-icons text-dark nonelink" %>
     <% else %>
-      <%= button_to event_bookmarks_path(event), method: :post do %>
-        <i class="far fa-bookmark"></i>
-      <% end %>
+      <%= link_to 'bookmark_add',event_bookmarks_path(event), method: :post, class: "material-icons-outlined text-dark nonelink" %>
     <% end %>
   <% end %>
 </div>
