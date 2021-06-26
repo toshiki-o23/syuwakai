@@ -34,8 +34,8 @@ jobs:
             sudo gem install bundler:2.1.4
 
       - run:
-        name: install yarn
-        command: yarn install
+          name: install yarn
+          command: yarn install
       - run: bundle exec bin/webpack
             
       - run:
