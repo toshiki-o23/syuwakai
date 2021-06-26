@@ -13,10 +13,15 @@
   </li>
 </ul>
 
-<%= @user.introduce %>
+<div class="row">
+  <div class="col-sm">
+    <%= image_tag @user.image.url , class: "rounded-circle", width: "100", height: "100" %>
+  </div>
+  <div class="col-sm">
+    <%= @user.introduce %>
+  </div>
+</div>
 
-<% if @user.image.url.present? %>
-  <%= image_tag @user.image.url %>
-<% end %>
+
 
 <%= render 'partial/events_index', events: @events %>
