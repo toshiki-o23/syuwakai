@@ -33,10 +33,6 @@ jobs:
             sudo rm /usr/local/bin/bundler
             sudo gem install bundler:2.1.4
 
-      - run:
-          name: install yarn
-          command: yarn install
-      - run: bundle exec bin/webpack
             
       - run:
           name: Which bundler?
