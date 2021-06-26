@@ -24,7 +24,7 @@ AllCops:
     - 'script/**/*'
     - !ruby/regexp /old_and_unused\.rb$/
     - 'vendor/**/*'
-    - 'node_modules'
+    - 'node_modules/**'
     - 'spec/**/*'
   NewCops: enable
 

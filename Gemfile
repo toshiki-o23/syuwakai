@@ -90,3 +90,5 @@ gem 'uglifier'
 # Font awesome
 gem 'font-awesome-sass'
 gem 'mini_racer'
+# heroku画像保存
+gem 'aws-sdk', '~> 2'
