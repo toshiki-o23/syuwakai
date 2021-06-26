@@ -35,8 +35,9 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @user = User.find(@event.user_id)
     @event.destroy
-    redirect_to events_path
+    redirect_to user_path(@user.id)
   end
 
   private
@@ -54,7 +55,7 @@ class EventsController < ApplicationController
   def baria_user
     return unless Event.find(params[:id]).user_id == current_user.id do;
       flash[:notice] = '権限がありません'
-      redirect_to events_path
+      redirect_to user_path(@user.id)
     end
   end
 end
