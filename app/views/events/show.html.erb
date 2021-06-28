@@ -3,10 +3,11 @@
   <div class="card-body">
     <h5 class="card-title"><%= @event.title %></h5>
     <p class="card-text"><%= safe_join( @event.content.split("\n"),tag(:br) )%></p>
+    <p class="card-text"><%= @event.level %></p>
     <%= link_to @event.user.name, user_path(@event.user_id), class: 'btn btn-primary' %>
     <% if user_signed_in? && current_user.id == @event.user_id %>
-  <%= link_to 'イベント投稿編集', edit_event_path(@event), class: "btn btn-primary" %>
-<% end %>
+      <%= link_to 'イベント投稿編集', edit_event_path(@event), class: "btn btn-primary" %>
+    <% end %>
   </div>
   <div class="card-footer text-muted">
     更新日時<%= @event.updated_at %>

@@ -7,10 +7,14 @@
           <div class="card-body list-group list-group-flush">
             <div class="list-group-item">
               <%= link_to event_path(event), class: "text-decoration-none text-dark" do %>
-                  <td><%= image_tag event.image.url, class: "card-img-top img-fluid rounded-lg", width: "1280", height: "720" %></td>
+                <td><%= image_tag event.image.url, class: "card-img-top img-fluid rounded-lg", width: "1280", height: "720" %></td>
                 <h5 class="card-title"><%= event.title %></h5>
                 <p class="card-text"><%= safe_join(event.content.split("\n"),tag(:br)) %></p>
               <% end %>
+                <div class="text-right">
+                  <p><%= event.level %></p>
+                </div>
+                
             </div>
             
 

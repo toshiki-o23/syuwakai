@@ -1,8 +1,0 @@
-作業ブランチ変更方法
-
-git co -b (作業ブランチ名)
-git add -A
-git commit -m ''
-git co master
-git merge (作業ブランチ名)
-git push

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_20_125001) do
+ActiveRecord::Schema.define(version: 2021_06_27_022535) do
 
   create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "user_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_05_20_125001) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.string "image"
+    t.string "level"
   end
 
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
