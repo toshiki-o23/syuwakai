@@ -11,8 +11,8 @@ RSpec.describe User, type: :model do
       it "内容に問題ない" do
         expect(@user).to be_valid
       end
-      it "nameが20文字以下" do
-        @user.name = 'a' * 20
+      it "nameが30文字以下" do
+        @user.name = 'a' * 30
         expect(@user).to be_valid
       end
       it 'emailが255文字以下' do
@@ -32,10 +32,10 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("名前を入力してください")
       end
-      it "nameが21文字以上" do
-        @user.name = 'a' * 21
+      it "nameが31文字以上" do
+        @user.name = 'a' * 31
         @user.valid?
-        expect(@user.errors.full_messages).to include("名前は20文字以内で入力してください")
+        expect(@user.errors.full_messages).to include("名前は30文字以内で入力してください")
       end
       it "emailが空" do
         @user.email = ''
