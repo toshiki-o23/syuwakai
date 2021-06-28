@@ -5,28 +5,29 @@
       <div class="col-sm-6 p-3" id=<%= event.id %>>
         <div class="card">
           <div class="card-body list-group list-group-flush">
+
             <div class="list-group-item">
               <%= link_to event_path(event), class: "text-decoration-none text-dark" do %>
                 <td><%= image_tag event.image.url, class: "card-img-top img-fluid rounded-lg", width: "1280", height: "720" %></td>
                 <h5 class="card-title"><%= event.title %></h5>
                 <p class="card-text"><%= safe_join(event.content.split("\n"),tag(:br)) %></p>
               <% end %>
-                  <p><%= event.level %></p>
-                <div class="material-icons-outlined">
-                  place
-                </div>
-                  <%= event.venue %>
+              <p><%= event.level %></p>
+              <div class="material-icons-outlined">
+                place
+              </div>
+              <%= event.venue %>
             </div>
             
 
             <div class="list-group-item">
-                <%= image_tag event.user.image.url , class: "rounded-circle", width: "40", height: "40" %>
+              <%= image_tag event.user.image.url , class: "rounded-circle", width: "40", height: "40" %>
               <%= link_to event.user.name, user_path(event.user_id), class: "nonelink text-dark" %>
               <%= render 'partial/bookmark', event: event %>
-
             </div>
 
           </div>
+          
         </div>
       </div>
     <% end %>
