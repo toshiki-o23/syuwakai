@@ -1,0 +1,468 @@
+Unreleased Changes
+------------------
+
+1.90.0 (2021-06-17)
+------------------
+
+* Feature - Enable ml.g4dn instance types for SageMaker Batch Transform and SageMaker Processing
+
+1.89.0 (2021-06-10)
+------------------
+
+* Feature - Using SageMaker Edge Manager with AWS IoT Greengrass v2 simplifies accessing, maintaining, and deploying models to your devices. You can now create deployable IoT Greengrass components during edge packaging jobs. You can choose to create a device fleet with or without creating an AWS IoT role alias.
+
+1.88.0 (2021-06-07)
+------------------
+
+* Feature - AWS SageMaker - Releasing new APIs related to Callback steps in model building pipelines. Adds experiment integration to model building pipelines.
+
+1.87.0 (2021-05-05)
+------------------
+
+* Feature - Amazon SageMaker Autopilot now provides the ability to automatically deploy the best model to an endpoint
+
+1.86.0 (2021-05-04)
+------------------
+
+* Feature - Enable retrying Training and Tuning Jobs that fail with InternalServerError by setting RetryStrategy.
+
+1.85.0 (2021-03-30)
+------------------
+
+* Feature - Amazon SageMaker Autopilot now supports 1) feature importance reports for AutoML jobs and 2) PartialFailures for AutoML jobs
+
+1.84.0 (2021-03-25)
+------------------
+
+* Feature - This feature allows customer to specify the environment variables in their CreateTrainingJob requests.
+
+1.83.0 (2021-03-19)
+------------------
+
+* Feature - Adding authentication support for pulling images stored in private Docker registries to build containers for real-time inference.
+
+1.82.0 (2021-03-17)
+------------------
+
+* Feature - Support new target device ml_eia2 in SageMaker CreateCompilationJob API
+
+1.81.0 (2021-03-10)
+------------------
+
+* Feature - Code Generated Changes, see `./build_tools` or `aws-sdk-core`'s CHANGELOG.md for details.
+
+1.80.0 (2021-03-04)
+------------------
+
+* Feature - This release adds the ResolvedOutputS3Uri to the DescribeFeatureGroup API to indicate the S3 prefix where offline data is stored in a feature group
+
+1.79.0 (2021-02-22)
+------------------
+
+* Feature - Amazon SageMaker now supports core dump for SageMaker Endpoints and direct invocation of a single container in a SageMaker Endpoint that hosts multiple containers.
+
+1.78.0 (2021-02-18)
+------------------
+
+* Feature - This release adds expires-in-seconds parameter to the CreatePresignedDomainUrl API for support of a configurable TTL.
+
+1.77.0 (2021-02-09)
+------------------
+
+* Feature - Add a new optional FrameworkVersion field to Sagemaker Neo CreateCompilationJob API
+
+1.76.0 (2021-02-02)
+------------------
+
+* Feature - Code Generated Changes, see `./build_tools` or `aws-sdk-core`'s CHANGELOG.md for details.
+
+1.75.0 (2021-01-14)
+------------------
+
+* Feature - This feature allows customers to enable/disable model caching on Multi-Model endpoints.
+
+1.74.0 (2020-12-08)
+------------------
+
+* Feature - This feature helps you monitor model performance characteristics such as accuracy, identify undesired bias in your ML models, and explain model decisions better with explainability drift detection.
+
+1.73.0 (2020-12-01)
+------------------
+
+* Feature - Amazon SageMaker Pipelines for ML workflows. Amazon SageMaker Feature Store, a fully managed repository for ML features.
+
+1.72.0 (2020-11-16)
+------------------
+
+* Feature - This feature enables customers to encrypt their Amazon SageMaker Studio storage volumes with customer master keys (CMKs) managed by them in AWS Key Management Service (KMS).
+
+1.71.0 (2020-10-26)
+------------------
+
+* Feature - This release enables customers to bring custom images for use with SageMaker Studio notebooks.
+
+1.70.0 (2020-10-08)
+------------------
+
+* Feature - This release enables Sagemaker customers to convert Tensorflow and PyTorch models to CoreML (ML Model) format.
+
+1.69.0 (2020-10-05)
+------------------
+
+* Feature - This release adds support for launching Amazon SageMaker Studio in your VPC. Use AppNetworkAccessType in CreateDomain API to disable access to public internet and restrict the network traffic to VPC.
+
+1.68.0 (2020-09-30)
+------------------
+
+* Feature - Code Generated Changes, see `./build_tools` or `aws-sdk-core`'s CHANGELOG.md for details.
+
+1.67.0 (2020-09-15)
+------------------
+
+* Feature - Sagemaker Ground Truth: Added support for a new Streaming feature which helps to continuously feed data and receive labels in real time. This release adds a new input and output SNS data channel.
+
+1.66.0 (2020-08-25)
+------------------
+
+* Feature - Code Generated Changes, see `./build_tools` or `aws-sdk-core`'s CHANGELOG.md for details.
+
+1.65.0 (2020-08-14)
+------------------
+
+* Feature - Amazon SageMaker now supports 1) creating real-time inference endpoints using model container images from Docker registries in customers' VPC 2) AUC(Area under the curve) as AutoPilot objective metric
+
+1.64.0 (2020-07-24)
+------------------
+
+* Feature - Sagemaker Ground Truth:Added support for OIDC (OpenID Connect) to authenticate workers via their own identity provider instead of through Amazon Cognito. This release adds new APIs (CreateWorkforce, DeleteWorkforce, and ListWorkforces) to SageMaker Ground Truth service.  Sagemaker Neo: Added support for detailed target device description by using TargetPlatform fields - OS, architecture, and accelerator. Added support for additional compilation parameters by using JSON field CompilerOptions.  Sagemaker Search: SageMaker Search supports transform job details in trial components.
+
+1.63.0 (2020-07-09)
+------------------
+
+* Feature - This release adds the DeleteHumanTaskUi API to Amazon Augmented AI
+
+1.62.0 (2020-06-26)
+------------------
+
+* Feature - The new 'ModelClientConfig' parameter being added for CreateTransformJob and DescribeTransformJob api actions enable customers to configure model invocation related parameters such as timeout and retry.
+
+1.61.0 (2020-06-23)
+------------------
+
+* Feature - Code Generated Changes, see `./build_tools` or `aws-sdk-core`'s CHANGELOG.md for details.
+
+1.60.1 (2020-06-11)
+------------------
+
+* Issue - Republish previous version with correct dependency on `aws-sdk-core`.
+
+1.60.0 (2020-06-10)
+------------------
+
+* Issue - This version has been yanked. (#2327).
+* Feature - Code Generated Changes, see `./build_tools` or `aws-sdk-core`'s CHANGELOG.md for details.
+
+1.59.0 (2020-06-01)
+------------------
+
+* Feature - We are releasing HumanTaskUiArn as a new parameter in CreateLabelingJob and RenderUiTemplate which can take an ARN for a system managed UI to render a task.
+
+1.58.0 (2020-05-28)
+------------------
+
+* Feature - Code Generated Changes, see `./build_tools` or `aws-sdk-core`'s CHANGELOG.md for details.
+
+1.57.0 (2020-05-08)
+------------------
+
+* Feature - This release adds a new parameter (EnableInterContainerTrafficEncryption) to CreateProcessingJob API to allow for enabling inter-container traffic encryption on processing jobs.
+
+1.56.0 (2020-05-07)
+------------------
+
+* Feature - Code Generated Changes, see `./build_tools` or `aws-sdk-core`'s CHANGELOG.md for details.
+
+1.55.0 (2020-04-27)
+------------------
+
+* Feature - Change to the input, ResourceSpec, changing EnvironmentArn to SageMakerImageArn. This affects the following preview APIs: CreateDomain, DescribeDomain, UpdateDomain, CreateUserProfile, DescribeUserProfile, UpdateUserProfile, CreateApp and DescribeApp.
+
+1.54.0 (2020-04-16)
+------------------
+
+* Feature - Amazon SageMaker now supports running training jobs on ml.g4dn and ml.c5n instance types. Amazon SageMaker supports in "IN" operation for Search now.
+
+1.53.0 (2020-03-26)
+------------------
+
+* Feature - This release updates Amazon Augmented AI CreateFlowDefinition API and DescribeFlowDefinition response.
+
+1.52.0 (2020-03-09)
+------------------
+
+* Feature - Code Generated Changes, see `./build_tools` or `aws-sdk-core`'s CHANGELOG.md for details.
+
+1.51.0 (2020-02-26)
+------------------
+
+* Feature - SageMaker UpdateEndpoint API now supports retained variant properties, e.g., instance count, variant weight. SageMaker ListTrials API filter by TrialComponentName. Make ExperimentConfig name length limits consistent with CreateExperiment, CreateTrial, and CreateTrialComponent APIs.
+
+1.50.0 (2020-01-16)
+------------------
+
+* Feature - This release adds two new APIs (UpdateWorkforce and DescribeWorkforce) to SageMaker Ground Truth service for workforce IP whitelisting.
+
+1.49.0 (2020-01-10)
+------------------
+
+* Feature - SageMaker ListTrialComponents API filter by TrialName and ExperimentName.
+
+1.48.0 (2019-12-04)
+------------------
+
+* Feature - You can now use SageMaker Autopilot for automatically training and tuning candidate models using a combination of various feature engineering, ML algorithms, and hyperparameters determined from the user's input data. SageMaker Automatic Model Tuning now supports tuning across multiple algorithms. With Amazon SageMaker Experiments users can create Experiments, ExperimentTrials, and ExperimentTrialComponents to track, organize, and evaluate their ML training jobs. With Amazon SageMaker Debugger, users can easily debug training jobs using a number of pre-built rules provided by Amazon SageMaker, or build custom rules. With Amazon SageMaker Processing, users can run on-demand, distributed, and fully managed jobs for data pre- or post- processing or model evaluation. With Amazon SageMaker Model Monitor, a user can create MonitoringSchedules to automatically monitor endpoints to detect data drift and other issues and get alerted on them. This release also includes the preview version of Amazon SageMaker Studio with Domains, UserProfiles, and Apps. This release also includes the preview version of Amazon Augmented AI to easily implement human review of machine learning predictions by creating FlowDefinitions, HumanTaskUis, and HumanLoops.
+
+1.47.0 (2019-11-18)
+------------------
+
+* Feature - Amazon SageMaker now supports multi-model endpoints to host multiple models on an endpoint using a single inference container.
+
+1.46.0 (2019-10-24)
+------------------
+
+* Feature - Adds support for the new family of Elastic Inference Accelerators (eia2) for SageMaker Hosting and Notebook Services
+
+1.45.0 (2019-10-23)
+------------------
+
+* Feature - Code Generated Changes, see `./build_tools` or `aws-sdk-core`'s CHANGELOG.md for details.
+
+1.44.0 (2019-09-25)
+------------------
+
+* Feature - Enable G4D and R5 instances in SageMaker Hosting Services
+
+1.43.0 (2019-08-21)
+------------------
+
+* Feature - Amazon SageMaker now supports Amazon EFS and Amazon FSx for Lustre file systems as data sources for training machine learning models. Amazon SageMaker now supports running training jobs on ml.p3dn.24xlarge instance type. This instance type is offered as a limited private preview for certain SageMaker customers. If you are interested in joining the private preview, please reach out to the SageMaker Product Management team via AWS Support."
+
+1.42.0 (2019-08-20)
+------------------
+
+* Feature - Amazon SageMaker introduces Managed Spot Training. Increases the maximum number of metric definitions to 40 for SageMaker Training and Hyperparameter Tuning Jobs. SageMaker Neo adds support for Acer aiSage and Qualcomm QCS605 and QCS603.
+
+1.41.0 (2019-07-25)
+------------------
+
+* Feature - Code Generated Changes, see `./build_tools` or `aws-sdk-core`'s CHANGELOG.md for details.
+
+1.40.0 (2019-07-01)
+------------------
+
+* Feature - Code Generated Changes, see `./build_tools` or `aws-sdk-core`'s CHANGELOG.md for details.
+
+1.39.0 (2019-06-17)
+------------------
+
+* Feature - Code Generated Changes, see `./build_tools` or `aws-sdk-core`'s CHANGELOG.md for details.
+
+1.38.0 (2019-06-11)
+------------------
+
+* Feature - The default TaskTimeLimitInSeconds of labeling job is increased to 8 hours. Batch Transform introduces a new DataProcessing field which supports input and output filtering and data joining. Training job increases the max allowed input channels from 8 to 20.
+
+1.37.0 (2019-05-21)
+------------------
+
+* Feature - API update.
+
+1.36.0 (2019-05-15)
+------------------
+
+* Feature - API update.
+
+1.35.0 (2019-05-14)
+------------------
+
+* Feature - API update.
+
+1.34.0 (2019-05-08)
+------------------
+
+* Feature - API update.
+
+1.33.0 (2019-03-22)
+------------------
+
+* Feature - API update.
+
+1.32.0 (2019-03-21)
+------------------
+
+* Feature - API update.
+
+1.31.0 (2019-03-18)
+------------------
+
+* Feature - API update.
+
+1.30.0 (2019-03-14)
+------------------
+
+* Feature - API update.
+
+1.29.0 (2019-03-08)
+------------------
+
+* Feature - API update.
+
+1.28.0 (2019-01-10)
+------------------
+
+* Feature - API update.
+
+1.27.0 (2018-12-19)
+------------------
+
+* Feature - API update.
+
+1.26.0 (2018-12-12)
+------------------
+
+* Feature - API update.
+
+1.25.0 (2018-11-29)
+------------------
+
+* Feature - API update.
+
+1.24.0 (2018-11-20)
+------------------
+
+* Feature - API update.
+
+1.23.1 (2018-11-16)
+------------------
+
+* Issue - Update version dependency on `aws-sdk-core` to support endpoint discovery.
+
+1.23.0 (2018-11-14)
+------------------
+
+* Feature - API update.
+
+1.22.0 (2018-10-26)
+------------------
+
+* Feature - API update.
+
+1.21.0 (2018-10-24)
+------------------
+
+* Feature - API update.
+
+1.20.0 (2018-10-23)
+------------------
+
+* Feature - API update.
+
+1.19.0 (2018-10-02)
+------------------
+
+* Feature - API update.
+
+1.18.0 (2018-09-06)
+------------------
+
+* Feature - Adds code paths and plugins for future SDK instrumentation and telemetry.
+
+1.17.0 (2018-09-05)
+------------------
+
+* Feature - API update.
+
+1.16.0 (2018-08-30)
+------------------
+
+* Feature - API update.
+
+1.15.0 (2018-08-17)
+------------------
+
+* Feature - API update.
+
+1.14.0 (2018-08-13)
+------------------
+
+* Feature - API update.
+
+1.13.0 (2018-07-30)
+------------------
+
+* Feature - API update.
+
+1.12.0 (2018-07-17)
+------------------
+
+* Feature - API update.
+
+1.11.0 (2018-07-05)
+------------------
+
+* Feature - API update.
+
+1.10.0 (2018-06-26)
+------------------
+
+* Feature - API update.
+
+1.9.0 (2018-06-04)
+------------------
+
+* Feature - API update.
+
+1.8.0 (2018-04-30)
+------------------
+
+* Feature - API update.
+
+1.7.0 (2018-04-04)
+------------------
+
+* Feature - API update.
+
+1.6.0 (2018-03-15)
+------------------
+
+* Feature - API update.
+
+1.5.0 (2018-01-18)
+------------------
+
+* Feature - API update.
+
+1.4.0 (2017-12-22)
+------------------
+
+* Feature - API update.
+
+1.3.0 (2017-12-11)
+------------------
+
+* Feature - API update.
+
+1.2.0 (2017-12-06)
+------------------
+
+* Feature - API update.
+
+1.1.0 (2017-12-01)
+------------------
+
+* Feature - API update.
+
+1.0.0 (2017-11-29)
+------------------
+
+* Feature - Initial release of `aws-sdk-sagemaker`.

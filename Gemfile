@@ -54,6 +54,9 @@ group :development do
   gem 'pre-commit'
   gem 'rubocop'
   gem 'rubocop-rails'
+
+  # ER図自動生成
+  gem 'rails-erd'
 end
 
 group :test do
@@ -91,4 +94,4 @@ gem 'uglifier'
 gem 'font-awesome-sass'
 gem 'mini_racer'
 # heroku画像保存
-gem 'aws-sdk', '~> 2'
+gem 'aws-sdk', '~> 3'
