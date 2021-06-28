@@ -33,7 +33,6 @@ group :development, :test do
   gem 'byebug'
 
   gem 'factory_bot_rails'
-  gem 'faker'
   gem 'rspec_junit_formatter'
   gem 'rspec-rails', '~> 5.0.0'
   gem 'spring-commands-rspec'
@@ -93,3 +92,5 @@ gem 'uglifier'
 # Font awesome
 gem 'font-awesome-sass'
 gem 'mini_racer'
+
+gem 'faker'
