@@ -8,9 +8,14 @@
 2.「ローカル環境からCapistranoを使ってRailsアプリケーションをEC2にデプロイする」
 3.「CircleCIからCapistranoを使ってRailsアプリケーションをEC2にデプロイする」
 
-
-(demo)
-
-(response)
-
-(DRY)
+追加機能
+- イベント参加募集/応募
+- イベント参加人数表示
+- イベントタグ
+- イベント手話レベル✓
+- 検索(会場/日時/参加費/タグ)
+- マップ会場表示(Google Map API)
+- カレンダー表示(ブックマーク/応募)
+- 通知/DM
+- イベント参加後の評価(メルカリ同様)
+- SNS(Twitter/Instagram/Facebook)シェア

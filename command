@@ -16,3 +16,4 @@ alias dcud='docker-compose up -d'
 alias dcex='docker-compose exec'
 alias dcd='docker-compose down'
 alias dcl='docker-compose logs'
+

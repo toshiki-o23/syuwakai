@@ -4,6 +4,7 @@ class Event < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 30 }
   validates :content, presence: true, length: { maximum: 1000 }
+  validates :venue, presence: true
 
   # 引数を受け取るように設定
   def already_bookmarked?(user)

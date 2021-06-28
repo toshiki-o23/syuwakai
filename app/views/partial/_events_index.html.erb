@@ -11,10 +11,11 @@
                 <h5 class="card-title"><%= event.title %></h5>
                 <p class="card-text"><%= safe_join(event.content.split("\n"),tag(:br)) %></p>
               <% end %>
-                <div class="text-right">
                   <p><%= event.level %></p>
+                <div class="material-icons-outlined">
+                  place
                 </div>
-                
+                  <%= event.venue %>
             </div>
             
 
