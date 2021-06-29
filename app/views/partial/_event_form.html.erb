@@ -19,6 +19,16 @@
     </div>
 
     <div class="form-group p-3">
+        <%= f.label :開催日時 %>
+        <%= f.datetime_field :start_datetime, class: "form-control" %>
+    </div>
+
+    <div class="form-group p-3">
+        <%= f.label :終了日時 %>
+        <%= f.datetime_field :finish_datetime, class: "form-control" %>
+    </div>
+
+    <div class="form-group p-3">
         <%= f.label :画像 %>
         <%= f.file_field :image, accept: 'image/jpeg, image/gif, image/png', id: "image-select-btn" %>
     </div>
