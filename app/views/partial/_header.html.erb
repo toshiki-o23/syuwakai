@@ -10,7 +10,6 @@
           <% if current_user.email != 'guest@example.com' %>
             <li class="nav-item active">
               <%= link_to 'アカウント編集', edit_user_registration_path, class: 'nav-link' %>
-              <%= link_to 'post_add', new_event_path, class: "nav-link material-icons-outlined md-36 nonelink" %>
             </li>
           <% end %>
           <li class="nav-item active">
