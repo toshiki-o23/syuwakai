@@ -93,3 +93,5 @@ gem 'uglifier'
 # Font awesome
 gem 'font-awesome-sass'
 gem 'mini_racer'
+# 検索機能
+gem 'ransack'

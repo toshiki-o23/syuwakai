@@ -4,6 +4,9 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    # ransack gem よる検索機能
+    @q = Event.ransack(params[:q])
+    @events = @q.result(distinct: true)
   end
 
   def new
