@@ -1,1 +1,6 @@
-<%= render 'partial/events_index', events: @events %>
+<%# 検索したかどうか分岐分け%>
+<% unless @search_events %>
+  <%= render 'partial/events_index', events: @events %>
+<% else %>
+  <%= render 'partial/events_index', events: @search_events %>
+<% end %>

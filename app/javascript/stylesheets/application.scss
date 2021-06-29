@@ -11,11 +11,17 @@
   text-decoration: none;
 }
 
-.material-icons.md-24 {
+.material-icons.md-36 {
+  font-size: 36px;
+}.material-icons-outlined.md-36 {
   font-size: 36px;
 }
 
 .event-image {
   max-width: 100%;
   height: auto;
+}
+
+.white-space {
+  white-space: nowrap
 }
