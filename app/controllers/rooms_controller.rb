@@ -3,7 +3,6 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.all.order(:id)
-    @room = Room.new
   end
 
   def show
