@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
-  
-  # get 'users/show'
-  # get 'bookmarks/create'
-  # get 'bookmarks/destroy'
+  resources :rooms, only: %i[index show create]
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }

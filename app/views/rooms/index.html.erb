@@ -1,0 +1,13 @@
+<div>
+  <ul>
+    <% @rooms.each do |room| %>
+      <li><%= link_to "ROOM#{room.id}", room_path(room.id) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+  <%= form_with model: @room, url: rooms_path, method: :post, local: true do |f| %>
+    <%= f.submit "create" %>
+  <% end %>
+</div>
