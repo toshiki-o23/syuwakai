@@ -3,7 +3,7 @@
   <%= render @messages %>
 </div>
 
-<%= label_tag :content, 'Say something:' %>
+<%= label_tag :content, 'チャットする' %>
 <%= text_field_tag :content, nil, data: { behavior: 'room_speaker' } %>
 
-<%= link_to 'index', rooms_path %>
+<%= link_to '質問一覧', rooms_path %>
