@@ -7,8 +7,9 @@
 </div>
 
 <div>
-  <%= form_with model: @room, url: rooms_path, method: :post, local: true do |f| %>
-    <%= f.text_field :name, :placeholder =>"質問ルームを作る" %>
+  <%= form_with model: @room, url: rooms_path, method: :post, local: true do |f| %>    
+    <%= f.text_field :name, class: "form-control", :placeholder =>"質問ルームを作る" %>
+    <%= f.text_area :content, class: "form-control", :placeholder =>"伝えたいことや聞きたいこと" %>
     <%= f.submit "add", class: "material-icons-outlined md-36 btn" %>
   <% end %>
 </div>

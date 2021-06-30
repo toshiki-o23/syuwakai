@@ -22,6 +22,6 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.permit(:name)
+    params.permit(:name, :content)
   end
 end
