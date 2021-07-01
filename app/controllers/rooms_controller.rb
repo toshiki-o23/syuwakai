@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @rooms = Room.all.order(:id)
+    @rooms = Room.all.order(id: :DESC)
   end
 
   def show

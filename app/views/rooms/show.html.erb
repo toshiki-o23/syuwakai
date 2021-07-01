@@ -1,9 +1,12 @@
+<%= @room.name %>
+<%= @room.content %>
+
 <%#                ここの data-room_id を使ってjs側で部屋を見分ける %>
 <div id='messages' data-room_id="<%= @room.id %>">
   <%= render @messages %>
 </div>
 
-<%= label_tag :content, 'チャットする' %>
-<%= text_field_tag :content, nil, data: { behavior: 'room_speaker' } %>
+<%= text_field_tag :content, nil, data: { behavior: 'room_speaker' }, placeholder: "チャットする" %>
+<small>Enterで送信</small>
 
-<%= link_to '質問一覧', rooms_path %>
+<%= link_to 'list', rooms_path, class: "material-icons-outlined md-36 nonelink btn" %>

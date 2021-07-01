@@ -1,15 +1,20 @@
+<div class="p-3">
+  <%= form_with model: @room, url: rooms_path, method: :post, local: true do |f| %>    
+    <%= f.text_field :name, class: "form-control", :placeholder =>"質問ルームを作る" %>
+    <%= f.text_area :content, class: "form-control", :placeholder =>"伝えたいことや聞きたいこと" %>
+    <%= f.submit "send", class: "material-icons-outlined md-36 btn" %>
+  <% end %>
+</div>
+
 <div>
-  <ul>
+  <ul class="list-group">
     <% @rooms.each do |room| %>
-      <li><%= link_to "ROOM#{room.id}#{room.name}", room_path(room) %></li>
+      <li class="list-group-item">
+        <%= link_to room_path(room), class: "nonelink btn" do %>
+          <%= "ROOM#{room.id} #{room.name}" %><small>作成日: <%= l room.created_at %></small>
+        <% end %>
+      </li>
     <% end %>
   </ul>
 </div>
 
-<div>
-  <%= form_with model: @room, url: rooms_path, method: :post, local: true do |f| %>    
-    <%= f.text_field :name, class: "form-control", :placeholder =>"質問ルームを作る" %>
-    <%= f.text_area :content, class: "form-control", :placeholder =>"伝えたいことや聞きたいこと" %>
-    <%= f.submit "add", class: "material-icons-outlined md-36 btn" %>
-  <% end %>
-</div>
