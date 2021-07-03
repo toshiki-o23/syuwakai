@@ -6,8 +6,11 @@ class UsersController < ApplicationController
     @events = @user.events
     @bookmark_events = @user.bookmark_events
 
+    return unless user_signed_in?
+
     @current_user_entry = DmEntry.where(user_id: current_user.id)
     @user_entry = DmEntry.where(user_id: @user.id)
+
     return if @user.id == current_user.id
 
     @current_user_entry.each do |cu|
