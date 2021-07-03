@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.web_console.whitelisted_ips = '172.27.0.1'
+  config.web_console.whitelisted_ips = '172.27.0.1', '192.168.16.1'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -30,7 +30,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :amazon
+  config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

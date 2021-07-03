@@ -1,0 +1,2 @@
+module DmRoomsHelper
+end

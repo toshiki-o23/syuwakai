@@ -5,6 +5,24 @@ class UsersController < ApplicationController
   def show
     @events = @user.events
     @bookmark_events = @user.bookmark_events
+
+    @current_user_entry = DmEntry.where(user_id: current_user.id)
+    @user_entry = DmEntry.where(user_id: @user.id)
+    return if @user.id == current_user.id
+
+    @current_user_entry.each do |cu|
+      @user_entry.each do |u|
+        if cu.dm_room_id == u.dm_room_id
+          @is_room = true
+          @room_id = cu.dm_room_id
+        end
+      end
+    end
+
+    return if @is_room
+
+    @room = DmRoom.new
+    @entry = DmEntry.new
   end
 
   # ユーザーがログインしているとき自分のプロフィールを表示

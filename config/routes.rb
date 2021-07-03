@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   resources :rooms, only: %i[index show create]
 
+  resources :dm_messages, :only => [:create]
+  resources :dm_rooms, :only => [:create, :show]
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
