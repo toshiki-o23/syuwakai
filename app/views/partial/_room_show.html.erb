@@ -1,0 +1,14 @@
+<% if @messages.present? %>
+    <ul class="list-group">
+      <% @messages.each do |m| %>
+        <li class="list-group-item">
+          <%= m.content %>
+          by
+          <%= link_to "#{ m.user.name }さん", "/users/#{ m.user_id }", class: "nonelink text-dark" %>
+        </li>
+      <% end %>
+    </ul>
+<% else %>
+  <h3 class="text-center">メッセージはまだありません</h3>
+<% end %>
+

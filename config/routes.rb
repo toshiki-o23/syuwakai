@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :messages, only: %i[create]
   resources :rooms, only: %i[index show create]
 
   resources :dm_messages, :only => [:create]

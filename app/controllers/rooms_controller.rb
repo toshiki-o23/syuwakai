@@ -7,7 +7,12 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    @messages = @room.messages
+    if Room.where(room_id: @room.id)
+      @messages = @room.messages
+      @message = Message.new
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def create
