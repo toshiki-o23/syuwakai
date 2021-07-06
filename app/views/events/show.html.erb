@@ -24,3 +24,12 @@
     更新日時<%= @event.updated_at %>
   </div>
 </div>
+
+<% if @user_event.present? %>
+  <%= link_to '参加予定詳細', event_user_event_path(@user_event) %>
+<% else %>
+  <div class="actions">
+    <%# user_groupsコントローラーのcreateアクションを実行するリンク %>
+    <%= link_to 'Join this group',  event_user_events_path(@user_event), method: :post, data: { confirm: 'Are you sure to join this group?'}, class:"sign-up-btn" %>
+  </div>
+<% end %>

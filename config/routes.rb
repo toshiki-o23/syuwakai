@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   resources :events do
     resource :bookmarks, only: [:create, :destroy]
+    resources :user_events, only: [:index, :create, :show]
   end
 end
 
