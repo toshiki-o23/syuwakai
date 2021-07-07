@@ -1,9 +1,7 @@
 class UserEventsController < ApplicationController
   def index
-    @user_events = UserEvent.where(user_id: current_user.id)
-    @user_events.each do |user_event|
-      @events = Event.where(id: user_event.id)
-    end
+    @user_events = UserEvent.where(user_id: current_user.id, event_id: params[:id])
+    @event = Event.where(params[:event_id])
   end
 
   def create
@@ -16,7 +14,7 @@ class UserEventsController < ApplicationController
   end
 
   def show
-    @user_event = UserEvent.find_by(user_id: current_user.id, event_id: params[:id])
-    @event = Event.find(params[:id])
+    @user_event = UserEvent.find_by(user_id: current_user.id, event_id: params[:event_id])
+    @event = Event.find(params[:event_id])
   end
 end
