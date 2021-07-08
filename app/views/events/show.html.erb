@@ -25,11 +25,8 @@
   </div>
 </div>
 
-<% if @user_event.present? %>
+<% if @user_event %>
   <%= link_to '参加予定詳細', event_user_event_path(@user_event) %>
 <% else %>
-  <div class="actions">
-    <%# user_groupsコントローラーのcreateアクションを実行するリンク %>
-    <%= link_to 'Join this group', event_user_events_path(event_id: @event.id), method: :post, data: { confirm: 'Are you sure to join this group?'}, class:"sign-up-btn" %>
-  </div>
+    <%= link_to 'イベント参加予約する', event_user_events_path(@user_event, event_id: @event.id), method: :post %>
 <% end %>

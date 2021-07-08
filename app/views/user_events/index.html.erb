@@ -1,6 +1,8 @@
-<% @user_events.each do |user_event| %>
-    <%= user_event.id %>
-    <%= user_event.event_id %>
+<% @events.each do |event| %>
+  <% @user_events.each do |user_event| %>
+    <% if event.id == user_event.event_id %>
+      <%= event.title %>
     <% end %>
-  <%= @event.title %>
+  <% end %>
+<% end %>
 

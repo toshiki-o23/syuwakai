@@ -28,7 +28,7 @@
             <%= link_to 'logout', destroy_user_session_path, class: 'nav-link material-icons-outlined md-36' %>
           </li>
           <li class="nav-item active">
-            <%= link_to '参加する予定一覧', event_user_events_path(current_user.id), class: '' %>
+            <%= link_to '参加予約一覧', event_user_events_path(current_user.id), class: '' %>
           </li>
       <% else %>
           <li class="nav-item active">
