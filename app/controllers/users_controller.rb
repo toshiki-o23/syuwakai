@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:mypage]
 
   def show
-    @events = @user.events
-    @bookmark_events = @user.bookmark_events
+    @events = Event.where(user_id: current_user.id)
+    @bookmark_events = current_user.bookmark_events
 
     return unless user_signed_in?
 
