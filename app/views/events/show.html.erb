@@ -18,6 +18,11 @@
     <% if user_signed_in? && current_user.id == @event.user_id %>
       <%= link_to 'イベント投稿編集', edit_event_path(@event), class: "btn btn-primary" %>
     <% end %>
+    <% if @user_event %>
+      <%= link_to '参加予定詳細', event_user_event_path(@user_event), class: "btn btn-primary" %>
+    <% else %>
+      <%= link_to 'イベント参加予約する', event_user_events_path(@user_event, event_id: @event.id), method: :post, class: "btn btn-primary" %>
+    <% end %>
   </div>
 
   <div class="card-footer text-muted">
@@ -25,8 +30,3 @@
   </div>
 </div>
 
-<% if @user_event %>
-  <%= link_to '参加予定詳細', event_user_event_path(@user_event) %>
-<% else %>
-    <%= link_to 'イベント参加予約する', event_user_events_path(@user_event, event_id: @event.id), method: :post %>
-<% end %>

@@ -1,8 +1,15 @@
+参加するイベント
+<ul class="list-group">
 <% @events.each do |event| %>
   <% @user_events.each do |user_event| %>
     <% if event.id == user_event.event_id %>
-      <%= event.title %>
+        <%= link_to event_user_event_path(user_event, id: event.id), class: "list-group-item" do %>
+          <%= event.title %>
+          <%= event.start_datetime %>
+        <% end %>
     <% end %>
   <% end %>
 <% end %>
+</ul>
+
 

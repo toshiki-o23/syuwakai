@@ -1,7 +1,7 @@
 class UserEventsController < ApplicationController
   def index
-    @user_events = UserEvent.where(user_id: current_user.id)
     @events = Event.all
+    @user_events = UserEvent.where(user_id: current_user.id)
   end
 
   def create
