@@ -30,5 +30,7 @@ Rails.application.routes.draw do
     resources :user_events, only: [:index, :create, :show] 
     resources :comments, only: [:create]
   end
+
+  resources :notifications, only: [:index]
 end
 
