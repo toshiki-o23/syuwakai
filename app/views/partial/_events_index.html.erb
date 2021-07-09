@@ -25,6 +25,8 @@
                 終了日時
                 <%= l event.finish_datetime %>
               <% end %>
+              <div class="nav-link material-icons-outlined text-dark">bookmarks</div><%= Bookmark.where(event_id: event.id).count %>
+              
             </div>
             
 
@@ -38,6 +40,9 @@
           
         </div>
       </div>
+      
     <% end %>
   </div>
 </div>
+
+
