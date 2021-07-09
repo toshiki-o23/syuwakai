@@ -19,6 +19,8 @@ class User < ApplicationRecord
   has_many :user_events, dependent: :destroy
   has_many :events, through: :user_events
 
+  has_many :comments, dependent: :destroy
+
   validates :name, presence: true, length: { maximum: 30 }
   validates :email, presence: true, length: { maximum: 255 }, uniqueness: { case_sensitive: true }
   validates :password, presence: true, length: { minimum: 6 }, on: :create
