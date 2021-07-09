@@ -9,6 +9,14 @@
 <% case notification.action %>
 <% when 'follow' then %>
   <%= "あなたをフォローしました" %>
+<% when 'comment' then%>
+  <% if notification.event.user_id == visited.id %>
+    <%= link_to 'あなたのイベント', notification.event %>
+  <% else %>
+    <%= link_to event_path(notification.event) do %>
+      <%= notification.event.user.name + 'さんの投稿' %>
+    <% end %>
+    <div>にコメントしました</div>
 <% end %>
 
 <%= time_ago_in_words(notification.created_at).upcase %>

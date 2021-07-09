@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @event = Event.find(params[:event_id])
     @comment.event_id = @event.id
     if @comment.save
+      @event.create_notification_comment!(current_user, @comment.id)
       redirect_to event_user_event_path(id: @event.id)
     else
       render template: 'events/index'
@@ -14,6 +15,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :event_id)
   end
 end
