@@ -5,11 +5,19 @@
     <% if event.id == user_event.event_id %>
         <%= link_to event_user_event_path(user_event, id: event.id), class: "list-group-item" do %>
           <%= event.title %>
-          <%= event.start_datetime %>
+          <%= event.start_time %>
         <% end %>
     <% end %>
   <% end %>
 <% end %>
 </ul>
 
+<%= month_calendar events: @events do |date, events| %>
+  <%= date.day %>
 
+  <% events.each do |event| %>
+    <div>
+      <%= event.title %>
+    </div>
+  <% end %>
+<% end %>

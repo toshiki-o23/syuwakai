@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_09_043548) do
+ActiveRecord::Schema.define(version: 2021_07_09_125730) do
 
   create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "user_id"
@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(version: 2021_07_09_043548) do
     t.string "image"
     t.string "level"
     t.string "venue"
-    t.datetime "start_datetime"
-    t.datetime "finish_datetime"
+    t.datetime "start_time"
+    t.datetime "finish_time"
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|

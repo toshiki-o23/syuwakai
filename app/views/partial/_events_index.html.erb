@@ -17,13 +17,13 @@
                 place
               </div>
               <%= event.venue %><br>
-              <% if event.start_datetime %>
+              <% if event.start_time %>
                 開催日時
-                <%= l event.start_datetime %><br>
+                <%= l event.start_time %><br>
               <% end %>
-              <% if event.finish_datetime %>
+              <% if event.finish_time %>
                 終了日時
-                <%= l event.finish_datetime %>
+                <%= l event.finish_time %>
               <% end %>
               <div class="nav-link material-icons-outlined text-dark">bookmarks</div><%= Bookmark.where(event_id: event.id).count %>
               
