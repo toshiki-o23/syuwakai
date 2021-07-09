@@ -6,7 +6,7 @@
 お知らせ一覧
 <% @comments.each do |comment| %>
   <div>
-    <%= comment.content %>
+    <%= simple_format(comment.content) %>
   </div>
 <% end %>
 

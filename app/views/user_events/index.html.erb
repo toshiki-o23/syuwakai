@@ -5,7 +5,9 @@
     <% if event.id == user_event.event_id %>
         <%= link_to event_user_event_path(user_event, id: event.id), class: "list-group-item" do %>
           <%= event.title %>
-          <%= event.start_time %>
+          <% if event.start_time %>
+            <%= l event.start_time %>から
+          <% end %>
         <% end %>
     <% end %>
   <% end %>
