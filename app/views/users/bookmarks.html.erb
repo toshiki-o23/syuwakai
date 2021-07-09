@@ -1,6 +1,19 @@
 <% if user_signed_in? && @user == current_user %>
   <% if @bookmark_events.present? %>
       <%= render 'partial/events_index', events: @bookmark_events %>
+          <%= month_calendar events: @bookmark_events do |date, events| %>
+      <%= date.day %>
+
+      <% events.each do |event| %>
+        <% @user_events.each do |user_event| %>
+          <% if event.id == user_event.event_id %>
+            <div>
+              <%= event.title %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
   <% else %>
     <span>ブックマークしていません</span>
   <% end %>
