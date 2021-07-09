@@ -18,8 +18,12 @@
   <%= date.day %>
 
   <% events.each do |event| %>
-    <div>
-      <%= event.title %>
-    </div>
+    <% @user_events.each do |user_event| %>
+      <% if event.id == user_event.event_id %>
+        <div>
+          <%= event.title %>
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>
