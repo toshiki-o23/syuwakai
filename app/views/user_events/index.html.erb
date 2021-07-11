@@ -1,17 +1,17 @@
 参加するイベント
 <ul class="list-group">
-<% @events.each do |event| %>
-  <% @user_events.each do |user_event| %>
-    <% if event.id == user_event.event_id %>
-        <%= link_to event_user_event_path(user_event, id: event.id), class: "list-group-item" do %>
-          <%= event.title %>
-          <% if event.start_time %>
-            <%= l event.start_time %>から
+  <% @events.each do |event| %>
+    <% @user_events.each do |user_event| %>
+      <% if event.id == user_event.event_id %>
+          <%= link_to event_user_event_path(user_event, id: event.id), class: "list-group-item" do %>
+            <%= event.title %>
+            <% if event.start_time %>
+              <%= l event.start_time %>から
+            <% end %>
           <% end %>
-        <% end %>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
 </ul>
 
 <%= month_calendar events: @events do |date, events| %>

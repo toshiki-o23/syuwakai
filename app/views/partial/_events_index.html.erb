@@ -13,6 +13,9 @@
                 <p class="card-text"><%= safe_join(event.content.split("\n"),tag(:br)) %></p>
               <% end %>
               <p><%= event.level %></p>
+              <% if event.number %>
+                <p>参加最大人数 <%= event.number %>人</p>
+              <% end %>
               <div class="material-icons-outlined">
                 place
               </div>
@@ -21,10 +24,11 @@
                 開催日時
                 <%= l event.start_time %><br>
               <% end %>
-              <% if event.finish_time %>
-                終了日時
-                <%= l event.finish_time %>
-              <% end %>
+                <% if event.finish_time && event.start_time %>
+                  期間
+                <%= ( event.finish_time - event.start_time ) / 3600  %>
+                  時間
+                <% end %>
               <div class="nav-link material-icons-outlined text-dark">bookmarks</div><%= Bookmark.where(event_id: event.id).count %>
               
             </div>

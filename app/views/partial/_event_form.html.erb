@@ -9,6 +9,11 @@
     </div>
 
     <div class="form-group p-3">
+        <%= f.label :参加人数 %>
+        <%= f.number_field  :number, min: 1, class: "form-control" %>
+    </div>
+
+    <div class="form-group p-3">
         <%= f.label :難易度 %>
         <%= f.select :level, {'初級': '初級', '中級': '中級', '上級': '上級'}, { include_blank: '選択してください'}, { class: "form-control", required: true } %>
     </div>
