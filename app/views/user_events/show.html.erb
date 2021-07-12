@@ -17,3 +17,18 @@
     <%= f.submit 'お知らせを送る', class: "btn btn-primary" %>
   <% end %>
 <% end %>
+
+<% if user_signed_in? %>  
+  <% unless @event.user_id == current_user.id %>
+    <% if @is_room == true %>
+      <p class="user-show-room"><a href="/dm_rooms/<%= @room_id %>" class="btn btn-primary btn-lg">開催者に連絡する</a>
+    <% else %>
+      <%= form_for @room do |f| %>
+        <%= fields_for @entry do |e| %>
+          <%= e.hidden_field :user_id, value: @event.user_id %>
+        <% end %>
+        <%= f.submit "開催者と連絡する", class:"btn btn-primary btn-lg user-show-chat"%>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -18,6 +18,25 @@ class UserEventsController < ApplicationController
     @event = Event.find(params[:id])
     @comments = @event.comments
     @comment = Comment.new
+
+    @current_user_entry = DmEntry.where(user_id: current_user.id)
+    @user_entry = DmEntry.where(user_id: @event.user_id)
+
+    return if @event.user_id == current_user.id
+
+    @current_user_entry.each do |cu|
+      @user_entry.each do |u|
+        if cu.dm_room_id == u.dm_room_id
+          @is_room = true
+          @room_id = cu.dm_room_id
+        end
+      end
+    end
+
+    return if @is_room
+
+    @room = DmRoom.new
+    @entry = DmEntry.new
   end
 
   private
