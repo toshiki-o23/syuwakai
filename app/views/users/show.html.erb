@@ -11,6 +11,22 @@
   <li class="nav-item">
     <%= render 'relationships/follow_button', user: @user, class: "nav-link" %>
   </li>
+  <li class="nav-item">
+    <% if user_signed_in? %>  
+      <% unless @user.id == current_user.id %>
+        <% if @is_room == true %>
+          <a href="/dm_rooms/<%= @room_id %>" class="btn btn-outline-primary">DM</a>
+        <% else %>
+          <%= form_for @room do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, value: @user.id %>
+            <% end %>
+            <%= f.submit "email", class:""%>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </li>
 </ul>
 
 <div class="row">
@@ -24,19 +40,5 @@
   </div>
 </div>
 
-<% if user_signed_in? %>  
-  <% unless @user.id == current_user.id %>
-    <% if @is_room == true %>
-      <p class="user-show-room"><a href="/dm_rooms/<%= @room_id %>" class="btn btn-primary btn-lg">チャットへ</a>
-    <% else %>
-      <%= form_for @room do |f| %>
-        <%= fields_for @entry do |e| %>
-          <%= e.hidden_field :user_id, value: @user.id %>
-        <% end %>
-        <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
-      <% end %>
-    <% end %>
-  <% end %>
-<% end %>
 
 <%= render 'partial/events_index', events: @events %>
