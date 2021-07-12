@@ -5,10 +5,10 @@
       <%= date.day %>
 
       <% events.each do |event| %>
-        <% @user_events.each do |user_event| %>
-          <% if event.id == user_event.event_id %>
+        <% @bookmark_events.each do |bookmark_event| %>
+          <% if bookmark_event.id == event.id %>
             <div>
-              <%= event.title %>
+              <%= bookmark_event.title %>
             </div>
           <% end %>
         <% end %>

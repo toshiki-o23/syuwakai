@@ -12,14 +12,22 @@
                 <h5 class="card-title"><%= event.title %></h5>
                 <p class="card-text"><%= safe_join(event.content.split("\n"),tag(:br)) %></p>
               <% end %>
-              <p><%= event.level %></p>
-              <% if event.number %>
-                <p>参加最大人数 <%= event.number %>人</p>
-              <% end %>
-              <div class="material-icons-outlined">
+              <div class="material-icons-outlined text-dark">
+                lightbulb
+              </div>
+              <%= event.level %><br>
+              <div class="material-icons-outlined text-dark">
                 place
               </div>
               <%= event.venue %><br>
+              <div class="material-icons-outlined text-dark">
+                groups
+              </div>
+              <%= event.number %>人<br>
+              <div class="material-icons-outlined text-dark">
+                bookmarks
+              </div>
+              <%= Bookmark.where(event_id: event.id).count %><br>
               <% if event.start_time %>
                 開催日時
                 <%= l event.start_time %><br>
@@ -29,7 +37,6 @@
                 <%= ( event.finish_time - event.start_time ) / 3600  %>
                   時間
                 <% end %>
-              <div class="nav-link material-icons-outlined text-dark">bookmarks</div><%= Bookmark.where(event_id: event.id).count %>
               
             </div>
             
