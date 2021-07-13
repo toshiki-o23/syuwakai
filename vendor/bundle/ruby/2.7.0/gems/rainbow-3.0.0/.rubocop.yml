@@ -1,9 +1,0 @@
-inherit_from: .rubocop_todo.yml
-
-AllCops:
-  DisplayCopNames: true
-  DisplayStyleGuide: true
-  TargetRubyVersion: "2.7.2"
-  Exclude:
-    - "spec/**/*"
-    - "vendor/**/*"
