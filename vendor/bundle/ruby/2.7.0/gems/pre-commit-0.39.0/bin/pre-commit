@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require 'pre-commit/cli'
+
+# Change directory to the root of the git repository.
+repo_root = `git rev-parse --show-toplevel`.strip
+abort "No .git directory found." unless File.directory?(repo_root)
+Dir.chdir repo_root
+
+PreCommit::Cli.new(*ARGV).execute or exit 1

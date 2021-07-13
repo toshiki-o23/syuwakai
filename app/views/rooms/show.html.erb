@@ -1,0 +1,12 @@
+<h1><%= @room.name %></h1>
+<h2><%= @room.content %></h2>
+
+<%= render 'partial/room_show' %>
+
+<%= form_for @message do |f| %>
+  <%= f.text_field :content, :placeholder => "入力して下さい" %>
+  <%= f.hidden_field  :room_id, :value => @room.id %>
+  <%= f.submit "send", class: "material-icons-outlined md-36 nonelink btn" %>
+<% end %>
+
+<%= link_to 'list', rooms_path, class: "material-icons-outlined md-36 nonelink btn" %>

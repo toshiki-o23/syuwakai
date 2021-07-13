@@ -1,0 +1,53 @@
+
+<div class="container px-4">
+  <div class="row gx-5">
+    <% events.each do |event| %>
+      <div class="col-sm-6 p-3" id=<%= event.id %>>
+        <div class="card">
+          <div class="card-body list-group list-group-flush">
+
+            <div class="list-group-item">
+              <%= link_to event_path(event), class: "text-decoration-none text-dark" do %>
+                <td><%= image_tag event.image.url, class: "card-img-top img-fluid rounded-lg", width: "1280", height: "720" %></td>
+                <h5 class="card-title"><%= event.title %></h5>
+                <p class="card-text"><%= safe_join(event.content.split("\n"),tag(:br)) %></p>
+              
+                <div class="material-icons-outlined text-dark">
+                  lightbulb
+                </div>
+                <%= event.level %><br>
+                <div class="material-icons-outlined text-dark">
+                  place
+                </div>
+                <%= event.venue %><br>
+                <div class="material-icons-outlined text-dark">
+                  groups
+                </div>
+                <%= event.number %>人<br>
+                
+                <% if event.start_time %>
+                  開催日時
+                  <%= l event.start_time %><br>
+                <% end %>
+                
+              <% end %>
+            </div>
+            
+            <div class="list-group-item">
+              <%= link_to user_path(event.user_id), class: "nonelink text-dark"  do %>
+                <%= image_tag event.user.image.url, class: "rounded-circle", width: "40", height: "40" %>
+                <%= event.user.name %>
+              <% end %>
+              <%= render 'partial/bookmark', event: event %>
+            </div>
+
+          </div>
+          
+        </div>
+      </div>
+      
+    <% end %>
+  </div>
+</div>
+
+

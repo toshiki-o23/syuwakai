@@ -1,0 +1,34 @@
+参加するあなたへようこそ！詳しくはこちらです！<br>
+
+<%= @event.title  %>
+<%= @event.content %>
+<br>
+<% if user_signed_in? %>  
+  <% unless @event.user_id == current_user.id %>
+    <% if @is_room == true %>
+      <p class="user-show-room"><a href="/dm_rooms/<%= @room_id %>" class="btn btn-primary btn-lg">開催者とチャットする</a>
+    <% else %>
+      <%= form_for @room do |f| %>
+        <%= fields_for @entry do |e| %>
+          <%= e.hidden_field :user_id, value: @event.user_id %>
+        <% end %>
+        <%= f.submit "開催者とチャットする", class:"btn btn-primary btn-lg user-show-chat"%>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %><br>
+お知らせ一覧
+<% @comments.each do |comment| %>
+  <div>
+    <%= simple_format(comment.content) %>
+  </div>
+<% end %>
+
+<% if current_user.id == @event.user_id %>
+  <%= form_with model: [ @event, @comment ], url: event_comments_path(event_id: @event.id) do |f| %>
+    <%= f.text_area :content %>
+    <br>
+    <%= f.submit 'お知らせを送る', class: "btn btn-primary" %>
+  <% end %>
+<% end %>
+

@@ -1,0 +1,13 @@
+<% @entries.each do |entry| %>
+  <h5><%= link_to "#{ entry.user.name } さん", user_path(entry.user.id), class: "nonelink text-dark" %></h5>
+<% end %>
+
+<hr>
+
+<%= render 'partial/room_show' %>
+
+<%= form_for @message do |f| %>
+  <%= f.text_field :content, :placeholder => "入力して下さい" %>
+  <%= f.hidden_field  :dm_room_id, :value => @room.id %>
+  <%= f.submit "send", class: "material-icons-outlined md-36 nonelink btn" %>
+<% end %>

@@ -1,0 +1,110 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.7.2-node-browsers
+        environment:
+          - BUNDLE_JOBS: 3
+          - BUNDLE_RETRY: 3
+          - BUNDLE_PATH: vendor/bundle
+          - BUNDLER_VERSION: 2.1.4
+          - RAILS_ENV: 'test'
+      - image: circleci/mysql:8.0.23
+        command: [--default-authentication-plugin=mysql_native_password]
+        environment:
+          - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+          - MYSQL_ROOT_HOST: '%'
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run:
+          name: setup bundler
+          command: |
+            sudo gem update --system
+            sudo gem uninstall bundler
+            sudo rm /usr/local/bin/bundle
+            sudo rm /usr/local/bin/bundler
+            sudo gem install bundler:2.1.4
+
+            
+      - run:
+          name: Which bundler?
+          command: bundle -v
+
+      - run:
+          name: Which ruby?
+          command: ruby -v
+      
+      - restore_cache:
+          name: bundle install restore
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
+
+      - run:
+          name: bundle install
+          command: |
+            bundle config set path 'vendor/bundle'
+            bundle config set deployment 'true'
+            bundle install --jobs=4 --retry=3
+
+      - save_cache:
+          name: bundle install cache
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
+
+      - run: mv config/database.yml.ci config/database.yml 
+
+      - run: bundle exec rails db:create
+      - run: bundle exec rails db:schema:load
+
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
+
+      - run:
+          name: run tests
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+              circleci tests split --split-by=timings)"
+
+            bundle exec rspec \
+              --format progress \
+              --format RspecJunitFormatter \
+              --out /tmp/test-results/rspec.xml \
+              --format progress \
+              $TEST_FILES
+
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
+  deploy:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: Heroku への master のデプロイ
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build

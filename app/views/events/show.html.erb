@@ -1,0 +1,63 @@
+<div class="card text-center">
+
+    <td><%= image_tag @event.image.url, class: "card-img-top img-fluid rounded-lg", width: "1280", height: "720" %></td>
+
+  <div class="card-body">
+    <h5 class="card-title"><%= @event.title %></h5>
+    <h6 class="card-text"><%= safe_join( @event.content.split("\n"),tag(:br) )%></h6>
+
+    <h6>
+      <div class="material-icons-outlined text-dark">
+        lightbulb
+      </div>
+      <%= @event.level %><br>
+      <div class="material-icons-outlined text-dark">
+        place
+      </div>
+      <%= @event.venue %><br>
+      <div class="material-icons-outlined text-dark">
+        groups
+      </div>
+      <%= @event.number %>人<br>
+      
+      <div class="material-icons-outlined text-dark">
+        bookmarks
+      </div>
+      <%= Bookmark.where(event_id: @event.id).count %><br>
+      <% if @event.start_time %>
+        開催日時
+        <%= l @event.start_time %><br>
+      <% end %>
+      <% if @event.finish_time && @event.start_time %>
+        期間
+      <%= ( @event.finish_time - @event.start_time ) / 3600  %>
+        時間
+      <% end %>
+    </h6>
+
+    <%= link_to @event.user.name, user_path(@event.user_id), class: 'btn btn-primary' %>
+    <% if user_signed_in? && current_user.id == @event.user_id %>
+      <%= link_to 'イベント投稿編集', edit_event_path(@event), class: "btn btn-primary" %>
+    <% end %>
+    <% if user_signed_in? %>
+      <% if current_user.id != @event.user_id %>
+        <% if @user_event %>
+          <%= link_to '参加予定詳細', event_user_event_path(@user_event), class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to 'イベント参加予約する', event_user_events_path(@user_event, event_id: @event.id), method: :post, class: "btn btn-primary" %>
+        <% end %>
+      <% else %>
+        <% if @user_event %>
+          <%= link_to 'イベントお知らせする', event_user_event_path(@user_event), class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to 'イベントお知らせする', event_user_events_path(@user_event, event_id: @event.id), method: :post, class: "btn btn-primary" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="card-footer text-muted">
+    更新日時<%= l @event.updated_at %>
+  </div>
+</div>
+
