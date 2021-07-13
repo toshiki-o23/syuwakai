@@ -47,9 +47,65 @@
         <form class="form-inline white-space">
           <%= search_form_for @q, url: events_path do |f| %>
             <%= f.search_field :title_or_content_cont, class: "form-control" %>
-            <%= f.submit "search", class: "material-icons-outlined md-36 btn" %>
+            <%= f.submit "search", class: "nav-link material-icons-outlined md-36 btn" %>
           <% end %>
         </form>
+
+        <!-- Button trigger modal -->
+        <li type="button" class="nav-link material-icons-outlined md-36" data-toggle="modal" data-target="#exampleModal">
+          filter_alt
+        </li>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">複数条件検索</h5>
+              </div>
+              <div class="modal-body">
+                <form class="form-inline white-space">
+                <form action="">
+                  <%= search_form_for @q, url: events_path do |f| %>
+                      <div class="form-group p-3">
+                        <%= f.label :タイトルとコンテンツ %>
+                        <%= f.text_field :title_or_content_cont, placeholder: "キーワードから探す", class: "form-control" %>
+                      </div>
+                      <div class='form-group p-3'>
+                        <%= f.label :レベル %>
+                        <%= f.select :level_eq, {'初級': '初級', '中級': '中級', '上級': '上級'}, { include_blank: '選択してください'}, { class: "form-control" } %>
+                      </div>
+
+                      <div class="form-group p-3">
+                        <%= f.label :会場 %>
+                        <%= f.text_field :venue_cont, class: "form-control" %>
+                      </div>
+
+                      <div class="form-group p-3">
+                          <%= f.label :最大人数 %>
+                          <%= f.number_field  :number_lteq, class: "form-control" %>
+                      </div>
+
+                      <div class="form-group p-3">
+                          <%= f.label :最低人数 %>
+                          <%= f.number_field  :number_gteq, class: "form-control" %>
+                      </div>
+
+                      <div class="form-group p-3">
+                          <%= f.label :開催日時 %>
+                          <%= f.datetime_field :start_time_gteq, class: "form-control" %>
+                      </div>
+
+                        <%= f.submit "search", class: "material-icons-outlined md-36 btn" %>
+
+                    </div>
+                  <% end %>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        
       </ul>
     </div>
   </div>
