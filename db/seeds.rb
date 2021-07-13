@@ -37,16 +37,6 @@ end
     )
   end
 
-  [
-    [1, 2],
-    [2, 3]
-  ].each do |user, follow|
-  Relationship.create!(
-    user_id: user,
-    follow_id: follow
-  )
-end
-
 Bookmark.create!(
   user_id: 1,
   event_id: 1
