@@ -10,7 +10,10 @@
 
             <div class="list-group-item">
               <%= link_to event_path(event), class: "text-decoration-none text-dark" do %>
-                <td><%= image_tag event.image.url, class: "card-img-top img-fluid rounded-lg", width: "1280", height: "720" %></td>
+                <% if event.image.url %>
+                  <td><%= image_tag event.image.url, class: "card-img-top img-fluid rounded-lg", width: "1280", height: "720" %></td>
+                
+                <% end %>
                 <h5 class="card-title"><%= event.title %></h5>
                 <p class="card-text"><%= safe_join(event.content.split("\n"),tag(:br)) %></p>
               
@@ -37,7 +40,10 @@
             
             <div class="list-group-item">
               <%= link_to user_path(event.user_id), class: "nonelink text-dark"  do %>
-                <%= image_tag event.user.image.url, class: "rounded-circle", width: "40", height: "40" %>
+                <% if event.user.image.url %>
+                  <%= image_tag event.user.image.url, class: "rounded-circle", width: "40", height: "40" %>
+                  
+                <% end %>
                 <%= event.user.name %>
               <% end %>
               <%= render 'partial/bookmark', event: event %>
