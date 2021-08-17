@@ -47,7 +47,7 @@
               <li>
                 <%= link_to 'ブックマーク', user_bookmarks_path(current_user), class: "mx-2 dropdown-item" %>
               </li>
-              <% if current_user.email != 'guest@example.com' %>
+              <% if current_user.id != 2 %>
                 <li>
                 <%= link_to 'プロフィール設定', edit_user_registration_path, class: "mx-2 dropdown-item" %>
               </li>
@@ -127,9 +127,9 @@
                 <li>
                   <%= link_to 'ブックマーク', user_bookmarks_path(current_user), class: "mx-2 dropdown-item" %>
                 </li>
-                <% if current_user.email != 'guest@example.com' %>
+                <% if current_user.id != 2 %>
                   <li>
-                    <%= link_to 'プロフィール設定', edit_user_registration_path, class: "mx-2 dropdown-item" %>
+                    <%= link_to 'プロフィール編集', edit_user_registration_path, class: "mx-2 dropdown-item" %>
                   </li>
                 <% end %>
                 <li>
