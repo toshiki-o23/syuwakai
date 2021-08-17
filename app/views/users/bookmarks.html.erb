@@ -3,8 +3,8 @@
     <%= render 'partial/events_index', events: @bookmark_events, user_events: @user_events %>
   <% else %>
     <div class="alert alert-primary">
-      ブックマークしていません
       <%= image_tag 'undraw/undraw_Bookmarks_re_mq1u.svg', width: '200px', class: "p-3" %>
+      ブックマークしていません
     </div>
   <% end %>
 <% end %>
