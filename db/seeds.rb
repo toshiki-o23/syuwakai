@@ -151,6 +151,3 @@ Relationship.create!(
   user_id: 1,
   follow_id: 2,
 )
-
-
-
