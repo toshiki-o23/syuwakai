@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+<!-- Favicon icon-->
+<link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon/favicon.ico">
+
+
+<!-- Libs CSS -->
+
+<link href="../../assets/fonts/feather/feather.css" rel="stylesheet" />
+<link href="../../assets/libs/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+<link href="../../assets/libs/dragula/dist/dragula.min.css" rel="stylesheet" />
+<link href="../../assets/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet" />
+<link href="../../assets/libs/prismjs/themes/prism.css" rel="stylesheet" />
+<link href="../../assets/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
+<link href="../../assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet" />
+<link href="../../assets/libs/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+<link href="../../assets/libs/@yaireo/tagify/dist/tagify.css" rel="stylesheet">
+<link href="../../assets/libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet">
+<link href="../../assets/libs/tippy.js/dist/tippy.css" rel="stylesheet">
+<link href="../../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+
+
+
+
+<!-- Theme CSS -->
+<link rel="stylesheet" href="../../assets/css/theme.min.css">
+    <title>Datatables | Geeks - Academy Admin Template</title>
+</head>
+
+<body>
+    <!-- Wrapper -->
+    <div id="db-wrapper">
+     <!-- navbar vertical -->
+	  <!-- navbar vertical -->
+ <nav class="navbar-vertical navbar">
+    <div class="nav-scroller">
+        <!-- Brand logo -->
+        <a class="navbar-brand" href="../../index.html">
+            <img src="../../assets/images/brand/logo/logo-inverse.svg" alt="" />
+        </a>
+        <!-- Navbar nav -->
+        <ul class="navbar-nav flex-column" id="sideNavbar">
+            <li class="nav-item">
+                <a class="nav-link   collapsed " href="#!" data-toggle="collapse" data-target="#navDashboard" aria-expanded="false" aria-controls="navDashboard">
+                    <i class="nav-icon fe fe-home mr-2"></i> Dashboard
+                </a>
+                <div id="navDashboard" class="collapse " data-parent="#sideNavbar">
+                    <ul class="nav flex-column">
+                        <li class="nav-item ">
+                            <a class="nav-link " href="../../pages/dashboard/admin-dashboard.html">
+                                    Overview
+                                </a>
+                        </li>
+                        <!-- Nav item -->
+                        <li class="nav-item ">
+                            <a class="nav-link " href="../../pages/dashboard/dashboard-analytics.html">
+                                    Analytics
+
+                                </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link  collapsed " href="#!" data-toggle="collapse" data-target="#navCourses" aria-expanded="false" aria-controls="navCourses">
+                    <i class="nav-icon fe fe-book mr-2"></i> Courses
+                </a>
+                <div id="navCourses"  class="collapse "  data-parent="#sideNavbar">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link " href="../../pages/dashboard/admin-course-overview.html">
+                                    All Courses
+                                </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="../../pages/dashboard/admin-course-category.html">
+                                    Courses Category
+                                </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="../../pages/dashboard/admin-course-category-single.html">
+                                    Category Single
+                                </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+             <!-- Nav item -->
+             <li class="nav-item">
+                <a class="nav-link   collapsed " href="#!" data-toggle="collapse" data-target="#navProfile" aria-expanded="false" aria-controls="navProfile">
+                    <i class="nav-icon fe fe-user mr-2"></i> User
+                </a>
+                <div id="navProfile" class="collapse " data-parent="#sideNavbar">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link " href="../../pages/dashboard/admin-instructor.html">
+                                    Instructor
+                                </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="../../pages/dashboard/admin-students.html">Students</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- Nav item -->
+                <li class="nav-item ">
+                    <a
+                        class="nav-link   collapsed  "
+                        href="#!"
+                        data-toggle="collapse"
+                        data-target="#navCMS"
+                        aria-expanded="false"
+                        aria-controls="navCMS"
+                    >
+                        <i class="nav-icon fe fe-book-open mr-2"></i> CMS
+                    </a>
+                            <div id="navCMS" class="collapse  " data-parent="#sideNavbar">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link   " href="../../pages/dashboard/admin-cms-overview.html">
+                                    Overview
+                                </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link  " href="../../pages/dashboard/admin-cms-post.html">
+                                    All Post
+                                </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="../../pages/dashboard/admin-cms-post-new.html">
+                                    New Post
+                                </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="../../pages/dashboard/admin-cms-post-category.html">
+                                    Category
+                                </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- Nav item -->
+                        <li class="nav-item">
+                            <a class="nav-link  collapsed " href="#!" data-toggle="collapse" data-target="#navAuthentication" aria-expanded="false" aria-controls="navAuthentication">
+                                <i class="nav-icon fe fe-lock mr-2"></i> Authentication
+                            </a>
+                            <div id="navAuthentication" class="collapse " data-parent="#sideNavbar">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="../../pages/sign-in.html">Sign In</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link  " href="../../pages/sign-up.html">Sign Up</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="../../pages/forget-password.html">
+                                    Forget Password
+                                </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link  " href="../../pages/dashboard/notification-history.html">
+                                    Notifications
+                                </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link  " href="../../pages/404-error.html"> 404 Error</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- Nav item -->
+                        <li class="nav-item">
+                            <div class="nav-divider"></div>
+                        </li>
+                        <!-- Nav item -->
+                        <li class="nav-item">
+                            <div class="navbar-heading">Apps</div>
+                        </li>
+                        <!-- Nav item -->
+                        <li class="nav-item">
+                            <a class="nav-link " href="../../pages/dashboard/chat-app.html">
+                                <i class="nav-icon fe fe-message-square mr-2"></i> Chat
+
+                            </a>
+                        </li>
+                              <!-- Nav item -->
+        <li class="nav-item">
+            <a class="nav-link " href="../../pages/dashboard/task-kanban.html">
+                <i class="nav-icon mdi mdi-trello mr-2"></i>
+                Task<span class="badge badge-warning ml-2">New</span>
+            </a>
+        </li>
+                        <li class="nav-item">
+                            <div class="nav-divider"></div>
+                        </li>
+                        <!-- Nav item -->
+                        <li class="nav-item">
+                            <div class="navbar-heading">Components</div>
+                        </li>
+                         <!-- Nav item -->
+                        <li class="nav-item">
+                            <a class="nav-link " href="#!" data-toggle="collapse" data-target="#navTables" aria-expanded="false" aria-controls="navTables">
+                                <i class="nav-icon fe fe-database mr-2"></i> Tables<span class="badge badge-warning ml-2">New</span>
+                            </a>
+                            <div id="navTables" class="collapse  show " data-parent="#sideNavbar">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="../../pages/dashboard/basic-table.html">
+                                    Basic
+                                </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link  active " href="../../pages/dashboard/datatables.html">
+                                            Data Tables
+                                </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- Nav item -->
+                        <!-- Nav item -->
+                        <li class="nav-item">
+                            <a class="nav-link " href="#!">
+                                <i class="nav-icon fe fe-help-circle mr-2"></i> Help Center
+                                <span class="badge badge-success ml-2">Pro</span>
+                            </a>
+                        </li>
+                        <!-- Nav item -->
+                        <li class="nav-item">
+                            <a class="nav-link  collapsed " href="#!" data-toggle="collapse" data-target="#navSiteSetting" aria-expanded="false" aria-controls="navSiteSetting">
+                                <i class="nav-icon fe fe-settings mr-2"></i> Site Setting
+                            </a>
+                            <div id="navSiteSetting" class="collapse " data-parent="#sideNavbar">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="../../pages/dashboard/setting-general.html">
+                                    General
+                                </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="../../pages/dashboard/setting-google.html">
+                                    Google
+                                </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="../../pages/dashboard/setting-social.html">
+                                    Social
+                                </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="../../pages/dashboard/setting-social-login.html">
+                                    Social Login
+                                </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="../../pages/dashboard/setting-payment.html">
+                                    Payment
+                                </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="../../pages/dashboard/setting-smpt.html">
+                                    SMPT
+                                </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- Nav item -->
+                        <li class="nav-item">
+                            <a class="nav-link  collapsed " href="#!" data-toggle="collapse" data-target="#navMenuLevel" aria-expanded="false" aria-controls="navMenuLevel">
+                                <i class="nav-icon fe fe-corner-left-down mr-2"></i> Menu Level
+                            </a>
+                            <div id="navMenuLevel" class="collapse " data-parent="#sideNavbar">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="#!" data-toggle="collapse" data-target="#navMenuLevelSecond" aria-expanded="false" aria-controls="navMenuLevelSecond">
+                                    Two Level
+                                </a>
+                                        <div id="navMenuLevelSecond" class="collapse" data-parent="#navMenuLevel">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link " href="#!">NavItem 1</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link " href="#!">NavItem 2</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link  collapsed  " href="#!" data-toggle="collapse" data-target="#navMenuLevelThree" aria-expanded="false" aria-controls="navMenuLevelThree">
+                                    Three Level
+                                </a>
+                                        <div id="navMenuLevelThree" class="collapse " data-parent="#navMenuLevel">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link  collapsed " href="#!" data-toggle="collapse" data-target="#navMenuLevelThreeOne" aria-expanded="false" aria-controls="navMenuLevelThreeOne">
+                                                NavItem 1
+                                            </a>
+                                                    <div id="navMenuLevelThreeOne" class="collapse collapse " data-parent="#navMenuLevelThree">
+                                                        <ul class="nav flex-column">
+                                                            <li class="nav-item">
+                                                                <a class="nav-link " href="#!">
+                                                            NavChild Item 1
+                                                        </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link " href="#!">Nav Item 2</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- Nav item -->
+                        <li class="nav-item">
+                            <div class="nav-divider"></div>
+                        </li>
+                        <!-- Nav item -->
+                        <li class="nav-item">
+                            <div class="navbar-heading">Documentation</div>
+                        </li>
+                        <!-- Nav item -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../docs/index.html">
+                                <i class="nav-icon fe fe-clipboard mr-2"></i> Documentation
+                            </a>
+                        </li>
+                        <!-- Nav item -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../docs/changelog.html">
+                                <i class="nav-icon fe fe-git-pull-request mr-2"></i> Changelog
+                                <span class="badge badge-primary ml-2">1.0.3</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Card -->
+                    <div class="card bg-dark-primary shadow-none text-center mx-4 my-8">
+                        <div class="card-body py-6">
+                            <img src="../../assets/images/background/giftbox.png" alt="" />
+                            <div class="mt-4">
+                                <h5 class="text-white">Unlimited Access</h5>
+                                <p class="text-white-50 font-size-xs">
+                                    Upgrade your plan from a Free trial, to select ‘Business Plan’. Start Now
+                                </p>
+                                <a href="#!" class="btn btn-white btn-sm mt-2">Upgrade Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</nav>
+        <!-- Page Content -->
+        <div id="page-content">
+            <div class="header">
+    <!-- navbar -->
+    <nav class="navbar-default navbar navbar-expand-lg">
+        <a id="nav-toggle" href="#!">
+            <i class="fe fe-menu"></i>
+        </a>
+        <div class="ml-lg-3 d-none d-md-none d-lg-block">
+            <!-- Form -->
+            <form class="d-flex align-items-center">
+                <span class="position-absolute pl-3 search-icon">
+                        <i class="fe fe-search"></i>
+                    </span>
+                <input type="search" class="form-control form-control-sm pl-6" placeholder="Search Entire Dashboard" />
+            </form>
+        </div>
+        <!--Navbar nav -->
+        <ul class="navbar-nav navbar-right-wrap ml-auto d-flex nav-top-wrap">
+            <li class="dropdown stopevent">
+                <a class="btn btn-light btn-icon rounded-circle indicator indicator-primary text-muted" href="#!" role="button" id="dropdownNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fe fe-bell"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg" aria-labelledby="dropdownNotification">
+                    <div>
+                        <div class="border-bottom px-3 pb-3 d-flex justify-content-between align-items-center">
+                            <span class="h4 mb-0">Notifications</span>
+                            <a href="# " class="text-muted">
+                                <span class="align-middle">
+                                        <i class="fe fe-settings mr-1"></i>
+                                    </span>
+                            </a>
+                        </div>
+                        <!-- List group -->
+                        <ul class="list-group list-group-flush notification-list-scroll">
+                            <!-- List group item -->
+                            <li class="list-group-item bg-light">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="d-flex">
+                                            <img src="../../assets/images/avatar/avatar-1.jpg" alt="" class="avatar-md rounded-circle" />
+                                            <div class="ml-3">
+                                                <h5 class="font-weight-bold mb-1">
+                                                    Kristin Watson:
+                                                </h5>
+                                                <p class="mb-3">
+                                                    Krisitn Watsan like your comment on course Javascript Introduction!
+                                                </p>
+                                                <span class="font-size-xs text-muted">
+                                                        <span>
+                                                            <span
+                                                                class="fe fe-thumbs-up text-success mr-1"
+                                                            ></span
+                                                            >2 hours ago,</span
+                                                        >
+                                                        <span class="ml-1">2:19 PM</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <a class="stretched-link" href="#!"></a>
+                                    </div>
+                                    <div class="col-auto text-center">
+                                        <a href="#!" class="badge-dot badge-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Mark as read"></a>
+                                        <div>
+                                            <a href="#!" class="bg-transparent" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove">
+                                                <i class="fe fe-x text-muted"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- List group item -->
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="d-flex">
+                                            <img src="../../assets/images/avatar/avatar-2.jpg" alt="" class="avatar-md rounded-circle" />
+                                            <div class="ml-3">
+                                                <h5 class="font-weight-bold mb-1">
+                                                    Brooklyn Simmons
+                                                </h5>
+                                                <p class="mb-3">
+                                                    Just launched a new Courses React for Beginner.
+                                                </p>
+                                                <span class="font-size-xs text-muted">
+                                                        <span>
+                                                            <span
+                                                                class="fe fe-thumbs-up text-success mr-1"
+                                                            ></span> Oct 9,
+                                                </span>
+                                                <span class="ml-1">1:20 PM</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <a class="stretched-link" href="#!"></a>
+                                    </div>
+                                    <div class="col-auto text-center">
+                                        <a href="#!" class="badge-dot badge-secondary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Mark as unread"></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- List group item -->
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="d-flex">
+                                            <img src="../../assets/images/avatar/avatar-3.jpg" alt="" class="avatar-md rounded-circle" />
+                                            <div class="ml-3">
+                                                <h5 class="font-weight-bold mb-1">
+                                                    Jenny Wilson
+                                                </h5>
+                                                <p class="mb-3">
+                                                    Krisitn Watsan like your comment on course Javascript Introduction!
+                                                </p>
+                                                <span class="font-size-xs text-muted">
+                                                        <span>
+                                                            <span
+                                                                class="fe fe-thumbs-up text-info mr-1"
+                                                            ></span> Oct 9,
+                                                </span>
+                                                <span class="ml-1">1:56 PM</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <a class="stretched-link" href="#!"></a>
+                                    </div>
+                                    <div class="col-auto text-center">
+                                        <a href="#!" class="badge-dot badge-secondary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Mark as unread"></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- List group item -->
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="d-flex">
+                                            <img src="../../assets/images/avatar/avatar-4.jpg" alt="" class="avatar-md rounded-circle" />
+                                            <div class="ml-3">
+                                                <h5 class="font-weight-bold mb-1">Sina Ray</h5>
+                                                <p class="mb-3">
+                                                    You earn new certificate for complete the Javascript Beginner course.
+                                                </p>
+                                                <span class="font-size-xs text-muted">
+                                                        <span>
+                                                            <span
+                                                                class="fe fe-award text-warning mr-1"
+                                                            ></span> Oct 9,
+                                                </span>
+                                                <span class="ml-1">1:56 PM</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <a class="stretched-link" href="#!"></a>
+                                    </div>
+                                    <div class="col-auto text-center">
+                                        <a href="#!" class="badge-dot badge-secondary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Mark as unread"></a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="border-top px-3 pt-3 pb-0">
+                            <a href="../../pages/notification-history.html" class="text-link font-weight-semi-bold">
+                                    See all Notifications
+                                </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!-- List -->
+            <li class="dropdown ml-2">
+                <a class="rounded-circle" href="#!" role="button" id="dropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-md avatar-indicators avatar-online">
+                        <img alt="avatar" src="../../assets/images/avatar/avatar-1.jpg" class="rounded-circle" />
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownUser">
+                    <div class="dropdown-item">
+                        <div class="d-flex">
+                            <div class="avatar avatar-md avatar-indicators avatar-online">
+                                <img alt="avatar" src="../../assets/images/avatar/avatar-1.jpg" class="rounded-circle" />
+                            </div>
+                            <div class="ml-3 lh-1">
+                                <h5 class="mb-1">Annette Black</h5>
+                                <p class="mb-0 text-muted">annette@geeksui.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <ul class="list-unstyled">
+                        <li class="dropdown-submenu dropleft-lg">
+                            <a class="dropdown-item dropdown-toggle" href="#!">
+                                <i class="fe fe-circle mr-2"></i> Status
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="#!">
+                                        <span class="badge-dot bg-success mr-2"></span> Online
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#!">
+                                        <span class="badge-dot bg-secondary mr-2"></span> Offline
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#!">
+                                        <span class="badge-dot bg-warning mr-2"></span> Away
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#!">
+                                        <span class="badge-dot bg-danger mr-2"></span> Busy
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="../../pages/profile-edit.html">
+                                <i class="fe fe-user mr-2"></i> Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="../../pages/student-subscriptions.html">
+                                <i class="fe fe-star mr-2"></i> Subscription
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#!">
+                                <i class="fe fe-settings mr-2"></i> Settings
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="dropdown-divider"></div>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="dropdown-item" href="../../index.html">
+                                <i class="fe fe-power mr-2"></i> Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</div>
+            <!-- Container fluid -->
+            <div class="container-fluid p-4">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <!-- Page header -->
+                        <div class="border-bottom pb-4 mb-4">
+                            <div>
+                                <h1 class="mb-1 h2 font-weight-bold">Data Tables</h1>
+                                <!-- Breadcrumb -->
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                            <a href="admin-dashboard.html">Dashboard</a>
+                                        </li>
+
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            Data Tables
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
+
+						</div>
+					</div>
+
+				</div>
+                <div>
+                    <div class="row">
+                      <!-- basic table -->
+                      <div class="col-md-12 col-12 mb-5">
+                        <div class="card">
+                          <!-- card header  -->
+                          <div class="card-header border-bottom-0">
+                            <h4 class="mb-1">Data Table Basic</h4>
+                            <p class="mb-0">DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, built upon the foundations of progressive enhancement, that adds all of these advanced features to any HTML table.</p>
+                          </div>
+                          <!-- table  -->
+                       <div class="card-body pt-2">
+                        <table id="dataTableBasic" class="table " style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Office</th>
+                                    <th>Age</th>
+                                    <th>Start date</th>
+                                    <th>Salary</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tiger Nixon</td>
+                                    <td>System Architect</td>
+                                    <td>Edinburgh</td>
+                                    <td>61</td>
+                                    <td>2011/04/25</td>
+                                    <td>$320,800</td>
+                                </tr>
+                                <tr>
+                                    <td>Garrett Winters</td>
+                                    <td>Accountant</td>
+                                    <td>Tokyo</td>
+                                    <td>63</td>
+                                    <td>2011/07/25</td>
+                                    <td>$170,750</td>
+                                </tr>
+                                <tr>
+                                    <td>Ashton Cox</td>
+                                    <td>Junior Technical Author</td>
+                                    <td>San Francisco</td>
+                                    <td>66</td>
+                                    <td>2009/01/12</td>
+                                    <td>$86,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Cedric Kelly</td>
+                                    <td>Senior Javascript Developer</td>
+                                    <td>Edinburgh</td>
+                                    <td>22</td>
+                                    <td>2012/03/29</td>
+                                    <td>$433,060</td>
+                                </tr>
+                                <tr>
+                                    <td>Airi Satou</td>
+                                    <td>Accountant</td>
+                                    <td>Tokyo</td>
+                                    <td>33</td>
+                                    <td>2008/11/28</td>
+                                    <td>$162,700</td>
+                                </tr>
+                                <tr>
+                                    <td>Brielle Williamson</td>
+                                    <td>Integration Specialist</td>
+                                    <td>New York</td>
+                                    <td>61</td>
+                                    <td>2012/12/02</td>
+                                    <td>$372,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Herrod Chandler</td>
+                                    <td>Sales Assistant</td>
+                                    <td>San Francisco</td>
+                                    <td>59</td>
+                                    <td>2012/08/06</td>
+                                    <td>$137,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Rhona Davidson</td>
+                                    <td>Integration Specialist</td>
+                                    <td>Tokyo</td>
+                                    <td>55</td>
+                                    <td>2010/10/14</td>
+                                    <td>$327,900</td>
+                                </tr>
+                                <tr>
+                                    <td>Colleen Hurst</td>
+                                    <td>Javascript Developer</td>
+                                    <td>San Francisco</td>
+                                    <td>39</td>
+                                    <td>2009/09/15</td>
+                                    <td>$205,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Sonya Frost</td>
+                                    <td>Software Engineer</td>
+                                    <td>Edinburgh</td>
+                                    <td>23</td>
+                                    <td>2008/12/13</td>
+                                    <td>$103,600</td>
+                                </tr>
+                                <tr>
+                                    <td>Jena Gaines</td>
+                                    <td>Office Manager</td>
+                                    <td>London</td>
+                                    <td>30</td>
+                                    <td>2008/12/19</td>
+                                    <td>$90,560</td>
+                                </tr>
+                                <tr>
+                                    <td>Quinn Flynn</td>
+                                    <td>Support Lead</td>
+                                    <td>Edinburgh</td>
+                                    <td>22</td>
+                                    <td>2013/03/03</td>
+                                    <td>$342,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Charde Marshall</td>
+                                    <td>Regional Director</td>
+                                    <td>San Francisco</td>
+                                    <td>36</td>
+                                    <td>2008/10/16</td>
+                                    <td>$470,600</td>
+                                </tr>
+                                <tr>
+                                    <td>Haley Kennedy</td>
+                                    <td>Senior Marketing Designer</td>
+                                    <td>London</td>
+                                    <td>43</td>
+                                    <td>2012/12/18</td>
+                                    <td>$313,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Tatyana Fitzpatrick</td>
+                                    <td>Regional Director</td>
+                                    <td>London</td>
+                                    <td>19</td>
+                                    <td>2010/03/17</td>
+                                    <td>$385,750</td>
+                                </tr>
+                                <tr>
+                                    <td>Michael Silva</td>
+                                    <td>Marketing Designer</td>
+                                    <td>London</td>
+                                    <td>66</td>
+                                    <td>2012/11/27</td>
+                                    <td>$198,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Paul Byrd</td>
+                                    <td>Chief Financial Officer (CFO)</td>
+                                    <td>New York</td>
+                                    <td>64</td>
+                                    <td>2010/06/09</td>
+                                    <td>$725,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Gloria Little</td>
+                                    <td>Systems Administrator</td>
+                                    <td>New York</td>
+                                    <td>59</td>
+                                    <td>2009/04/10</td>
+                                    <td>$237,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Bradley Greer</td>
+                                    <td>Software Engineer</td>
+                                    <td>London</td>
+                                    <td>41</td>
+                                    <td>2012/10/13</td>
+                                    <td>$132,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Dai Rios</td>
+                                    <td>Personnel Lead</td>
+                                    <td>Edinburgh</td>
+                                    <td>35</td>
+                                    <td>2012/09/26</td>
+                                    <td>$217,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Jenette Caldwell</td>
+                                    <td>Development Lead</td>
+                                    <td>New York</td>
+                                    <td>30</td>
+                                    <td>2011/09/03</td>
+                                    <td>$345,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Yuri Berry</td>
+                                    <td>Chief Marketing Officer (CMO)</td>
+                                    <td>New York</td>
+                                    <td>40</td>
+                                    <td>2009/06/25</td>
+                                    <td>$675,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Caesar Vance</td>
+                                    <td>Pre-Sales Support</td>
+                                    <td>New York</td>
+                                    <td>21</td>
+                                    <td>2011/12/12</td>
+                                    <td>$106,450</td>
+                                </tr>
+                                <tr>
+                                    <td>Doris Wilder</td>
+                                    <td>Sales Assistant</td>
+                                    <td>Sydney</td>
+                                    <td>23</td>
+                                    <td>2010/09/20</td>
+                                    <td>$85,600</td>
+                                </tr>
+                                <tr>
+                                    <td>Angelica Ramos</td>
+                                    <td>Chief Executive Officer (CEO)</td>
+                                    <td>London</td>
+                                    <td>47</td>
+                                    <td>2009/10/09</td>
+                                    <td>$1,200,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Gavin Joyce</td>
+                                    <td>Developer</td>
+                                    <td>Edinburgh</td>
+                                    <td>42</td>
+                                    <td>2010/12/22</td>
+                                    <td>$92,575</td>
+                                </tr>
+                                <tr>
+                                    <td>Jennifer Chang</td>
+                                    <td>Regional Director</td>
+                                    <td>Singapore</td>
+                                    <td>28</td>
+                                    <td>2010/11/14</td>
+                                    <td>$357,650</td>
+                                </tr>
+                                <tr>
+                                    <td>Brenden Wagner</td>
+                                    <td>Software Engineer</td>
+                                    <td>San Francisco</td>
+                                    <td>28</td>
+                                    <td>2011/06/07</td>
+                                    <td>$206,850</td>
+                                </tr>
+                                <tr>
+                                    <td>Fiona Green</td>
+                                    <td>Chief Operating Officer (COO)</td>
+                                    <td>San Francisco</td>
+                                    <td>48</td>
+                                    <td>2010/03/11</td>
+                                    <td>$850,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Shou Itou</td>
+                                    <td>Regional Marketing</td>
+                                    <td>Tokyo</td>
+                                    <td>20</td>
+                                    <td>2011/08/14</td>
+                                    <td>$163,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Michelle House</td>
+                                    <td>Integration Specialist</td>
+                                    <td>Sydney</td>
+                                    <td>37</td>
+                                    <td>2011/06/02</td>
+                                    <td>$95,400</td>
+                                </tr>
+                                <tr>
+                                    <td>Suki Burks</td>
+                                    <td>Developer</td>
+                                    <td>London</td>
+                                    <td>53</td>
+                                    <td>2009/10/22</td>
+                                    <td>$114,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Prescott Bartlett</td>
+                                    <td>Technical Author</td>
+                                    <td>London</td>
+                                    <td>27</td>
+                                    <td>2011/05/07</td>
+                                    <td>$145,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Gavin Cortez</td>
+                                    <td>Team Leader</td>
+                                    <td>San Francisco</td>
+                                    <td>22</td>
+                                    <td>2008/10/26</td>
+                                    <td>$235,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Martena Mccray</td>
+                                    <td>Post-Sales support</td>
+                                    <td>Edinburgh</td>
+                                    <td>46</td>
+                                    <td>2011/03/09</td>
+                                    <td>$324,050</td>
+                                </tr>
+                                <tr>
+                                    <td>Unity Butler</td>
+                                    <td>Marketing Designer</td>
+                                    <td>San Francisco</td>
+                                    <td>47</td>
+                                    <td>2009/12/09</td>
+                                    <td>$85,675</td>
+                                </tr>
+                                <tr>
+                                    <td>Howard Hatfield</td>
+                                    <td>Office Manager</td>
+                                    <td>San Francisco</td>
+                                    <td>51</td>
+                                    <td>2008/12/16</td>
+                                    <td>$164,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Hope Fuentes</td>
+                                    <td>Secretary</td>
+                                    <td>San Francisco</td>
+                                    <td>41</td>
+                                    <td>2010/02/12</td>
+                                    <td>$109,850</td>
+                                </tr>
+                                <tr>
+                                    <td>Vivian Harrell</td>
+                                    <td>Financial Controller</td>
+                                    <td>San Francisco</td>
+                                    <td>62</td>
+                                    <td>2009/02/14</td>
+                                    <td>$452,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy Mooney</td>
+                                    <td>Office Manager</td>
+                                    <td>London</td>
+                                    <td>37</td>
+                                    <td>2008/12/11</td>
+                                    <td>$136,200</td>
+                                </tr>
+                                <tr>
+                                    <td>Jackson Bradshaw</td>
+                                    <td>Director</td>
+                                    <td>New York</td>
+                                    <td>65</td>
+                                    <td>2008/09/26</td>
+                                    <td>$645,750</td>
+                                </tr>
+                                <tr>
+                                    <td>Olivia Liang</td>
+                                    <td>Support Engineer</td>
+                                    <td>Singapore</td>
+                                    <td>64</td>
+                                    <td>2011/02/03</td>
+                                    <td>$234,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Bruno Nash</td>
+                                    <td>Software Engineer</td>
+                                    <td>London</td>
+                                    <td>38</td>
+                                    <td>2011/05/03</td>
+                                    <td>$163,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Sakura Yamamoto</td>
+                                    <td>Support Engineer</td>
+                                    <td>Tokyo</td>
+                                    <td>37</td>
+                                    <td>2009/08/19</td>
+                                    <td>$139,575</td>
+                                </tr>
+                                <tr>
+                                    <td>Thor Walton</td>
+                                    <td>Developer</td>
+                                    <td>New York</td>
+                                    <td>61</td>
+                                    <td>2013/08/11</td>
+                                    <td>$98,540</td>
+                                </tr>
+                                <tr>
+                                    <td>Finn Camacho</td>
+                                    <td>Support Engineer</td>
+                                    <td>San Francisco</td>
+                                    <td>47</td>
+                                    <td>2009/07/07</td>
+                                    <td>$87,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Serge Baldwin</td>
+                                    <td>Data Coordinator</td>
+                                    <td>Singapore</td>
+                                    <td>64</td>
+                                    <td>2012/04/09</td>
+                                    <td>$138,575</td>
+                                </tr>
+                                <tr>
+                                    <td>Zenaida Frank</td>
+                                    <td>Software Engineer</td>
+                                    <td>New York</td>
+                                    <td>63</td>
+                                    <td>2010/01/04</td>
+                                    <td>$125,250</td>
+                                </tr>
+                                <tr>
+                                    <td>Zorita Serrano</td>
+                                    <td>Software Engineer</td>
+                                    <td>San Francisco</td>
+                                    <td>56</td>
+                                    <td>2012/06/01</td>
+                                    <td>$115,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Jennifer Acosta</td>
+                                    <td>Junior Javascript Developer</td>
+                                    <td>Edinburgh</td>
+                                    <td>43</td>
+                                    <td>2013/02/01</td>
+                                    <td>$75,650</td>
+                                </tr>
+                                <tr>
+                                    <td>Cara Stevens</td>
+                                    <td>Sales Assistant</td>
+                                    <td>New York</td>
+                                    <td>46</td>
+                                    <td>2011/12/06</td>
+                                    <td>$145,600</td>
+                                </tr>
+                                <tr>
+                                    <td>Hermione Butler</td>
+                                    <td>Regional Director</td>
+                                    <td>London</td>
+                                    <td>47</td>
+                                    <td>2011/03/21</td>
+                                    <td>$356,250</td>
+                                </tr>
+                                <tr>
+                                    <td>Lael Greer</td>
+                                    <td>Systems Administrator</td>
+                                    <td>London</td>
+                                    <td>21</td>
+                                    <td>2009/02/27</td>
+                                    <td>$103,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Jonas Alexander</td>
+                                    <td>Developer</td>
+                                    <td>San Francisco</td>
+                                    <td>30</td>
+                                    <td>2010/07/14</td>
+                                    <td>$86,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Shad Decker</td>
+                                    <td>Regional Director</td>
+                                    <td>Edinburgh</td>
+                                    <td>51</td>
+                                    <td>2008/11/13</td>
+                                    <td>$183,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Michael Bruce</td>
+                                    <td>Javascript Developer</td>
+                                    <td>Singapore</td>
+                                    <td>29</td>
+                                    <td>2011/06/27</td>
+                                    <td>$183,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Donna Snider</td>
+                                    <td>Customer Support</td>
+                                    <td>New York</td>
+                                    <td>27</td>
+                                    <td>2011/01/25</td>
+                                    <td>$112,000</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                       </div>
+                        </div>
+
+                      </div>
+
+
+
+
+
+                    </div>
+
+                  </div>
+			</div>
+		</div>
+        </div>
+		<!-- Scripts -->
+		<!-- Libs JS -->
+<script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/libs/odometer/odometer.min.js"></script>
+<script src="../../assets/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../../assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+<script src="../../assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="../../assets/libs/flatpickr/dist/flatpickr.min.js"></script>
+<script src="../../assets/libs/inputmask/dist/jquery.inputmask.min.js"></script>
+<script src="../../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="../../assets/libs/quill/dist/quill.min.js"></script>
+<script src="../../assets/libs/file-upload-with-preview/dist/file-upload-with-preview.min.js"></script>
+<script src="../../assets/libs/dragula/dist/dragula.min.js"></script>
+<script src="../../assets/libs/bs-stepper/dist/js/bs-stepper.min.js"></script>
+<script src="../../assets/libs/dropzone/dist/min/dropzone.min.js"></script>
+<script src="../../assets/libs/jQuery.print/jQuery.print.js"></script>
+<script src="../../assets/libs/prismjs/prism.js"></script>
+<script src="../../assets/libs/prismjs/components/prism-scss.min.js"></script>
+<script src="../../assets/libs/@yaireo/tagify/dist/tagify.min.js"></script>
+<script src="../../assets/libs/tiny-slider/dist/min/tiny-slider.js"></script>
+<script src="../../assets/libs/@popperjs/core/dist/umd/popper.min.js"></script>
+<script src="../../assets/libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
+<script src="../../assets/libs/typed.js/lib/typed.min.js"></script>
+<script src="../../assets/libs/jsvectormap/dist/js/jsvectormap.min.js"></script>
+<script src="../../assets/libs/jsvectormap/dist/maps/world.js"></script>
+<script src="../../assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+
+
+
+
+<!-- clipboard -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
+
+
+<!-- Theme JS -->
+<script src="../../assets/js/theme.min.js"></script>
+	</body>
+</html>

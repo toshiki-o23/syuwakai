@@ -1,12 +1,17 @@
 <%= javascript_pack_tag 'events' %>
 
 <% if @event.errors.any? %>
-  <%= @event.errors.full_messages.each do |message| %>
-    <%= message %>
+  <% @event.errors.full_messages.each do |message| %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= message %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
   <% end %>
 <% end %>
 
-<%= form_with model: @event, url: '/events', method: :post, local: true do |f| %>
+<%= form_with model: [@event, @event], url: '/events', method: :post, local: true do |f| %>
 
     <%= render 'partial/event_form', f: f, new_flag: true %>
 

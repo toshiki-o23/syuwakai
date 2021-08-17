@@ -3,6 +3,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 
+@import 'theme.scss';
+
+
 
 * {
   font-family: 'Noto Sans JP', sans-serif;
@@ -12,8 +15,49 @@
   text-decoration: none;
 }
 
+.material-icons-outlined {
+     font-family: 'Material Icons';
+     font-weight: normal;
+     font-style: normal;
+     font-size: 24px;  /* Preferred icon size */
+     display: inline-block;
+     line-height: 1;
+     text-transform: none;
+     letter-spacing: normal;
+     word-wrap: normal;
+     white-space: nowrap;
+     direction: ltr;
+
+     /* Support for all WebKit browsers. */
+     -webkit-font-smoothing: antialiased;
+     /* Support for Safari and Chrome. */
+     text-rendering: optimizeLegibility;
+
+     /* Support for Firefox. */
+     -moz-osx-font-smoothing: grayscale;
+
+     /* Support for IE. */
+     font-feature-settings: 'liga';
+}
+
 .material-icons.md-36 {
   font-size: 36px;
+}
+.fit {
+  display: inline-flex;
+  vertical-align: -5px;
+}
+
+.material-icons-outlined::before {
+   font-family: Material Icons, sans-serif;
+   content: attr(data-icon);
+}
+
+.material-icons-outlined.md-12 {
+  font-size: 12px;
+}
+.material-icons-outlined.md-24 {
+  font-size: 24px;
 }
 .material-icons-outlined.md-36 {
   font-size: 36px;
@@ -21,6 +65,7 @@
 .material-icons-outlined.md-48 {
   font-size: 48px;
 }
+
 
 .event-image {
   max-width: 100%;
@@ -31,3 +76,34 @@
   white-space: nowrap
 }
 
+.dropdown-toggle::after {
+  display: none;
+}
+
+.simple-calendar {
+ .day {}
+ .wday-0 {}
+ .wday-1 {}
+ .wday-2 {}
+ .wday-3 {}
+ .wday-4 {}
+ .wday-5 {}
+ .wday-6 {}
+ .today {}
+ .past {}
+ .future {}
+ .start-date {}
+ .prev-month {}
+ .next-month { }
+ .current-month {}
+ .has-events {
+   background: #f5f4f8;
+ }
+}
+
+// 一行表示
+.box-read{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

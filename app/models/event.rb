@@ -7,9 +7,22 @@ class Event < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  has_many :evaluations, dependent: :destroy
+
+  has_many :tagmaps, dependent: :destroy
+  has_many :tags, through: :tagmaps
+
   validates :title, presence: true, length: { maximum: 30 }
   validates :content, presence: true, length: { maximum: 1000 }
   validates :venue, presence: true
+  validates :level, presence: true
+  validates :start_time, presence: true
+  validates :finish_time, presence: true
+  validates :number, presence: true, length: { minimum: 1 }
+  validates :fee, presence: true, length: { minimum: 0 }
+
+  validate :start_finish_check
+  validate :start_check
 
   # 引数を受け取るように設定
   def already_bookmarked?(user)
@@ -40,5 +53,35 @@ class Event < ApplicationRecord
     # 自分の投稿に対するコメントの場合は、通知済みとする
     notification.checked = true if notification.visitor_id == notification.visited_id
     notification.save if notification.valid?
+  end
+
+  def start_finish_check
+    errors.add(:finish_time, 'は開始時刻より遅い時間を選択してください') if self.start_time > self.finish_time
+  end
+
+  def start_check
+    errors.add(:start_time, 'は現在の日時より遅い時間を選択してください') if self.start_time < Time.zone.now
+  end
+
+  # 検索メソッド、タイトルと内容をあいまい検索する
+  def self.events_serach(search)
+    Event.where(['title LIKE ? OR content LIKE ?', "%#{search}%", "%#{search}%"])
+  end
+
+  def save_events(tags)
+    current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
+    old_tags = current_tags - tags
+    new_tags = tags - current_tags
+
+    # Destroy
+    old_tags.each do |old_name|
+      self.tags.delete Tag.find_by(tag_name: old_name)
+    end
+
+    # Create
+    new_tags.each do |new_name|
+      event_tag = Tag.find_or_create_by(tag_name: new_name)
+      self.tags << event_tag
+    end
   end
 end

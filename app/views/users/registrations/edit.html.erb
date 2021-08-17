@@ -29,7 +29,7 @@
 
   <div class="row">
     <div class="field col form-group">
-      <%= f.label :password %><small>　空白でも可能　<%= @minimum_password_length %> 文字以上</small><br />
+      <%= f.label :password %><small><%= @minimum_password_length %> 文字以上</small>
       <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
     </div>
 
@@ -38,14 +38,15 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
     </div>
   </div>
+    <span class="p-3">パスワードなしで更新できます</span>
 
   <div class="actions col form-group">
-    <%= f.submit "更新する", class: "btn btn-primary" %>
+    <%= f.submit "更新する", class: "btn btn-primary rounded-pill" %>
   </div>
 <% end %>
 
 <div class="float-end">
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  <button type="button" class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     アカウントを削除する
   </button>
 </div>

@@ -1,7 +1,11 @@
 class UserEventsController < ApplicationController
+  after_action :chat, only: %i[show]
+
   def index
-    @events = Event.all
+    require 'date'
     @user_events = UserEvent.where(user_id: current_user.id)
+    @events = Event.all
+    @finish_events = Event.joins(:user_events).where('finish_time < ?', DateTime.now).where(user_events: { user_id: current_user.id })
   end
 
   def create
@@ -18,7 +22,19 @@ class UserEventsController < ApplicationController
     @event = Event.find(params[:id])
     @comments = @event.comments
     @comment = Comment.new
+    @user_event = UserEvent.find_by(user_id: current_user, event_id: params[:id])
+    @user_events = UserEvent.where(event_id: params[:id])
+    @evaluation = Evaluation.new
+    @evaluations = Evaluation.where(user_id: current_user.id, event_id: @event.id)
+  end
 
+  private
+
+  def user_event_params
+    params.permit(:user_id, :event_id).merge(user_id: current_user.id)
+  end
+
+  def chat
     @current_user_entry = DmEntry.where(user_id: current_user.id)
     @user_entry = DmEntry.where(user_id: @event.user_id)
 
@@ -37,11 +53,5 @@ class UserEventsController < ApplicationController
 
     @room = DmRoom.new
     @entry = DmEntry.new
-  end
-
-  private
-
-  def user_event_params
-    params.permit(:user_id, :event_id).merge(user_id: current_user.id)
   end
 end

@@ -1,16 +1,21 @@
 <% if @event.errors.any? %>
-  <%= @event.errors.full_messages.each do |message| %>
-    <%= message %>
+  <% @event.errors.full_messages.each do |message| %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= message %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
   <% end %>
 <% end %>
 
-<%= form_with model: @event, url: event_path(@event), method: :put do |f| %>
+<%= form_with model: @event, url: event_path(@event), method: :put, local: true do |f| %>
 
   <%= render 'partial/event_form', f: f %>
   
 <% end %>
 
-  <div class="float-end">
+<div class="float-end">
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     投稿を削除する
   </button>

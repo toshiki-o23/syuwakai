@@ -4,6 +4,15 @@ ja:
       event:
         title: タイトル
         content: 内容
+        level: レベル
+        venue: 開催会場
+        number: 参加人数
+        start_time: 開催時刻
+        finish_time: 終了時刻
+        image: 画像
+        fee: 参加費(円)
+      tag:
+        tag_name: タグ
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -44,7 +53,8 @@ ja:
     formats:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y年%m月%d日(%a)"
-      short: "%m/%d"
+      short: "%m/%d %H:%M"
+      
     month_names:
     - 
     - 1月
@@ -207,4 +217,6 @@ ja:
       default: "%Y年%m月%d日(%a) %H時%M分"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
+      default_short: "%m月%d日(%a) %H時%M分"
+      month_day: "%Y/%m/%d"
     pm: 午後

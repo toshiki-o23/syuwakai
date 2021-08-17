@@ -2,7 +2,7 @@ class BookmarksController < ApplicationController
   def create
     bookmark = current_user.bookmarks.build(event_id: params[:event_id])
     bookmark.save
-    redirect_to root_path
+    redirect_to request.referer || root_path
   end
 
   def destroy

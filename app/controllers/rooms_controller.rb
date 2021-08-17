@@ -8,7 +8,7 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     if Room.where(room_id: @room.id)
-      @messages = @room.messages
+      @messages = @room.messages.order(id: :DESC)
       @message = Message.new
     else
       redirect_back(fallback_location: root_path)

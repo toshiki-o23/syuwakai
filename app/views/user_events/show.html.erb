@@ -1,34 +1,76 @@
-参加するあなたへようこそ！詳しくはこちらです！<br>
+<%# <% if @evaluations.empty? && @event.finish_time > DateTime.now %> %>
+<div class="smooth-shadow-lg p-3 bg-white rounded">
+  <h3>
+    評価してください（評価したら変更できません）
+  </h3>
+  <%= form_with model: @evaluation, locals: true do |f| %>
+    <div class="form-group">
+      <%= f.text_area :comment, class: "form-control", placeholder: "感想を入力", rows: 3 %>
+    </div>
+    <div class="form-group">
+      <div class="custom-control custom-radio custom-control-inline">
+          <%= f.radio_button :evaluation, 5, class: "custom-control-input", id: "cardRadioone" %>
 
-<%= @event.title  %>
-<%= @event.content %>
-<br>
-<% if user_signed_in? %>  
-  <% unless @event.user_id == current_user.id %>
-    <% if @is_room == true %>
-      <p class="user-show-room"><a href="/dm_rooms/<%= @room_id %>" class="btn btn-primary btn-lg">開催者とチャットする</a>
-    <% else %>
-      <%= form_for @room do |f| %>
-        <%= fields_for @entry do |e| %>
-          <%= e.hidden_field :user_id, value: @event.user_id %>
-        <% end %>
-        <%= f.submit "開催者とチャットする", class:"btn btn-primary btn-lg user-show-chat"%>
+        <label class="custom-control-label " for="cardRadioone"><span class="  text-dark material-icons-outlined">thumb_up_alt</span></label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+
+          <%= f.radio_button :evaluation, 1, class: "custom-control-input", id: "cardRadioTwo" %>
+        <label class="custom-control-label" for="cardRadioTwo"><span
+          class="material-icons-outlined text-dark">thumb_down_alt</span></label>
+      </div>
+    </div>
+
+    <%= f.hidden_field :event_id, { value: @event.id } %>
+    <%= f.hidden_field :user_id, { value: current_user.id } %>
+    <%= f.submit '評価する', class: "btn btn-primary rounded-pill" %>
+  <% end %>
+</div>
+<%# <% end %> %>
+
+
+<div class="container border-bottom mb-3">
+  <h1>
+    参加するあなたへようこそ！詳しくはこちらです！
+  </h1>
+
+  <h2>
+    参加者一覧
+  </h2>
+  <div class="d-lg-flex">
+    <div class="avatar-group mr-5">
+      <% @user_events.each do |user_event| %>
+        <span class="avatar avatar-lg">
+          <%= link_to user_path(user_event.user) do %>
+            <%= image_tag user_event.user.image.url, class: "rounded-circle" %>
+          <% end %>
+        </span>
       <% end %>
+    </div>
+  </div>
+
+  <h2>
+    お知らせ一覧
+  </h2>
+
+
+  <% @comments.each do |comment| %>
+    <div class="card m-3">
+      <div class="card-body">
+        <%= simple_format(comment.content) %>
+      </div>
+    </div>
+  <% end %>
+
+
+  <% if current_user.id == @event.user_id %>
+    <%= form_with model: [ @event, @comment ], url: event_comments_path(event_id: @event.id) do |f| %>
+      <%= f.text_area :content, class: "form-control", placeholder: "お知らせを入力", rows: "4" %>
+      <%= f.submit '送信', class: "btn btn-primary rounded-pill my-3" %>
     <% end %>
   <% end %>
-<% end %><br>
-お知らせ一覧
-<% @comments.each do |comment| %>
-  <div>
-    <%= simple_format(comment.content) %>
-  </div>
-<% end %>
 
-<% if current_user.id == @event.user_id %>
-  <%= form_with model: [ @event, @comment ], url: event_comments_path(event_id: @event.id) do |f| %>
-    <%= f.text_area :content %>
-    <br>
-    <%= f.submit 'お知らせを送る', class: "btn btn-primary" %>
-  <% end %>
-<% end %>
-
+</div>
+<div class="border shadow-sm p-3 mb-5 bg-white rounded">
+  <%= render 'partial/event_show' %>
+</div>

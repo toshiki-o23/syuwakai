@@ -7,7 +7,9 @@
 <%= render 'partial/room_show' %>
 
 <%= form_for @message do |f| %>
-  <%= f.text_field :content, :placeholder => "入力して下さい" %>
+  <div class="form-group">
+  <%= f.text_field :content, placeholder: "入力して下さい", class: "form-control" %>
   <%= f.hidden_field  :dm_room_id, :value => @room.id %>
+  </div>
   <%= f.submit "send", class: "material-icons-outlined md-36 nonelink btn" %>
 <% end %>

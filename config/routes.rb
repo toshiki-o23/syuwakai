@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
-
-  resources :messages, only: %i[create]
-  resources :rooms, only: %i[index show create]
-
-  resources :dm_messages, :only => [:create]
-  resources :dm_rooms, :only => [:create, :show]
+  root 'events#index'
+  get '/about' => 'homes#about'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations'
@@ -14,15 +10,14 @@ Rails.application.routes.draw do
     get 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
   
-  root 'events#index'
-
   resources :users do
     get :bookmarks
     get :following, :follower
+    get :evaluation
   end
-
-
-  resources :relationships, only: [:create, :destroy]
+  
+  resources :evaluations, only: [:create]
+  
   get '/mypage' => 'users#mypage'
 
   resources :events do
@@ -31,6 +26,16 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
+  resources :relationships, only: [:create, :destroy]
+  
   resources :notifications, only: [:index]
+
+  resources :messages, only: [:create]
+  resources :rooms, only: [:index, :create, :show]
+
+  resources :dm_messages, only: [:create]
+  resources :dm_rooms, only: [:create, :show]
+
+
 end
 

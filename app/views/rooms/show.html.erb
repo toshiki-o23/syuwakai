@@ -1,12 +1,37 @@
-<h1><%= @room.name %></h1>
-<h2><%= @room.content %></h2>
+<div class="p-3">
+  <%= link_to 'list', rooms_path, class: "material-icons-outlined md-36 nonelink btn" %>
+</div>
+<!-- media -->
+<div class="col-xl-9 col-lg-12 col-md-12 col-12">
+  <!-- chat list -->
+  <div class=" chat-body">
+    <div class="bg-white border-top border-bottom px-4 py-3 sticky-top">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="media align-items-center">
+          <!-- media body -->
+          <div class="media-body ml-2">
+            <h4 class="mb-0"><%= @room.name %></h4>
+            <p class="mb-0 text-muted"><%= @room.content %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-light px-2 py-3 chat-footer">
+  <div class="bg-white p-2 rounded-lg shadow-sm">
+    <%= form_for @message do |f| %>
+      <div class="position-relative">
+        <%= f.text_area :content, class: "form-control border-0 form-control-simple no-resize", :placeholder => "メッセージを入力" %>
+        <%= f.hidden_field  :room_id, :value => @room.id %>
+      </div>
+      <div class="position-absolute right-0 mt-n8 mr-4">
+        <%= f.submit "send", class: "material-icons-outlined md-36 btn text-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 
 <%= render 'partial/room_show' %>
-
-<%= form_for @message do |f| %>
-  <%= f.text_field :content, :placeholder => "入力して下さい" %>
-  <%= f.hidden_field  :room_id, :value => @room.id %>
-  <%= f.submit "send", class: "material-icons-outlined md-36 nonelink btn" %>
-<% end %>
-
-<%= link_to 'list', rooms_path, class: "material-icons-outlined md-36 nonelink btn" %>

@@ -1,10 +1,15 @@
 class EventsController < ApplicationController
+  require 'date'
+
   before_action :baria_user, only: %i[edit destroy]
   before_action :set_event, only: %i[show edit update destroy]
+  before_action :index_case, only: %i[index]
 
   def index
-    @events = Event.all
-    @numbers = UserEvent.where(event_id: @events.ids).count
+    @q = Event.ransack(params[:q])
+    @user_events = UserEvent.where(user_id: current_user.id) if current_user
+    @tag_lists = Tag.joins(:tagmaps).group(:tag_id).order('count(tag_name) desc').limit(10)
+    @events = Kaminari.paginate_array(@events).page(params[:page]).per(10)
   end
 
   def new
@@ -19,7 +24,10 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    tag_list = params[:event][:tag_name].split(/[[:blank:]]+/)
+    @event.user_id = current_user.id
     if @event.save
+      @event.save_events(tag_list)
       redirect_to event_path(@event.id)
     else
       render 'new'
@@ -33,8 +41,11 @@ class EventsController < ApplicationController
   def edit; end
 
   def update
-    @event.update(event_params)
-    redirect_to event_path
+    if @event.update(event_params)
+      redirect_to event_path(@event.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -46,7 +57,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :content, :number, :image, :level, :venue, :start_time, :finish_time).merge(user_id: current_user.id)
+    params.require(:event).permit(:title, :content, :number, :image, :level, :venue, :start_time, :finish_time, :fee).merge(user_id: current_user.id)
   end
 
   def set_event
@@ -59,6 +70,18 @@ class EventsController < ApplicationController
     return unless Event.find(params[:id]).user_id == current_user.id do;
       flash[:notice] = '権限がありません'
       redirect_to user_path(@user.id)
+    end
+  end
+
+  def index_case
+    if params[:q].present?
+      @q = Event.ransack(params[:q])
+      @events = @q.result.where('start_time > ?', DateTime.now)
+    elsif params[:tag_id].present?
+      @tag = Tag.find(params[:tag_id])
+      @events = @tag.events.where('start_time > ?', DateTime.now)
+    else
+      @events = Event.all.where('start_time > ?', DateTime.now)
     end
   end
 end

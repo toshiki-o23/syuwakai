@@ -1,112 +1,192 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-default mb-6">
+	<div class="container-fluid px-0">
     <%= link_to image_tag('syuwakai.png', width: '200px'), root_path, class: 'navbar-brand' %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav mr-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-              <%= link_to 'post_add', new_event_path, class: "nav-link material-icons-outlined md-36 nonelink" %>
-          </li>
-          <li class="nav-item active">
-              <%= link_to 'bookmark_added', user_bookmarks_path(current_user), class: "nav-link material-icons-outlined md-36" %>
-          </li>
-          <li class="nav-item active">
-              <%= link_to 'notifications', notifications_path, class: "nav-link material-icons-outlined md-36" %>
-          </li>
-          <li class="nav-item active">
-              <%= link_to 'chat', rooms_path, class: "nav-link material-icons-outlined md-36" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to 'person', mypage_path, class: 'nav-link material-icons-outlined md-36' %>
-          </li>
-          <% if current_user.email != 'guest@example.com' %>
-            <li class="nav-item active">
-              <%= link_to 'manage_accounts', edit_user_registration_path, class: 'nav-link material-icons-outlined md-36' %>
-            </li>
-          <% end %>
-          <li class="nav-item active">
-            <%= link_to 'event', event_user_events_path(current_user.id), class: 'nav-link material-icons-outlined md-36' %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to 'logout', destroy_user_session_path, class: 'nav-link material-icons-outlined md-36' %>
-          </li>
-      <% else %>
-          <li class="nav-item active">
-            <%= link_to "person_add", new_user_registration_path, class: 'nav-link material-icons-outlined md-36' %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "login", new_user_session_path, class: 'nav-link material-icons-outlined md-36' %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to 'ゲストログイン', users_guest_sign_in_path, class: 'nav-link' %>
-          </li>
-        <% end %>
-        <form class="form-inline white-space">
-          <%= search_form_for @q, url: events_path do |f| %>
-            <%= f.search_field :title_or_content_cont, class: "form-control" %>
-            <%= f.submit "search", class: "nav-link material-icons-outlined md-36 btn" %>
-          <% end %>
-        </form>
-
-        <!-- Button trigger modal -->
-        <li type="button" class="nav-link material-icons-outlined md-36" data-toggle="modal" data-target="#exampleModal">
-          filter_alt
-        </li>
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">複数条件検索</h5>
-              </div>
-              <div class="modal-body">
-                <form class="form-inline white-space">
-                <form action="">
-                  <%= search_form_for @q, url: events_path do |f| %>
-                      <div class="form-group p-3">
-                        <%= f.label :タイトルとコンテンツ %>
-                        <%= f.text_field :title_or_content_cont, placeholder: "キーワードから探す", class: "form-control" %>
-                      </div>
-                      <div class='form-group p-3'>
-                        <%= f.label :レベル %>
-                        <%= f.select :level_eq, {'初級': '初級', '中級': '中級', '上級': '上級'}, { include_blank: '選択してください'}, { class: "form-control" } %>
-                      </div>
-
-                      <div class="form-group p-3">
-                        <%= f.label :会場 %>
-                        <%= f.text_field :venue_cont, class: "form-control" %>
-                      </div>
-
-                      <div class="form-group p-3">
-                          <%= f.label :最大人数 %>
-                          <%= f.number_field  :number_lteq, class: "form-control" %>
-                      </div>
-
-                      <div class="form-group p-3">
-                          <%= f.label :最低人数 %>
-                          <%= f.number_field  :number_gteq, class: "form-control" %>
-                      </div>
-
-                      <div class="form-group p-3">
-                          <%= f.label :開催日時 %>
-                          <%= f.datetime_field :start_time_gteq, class: "form-control" %>
-                      </div>
-
-                        <%= f.submit "search", class: "material-icons-outlined md-36 btn" %>
-
-                    </div>
-                  <% end %>
-                </form>
-              </div>
+    <% if user_signed_in? %>
+      
+      <!-- Mobile view nav wrap -->
+      <ul
+        class="navbar-nav navbar-right-wrap ml-auto d-lg-none d-flex nav-top-wrap"
+      >
+        <li class="dropdown ml-2">
+          <a
+            class="rounded-circle"
+            href="#!"
+            role="button"
+            id="dropdownUser"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <div class="avatar avatar-md avatar-online">
+              <%= image_tag current_user.image.url, class: "rounded-circle" %>
             </div>
+          </a>
+          <div
+            class="dropdown-menu dropdown-menu-right shadow"
+            aria-labelledby="dropdownUser"
+          >
+            <div class="dropdown-item">
+              <%= link_to mypage_path do %>
+                <div class="d-flex">
+                  <div class="avatar avatar-md avatar-online">
+                    <%= image_tag current_user.image.url, class: "rounded-circle" %>
+                  </div>
+                  <div class="ml-3 lh-1">
+                    <h5 class="mb-1"><%= current_user.name%></h5>
+                    <p class="mb-0 text-muted"><%= current_user.email %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <div class="dropdown-divider"></div>
+            <ul class="list-unstyled">
+              <li>
+                <%= link_to '通知', notifications_path, class: "mx-2 dropdown-item" %>
+              </li>
+              <li>
+                <%= link_to 'ブックマーク', user_bookmarks_path(current_user), class: "mx-2 dropdown-item" %>
+              </li>
+              <% if current_user.email != 'guest@example.com' %>
+                <li>
+                <%= link_to 'プロフィール設定', edit_user_registration_path, class: "mx-2 dropdown-item" %>
+              </li>
+              <% end %>
+              <li>
+                <%= link_to '参加予定イベント', event_user_events_path(current_user), class: "mx-2 dropdown-item" %>
+              </li>
+            </ul>
+            <div class="dropdown-divider"></div>
+            <ul class="list-unstyled">
+              <li>
+                <%= link_to 'ログアウト', destroy_user_session_path, class: "mx-2 dropdown-item" %>
+              </li>
+            </ul>
           </div>
-        </div>
-        
+        </li>
       </ul>
-    </div>
-  </div>
+      <!-- Button -->
+      <button
+        class="navbar-toggler collapsed"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbar-default"
+        aria-controls="navbar-default"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="icon-bar top-bar mt-0"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="navbar-default">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to new_event_path do %>
+                <h3 class="nav-link">イベント投稿</h3>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to rooms_path do %>
+              <h3 class="nav-link">掲示板</h3>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to about_path do %>
+              <h3 class="nav-link">使い方</h3>
+            <% end %>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-right-wrap ml-auto d-none d-lg-block">
+          <li class="dropdown ml-2 d-inline-block">
+            <a class="rounded-circle" href="#!" role="button" id="dropdownUserProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="avatar avatar-md avatar-online">
+                <%= image_tag current_user.image.url, class: "rounded-circle" %>
+              </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownUserProfile">
+              <div class="dropdown-item">
+                <%= link_to mypage_path do %>
+                  <div class="d-flex">
+                    <div class="avatar avatar-md avatar-online">
+                      <%= image_tag current_user.image.url, class: "rounded-circle" %>
+                    </div>
+                    <div class="ml-3 lh-1">
+                      <h5 class="mb-1"><%= current_user.name%></h5>
+                      <p class="mb-0 text-muted"><%= current_user.email %></p>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+              <div class="dropdown-divider"></div>
+              <ul class="list-unstyled">
+                <li>
+                  <%= link_to '通知', notifications_path, class: "mx-2 dropdown-item" %>
+                </li>
+                <li>
+                  <%= link_to 'ブックマーク', user_bookmarks_path(current_user), class: "mx-2 dropdown-item" %>
+                </li>
+                <% if current_user.email != 'guest@example.com' %>
+                  <li>
+                    <%= link_to 'プロフィール設定', edit_user_registration_path, class: "mx-2 dropdown-item" %>
+                  </li>
+                <% end %>
+                <li>
+                  <%= link_to '参加予定イベント', event_user_events_path(current_user), class: "mx-2 dropdown-item" %>
+                </li>
+              </ul>
+              <div class="dropdown-divider"></div>
+              <ul class="list-unstyled">
+                <li>
+                  <%= link_to 'ログアウト', destroy_user_session_path, class: "mx-2 dropdown-item" %>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    <% else %>		
+
+      <button
+        class="navbar-toggler collapsed"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbar-default"
+        aria-controls="navbar-default"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="icon-bar top-bar mt-0"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+      <div id="navbar-default" class="collapse navbar-collapse">
+      <!-- Collapse -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to new_user_registration_path do %>
+                <h3 class="nav-link">新規登録</h3>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_user_session_path do %>
+              <h3 class="nav-link">ログイン</h3>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to users_guest_sign_in_path do %>
+              <h3 class="nav-link">ゲストログイン</h3>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to about_path do %>
+              <h3 class="nav-link">使い方</h3>
+            <% end %>
+          </li>
+        </ul>
+      
+      </div>
+    <% end %>
+	</div>
 </nav>

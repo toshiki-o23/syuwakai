@@ -49,5 +49,8 @@ test:
 #
 production:
   <<: *default
+  host: localhost
   database: syuwakai_production
-  password: <%= ENV['SYUWAKAI_DATABASE_PASSWORD'] %>
+  username: root
+  password: yXazwhhqu1)f
+  socket: /var/lib/mysql/mysql.sock

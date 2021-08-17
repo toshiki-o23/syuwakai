@@ -1,9 +1,14 @@
 FactoryBot.define do
   factory :event do
-    title   {"初心者必見！手話を学ぼう！"}
-    content {"手話を全く知らないあなたでも大丈夫！簡単な挨拶から季節まで一時間ほど学びます！お待ちしております！！"}
+    title   {"手話講座 「挨拶」"}
+    content {"あいさつの手話をご紹介！"}
     association :user, factory: :user
     image   { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/syuwakai.png'), 'image/png') }
-    venue   { "東京" }
+    venue   { "ZOOM" }
+    level {"初級"}
+    start_time {"2021-08-28 10:00:00"}
+    finish_time {"2021-08-28 12:00:00"}
+    number {"10"}
+    fee {"100"}
   end
 end

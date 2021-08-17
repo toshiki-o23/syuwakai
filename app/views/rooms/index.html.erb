@@ -1,20 +1,45 @@
 <div class="p-3">
-  <%= form_with model: @room, url: rooms_path, method: :post, local: true do |f| %>    
-    <%= f.text_field :name, class: "form-control", :placeholder =>"質問ルームを作る" %>
-    <%= f.text_area :content, class: "form-control", :placeholder =>"伝えたいことや聞きたいこと" %>
+  <%= form_with model: @room, url: rooms_path, method: :post, local: true do |f| %>   
+    <!-- Input -->
+    <div class="form-group">
+      <%= f.text_field :name, class: "form-control", :placeholder =>"質問ルームを作る" %>
+    </div>
+    <!-- Text Area -->
+    <div class="form-group">
+      <%= f.text_area :content, class: "form-control", :placeholder =>"伝えたいことや聞きたいこと" %>
+    </div>
     <%= f.submit "send", class: "material-icons-outlined md-36 btn" %>
   <% end %>
 </div>
 
-<div>
-  <ul class="list-group">
-    <% @rooms.each do |room| %>
-      <li class="list-group-item">
-        <%= link_to room_path(room), class: "nonelink btn" do %>
-          <%= "ROOM#{room.id} #{room.name}" %><small>作成日: <%= l room.created_at %></small>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
+<!-- Content -->
+  <div class="container">
+    <div class="row">
+      <% @rooms.each do |room| %>
+      <!-- Card -->
+        <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+          <div class="card mb-4 card-hover">
+            <%= link_to room_path(room) do %>
+              <div class="d-flex justify-content-between align-items-center p-4">
+                <div class="d-flex">
+                  <div class="ml-3">
+                    <h4 class="mb-1">
+                      <div class="text-inherit">
+                        <%= room.name %>
+                      </div>
+                    </h4>
+                    <p class="mb-0 font-size-xs">
+                      <span class="mr-2"><span class="text-dark font-weight-medium"><%= room.messages.count %></span>
+                        message</span>
+                      <span class="text-dark font-weight-medium"><%= l room.created_at, format: :short %></span>
+                      
+                    </p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>

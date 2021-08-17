@@ -3,22 +3,25 @@
 
 <div class="list-group">
 
-
-<%= link_to "#{visitor.name}が", user_path(visitor), class: "nonelink text-dark"  %>
-
-<% case notification.action %>
-<% when 'follow' then %>
-  <%= "あなたをフォローしました" %>
-<% when 'comment' then%>
-  <% if notification.event.user_id == visited.id %>
-    <%= link_to 'あなたのイベント', notification.event %>
-  <% else %>
-    <%= link_to event_path(notification.event) do %>
-      <%= notification.event.user.name + 'さんの投稿' %>
-    <% end %>
-    <div>にコメントしました</div>
-<% end %>
-
-<%= time_ago_in_words(notification.created_at).upcase %>
-
+  <% case notification.action %>
+  <% when 'follow' then %>
+    <div class="list-group-item">
+      <%= link_to "#{visitor.name}が", user_path(visitor), class: "nonelink text-dark" %> 
+      <%= "あなたをフォローしました" %>
+      <%= time_ago_in_words(notification.created_at).upcase %>前
+    </div>
+  <% when 'comment' then%>
+    <div class="list-group-item">
+      <% if notification.event.user_id == visited.id %>
+        <%= link_to 'あなたのイベント', notification.event %>
+      <% else %>
+        <%= link_to event_path(notification.event) do %>
+          <%= notification.event.user.name + 'さんの投稿' %>
+        <% end %>
+      <% end %>
+        <div>にコメントしました</div>
+        <%= time_ago_in_words(notification.created_at).upcase %>前
+    </div>
+  <% end %>
+  
 </div>
