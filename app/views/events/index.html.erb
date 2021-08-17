@@ -60,19 +60,6 @@
                           </div>
 
                           <div class="form-group">
-                            <%= f.label :最大人数, for: "formControlRange" %>
-                            <span class="maximum_number">100</span>人
-                            <%= f.range_field :number_lteq, class: " custom-range", id: "maximum_range", min: "0", max: "100", value: "100", step: "5" %>
-                          </div>
-
-                          <div class="form-group">
-                            <%= f.label :最低人数, for: "formControlRange" %>
-                            <span class="minimum_number">0</span>人
-                            <%= f.range_field :number_gteq, class: " custom-range", id: "minimum_range", min: "0", max: "100", value: "0", step: "5" %>
-                          </div>
-
-
-                          <div class="form-group">
                               <%= f.label :開催日時 %>
                               <%= f.datetime_field :start_time_gteq, class: "form-control" %>
                           </div>
