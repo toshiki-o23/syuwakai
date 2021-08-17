@@ -1,112 +1,110 @@
 <%= javascript_pack_tag 'events' %>
 
 <!-- Page header -->
-    <div class="pt-0 pb-0  shadow-sm p-3 mb-5 bg-white rounded">
-      <div class="container">
-        <div class="card shadow p-3 mb-5 bg-white rounded ">
-          <!-- card body -->
-          <div class="card-body p-4">
-            <h3>タグ一覧</h3>
-            <div class="mt-3">
-              <% @tag_lists.each do |list| %>
-                <%= link_to root_path(tag_id: list.id), class: "btn btn-light btn-xs mb-2 mr-2" do %>
-                  <%= list.tag_name %>
-                  <span class="text-muted">
-                    <%= list.events.count %>
-                  </span>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
+<div class="pt-0 pb-0  shadow-sm p-3 mb-5 bg-white rounded">
+  <div class="container">
+    <div class="card shadow p-3 mb-5 bg-white rounded ">
+      <!-- card body -->
+      <div class="card-body p-4">
+        <h3>タグ一覧</h3>
+        <div class="mt-3">
+          <% @tag_lists.each do |list| %>
+            <%= link_to root_path(tag_id: list.id), class: "btn btn-light btn-xs mb-2 mr-2" do %>
+              <%= list.tag_name %>
+              <span class="text-muted">
+                <%= list.events.count %>
+              </span>
+            <% end %>
+          <% end %>
         </div>
-        <div class=" shadow p-3 mb-5 bg-white rounded" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-outline-light btn-sm m-1">
-            <%= sort_link(@q, :number, "人数順") %>
-          </button>
-          <button type="button" class="btn btn-outline-light btn-sm m-1">
-            <%= sort_link(@q, :start_time, "開催日時") %>
-          </button>
-          <button type="button" class="btn btn-outline-light btn-sm m-1">
-            <%= sort_link(@q, :fee, "参加費") %>
-          </button>
-        </div>
-
-        <div class="shadow p-3 mb-5 bg-white rounded">
-          <div class="offset-xl-2 col-xl-8 offset-lg-1 col-lg-10 col-md-12 col-12">
-            <!-- Form -->
-            <form class="px-md-3 white-space">
-              <div class="form-group">
-                <%= search_form_for @q, url: events_path do |f| %>
-                  <div class="form-group col pl-1 ">
-                    <%= f.search_field :title_or_content_cont, class: "form-control", placeholder: "検索キーワード" %><br>
-                    <%= f.submit "search", class: "nav-link material-icons-outlined md-36 btn" %>
-                    <!-- Button trigger modal -->
-                    <div class="nav-link material-icons-outlined md-36 btn" data-toggle="modal" data-target="#exampleModal">
-                      filter_alt
-                    </div>
-                  </div>
-                <% end %>
-              </div>
-            </form>
-
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h2 class="modal-title" id="exampleModalLabel">複数条件検索</h2>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <%= search_form_for @q, url: events_path do |f| %>
-                          <div class="form-group">
-                            <%= f.label :タイトルとコンテンツ, class: "input-label", for: "textInput" %>
-                            <%= f.text_field :title_or_content_cont, placeholder: "キーワードから探す", id: "textInput", class: "form-control" %>
-                          </div>
-                          <div class='form-group'>
-                            <%= f.label :レベル %>
-                            <%= f.select :level_eq, {'初級': '初級', '中級': '中級', '上級': '上級'}, { include_blank: '選択してください'}, { class: "form-control" } %>
-                          </div>
-
-                          <div class="form-group">
-                            <%= f.label :会場 %>
-                            <%= f.text_field :venue_cont, class: "form-control" %>
-                          </div>
-
-                          <div class="form-group">
-                              <%= f.label :最大人数 %>
-                              <%= f.number_field  :number_lteq, class: "form-control" %>
-                          </div>
-
-                          <div class="form-group">
-                              <%= f.label :最低人数 %>
-                              <%= f.number_field  :number_gteq, class: "form-control" %>
-                          </div>
-
-                          <div class="form-group">
-                              <%= f.label :開催日時 %>
-                              <%= f.datetime_field :start_time_gteq, class: "form-control" %>
-                          </div>
-
-                            <%= f.submit "search", class: "material-icons-outlined md-36 btn" %>
-
-                        </div>
-                      <% end %>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
+    <div class=" shadow p-3 mb-5 bg-white rounded" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-outline-light btn-sm m-1">
+        <%= sort_link(@q, :number, "人数順") %>
+      </button>
+      <button type="button" class="btn btn-outline-light btn-sm m-1">
+        <%= sort_link(@q, :start_time, "開催日時") %>
+      </button>
+      <button type="button" class="btn btn-outline-light btn-sm m-1">
+        <%= sort_link(@q, :fee, "参加費") %>
+      </button>
+    </div>
 
+    <div class="shadow p-3 mb-5 bg-white rounded">
+      <div class="offset-xl-2 col-xl-8 offset-lg-1 col-lg-10 col-md-12 col-12">
+        <!-- Form -->
+        <form class="px-md-3 white-space">
+          <div class="form-group">
+            <%= search_form_for @q, url: events_path do |f| %>
+              <div class="form-group col pl-1 ">
+                <%= f.search_field :title_or_content_cont, class: "form-control", placeholder: "検索キーワード" %><br>
+                <%= f.submit "search", class: "nav-link material-icons-outlined md-36 btn" %>
+                <!-- Button trigger modal -->
+                <div class="nav-link material-icons-outlined md-36 btn" data-toggle="modal" data-target="#exampleModal">
+                  filter_alt
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </form>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel">複数条件検索</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <%= search_form_for @q, url: events_path do |f| %>
+                      <div class="form-group">
+                        <%= f.label :タイトルとコンテンツ, class: "input-label", for: "textInput" %>
+                        <%= f.text_field :title_or_content_cont, placeholder: "キーワードから探す", id: "textInput", class: "form-control" %>
+                      </div>
+                      <div class='form-group'>
+                        <%= f.label :レベル %>
+                        <%= f.select :level_eq, {'初級': '初級', '中級': '中級', '上級': '上級'}, { include_blank: '選択してください'}, { class: "form-control" } %>
+                      </div>
+
+                      <div class="form-group">
+                        <%= f.label :会場 %>
+                        <%= f.text_field :venue_cont, class: "form-control" %>
+                      </div>
+
+                      <div class="form-group">
+                          <%= f.label :最大人数 %>
+                          <%= f.number_field  :number_lteq, class: "form-control" %>
+                      </div>
+
+                      <div class="form-group">
+                          <%= f.label :最低人数 %>
+                          <%= f.number_field  :number_gteq, class: "form-control" %>
+                      </div>
+
+                      <div class="form-group">
+                          <%= f.label :開催日時 %>
+                          <%= f.datetime_field :start_time_gteq, class: "form-control" %>
+                      </div>
+
+                        <%= f.submit "search", class: "material-icons-outlined md-36 btn" %>
+
+                    </div>
+                  <% end %>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <nav aria-label="Page navigation container">
   <ul class="pagination pagination-sm justify-content-center">
