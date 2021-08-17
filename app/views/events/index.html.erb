@@ -1,22 +1,50 @@
 <%= javascript_pack_tag 'events' %>
 
 <!-- Page header -->
-    <div class="pt-0 pb-0 ">
+    <div class="pt-0 pb-0  shadow-sm p-3 mb-5 bg-white rounded">
       <div class="container">
-        <div class="row">
+        <div class="card shadow p-3 mb-5 bg-white rounded ">
+          <!-- card body -->
+          <div class="card-body p-4">
+            <h3>タグ一覧</h3>
+            <div class="mt-3">
+              <% @tag_lists.each do |list| %>
+                <%= link_to root_path(tag_id: list.id), class: "btn btn-light btn-xs mb-2 mr-2" do %>
+                  <%= list.tag_name %>
+                  <span class="text-muted">
+                    <%= list.events.count %>
+                  </span>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class=" shadow p-3 mb-5 bg-white rounded" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-outline-light btn-sm m-1">
+            <%= sort_link(@q, :number, "人数順") %>
+          </button>
+          <button type="button" class="btn btn-outline-light btn-sm m-1">
+            <%= sort_link(@q, :start_time, "開催日時") %>
+          </button>
+          <button type="button" class="btn btn-outline-light btn-sm m-1">
+            <%= sort_link(@q, :fee, "参加費") %>
+          </button>
+        </div>
+
+        <div class="shadow p-3 mb-5 bg-white rounded">
           <div class="offset-xl-2 col-xl-8 offset-lg-1 col-lg-10 col-md-12 col-12">
             <!-- Form -->
-            <form class="form-row px-md-20 white-space">
+            <form class="px-md-3 white-space">
               <div class="form-group">
                 <%= search_form_for @q, url: events_path do |f| %>
-                  <div class="form-group col pl-0 d-flex">
-                    <%= f.search_field :title_or_content_cont, class: "form-control", placeholder: "検索キーワード" %>
-                  </div>
+                  <div class="form-group col pl-1 ">
+                    <%= f.search_field :title_or_content_cont, class: "form-control", placeholder: "検索キーワード" %><br>
                     <%= f.submit "search", class: "nav-link material-icons-outlined md-36 btn" %>
                     <!-- Button trigger modal -->
                     <div class="nav-link material-icons-outlined md-36 btn" data-toggle="modal" data-target="#exampleModal">
                       filter_alt
                     </div>
+                  </div>
                 <% end %>
               </div>
             </form>
@@ -75,38 +103,10 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
 
-
-  <div class="btn-group p-1" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-outline-secondary btn-sm">
-      <%= sort_link(@q, :number, "人数順") %>
-    </button>
-    <button type="button" class="btn btn-outline-secondary btn-sm">
-      <%= sort_link(@q, :start_time, "開催日時") %>
-    </button>
-    <button type="button" class="btn btn-outline-secondary btn-sm">
-      <%= sort_link(@q, :fee, "参加費") %>
-    </button>
-  </div>
-
-  <div class="card m-3 border ">
-    <!-- card body -->
-    <div class="card-body p-4">
-      <h3>タグ一覧</h3>
-      <div class="mt-3">
-        <% @tag_lists.each do |list| %>
-          <%= link_to root_path(tag_id: list.id), class: "btn btn-light btn-xs mb-2 mr-2" do %>
-            <%= list.tag_name %>
-            <span class="text-muted">
-              <%= list.events.count %>
-            </span>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
 
 <nav aria-label="Page navigation container">
   <ul class="pagination pagination-sm justify-content-center">
