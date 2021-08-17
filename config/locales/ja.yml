@@ -11,6 +11,7 @@ ja:
         finish_time: 終了時刻
         image: 画像
         fee: 参加費(円)
+        tag_name: タグ
       tag:
         tag_name: タグ
     errors:
