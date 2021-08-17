@@ -1,6 +1,7 @@
 <%= javascript_pack_tag 'events' %>
 <%= javascript_pack_tag 'dropzone.js' %>
 
+
 <form>
   <div class="form-row">
     <!-- title -->
@@ -11,7 +12,7 @@
 
     <div class="form-group col-12 col-md-12">
         <%= f.label :tag_name, for: "textInput" %>
-        <%= f.text_field :tag_name, class: "form-control", placeholder: "タグをスペース区切りで5つまで入力(例 講座　季節 )" %>
+        <%= f.text_field :tag_name, class: "form-control", placeholder: "タグをスペース区切りで5つまで入力(例 講座 季節 )" %>
     </div>
 
     <!-- content -->
@@ -74,6 +75,8 @@
         <%= f.submit "更新する", class: "btn btn-primary" %>
       </div>
     <% end %>
+<%= image_tag 'undraw_Add_post_re_174w.svg', width: '250px', class: 'p-2 text-right' %>
  
   </div>
 </form>
+

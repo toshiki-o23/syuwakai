@@ -14,7 +14,7 @@
     </div>
   </div>
   <!-- features -->
-  <div class="py-lg-16 py-10">
+  <div class="py-lg-12 py-6">
     <div class="container">
       <div class="row">
         <div class="col-md-6 offset-right-md-6 col-12 mb-6">
@@ -31,9 +31,9 @@
             <!-- card body -->
             <div class="card-body p-5">
               <!-- icon -->
-              <div class="mb-3"><i class="mdi mdi-school-outline mdi-48px text-primary lh-1 "></i></div>
               <h3 class="mb-2">イベントを探す</h3>
               <p class="mb-0">参加してみたいイベントを検索。気になるイベントを見つけたら、クリックして詳細を把握しましょう</p>
+              <%= image_tag 'undraw_Search_re_x5gq.svg', width: '200px', class: 'text-center p-3' %>
             </div>
           </div>
         </div>
@@ -46,6 +46,7 @@
               <div class="mb-3"><i class="mdi mdi-account-group mdi-48px text-primary lh-1 "></i></div>
               <h3 class="mb-2">参加したいイベントを予約する</h3>
               <p class="mb-0">参加すると決心したなら、イベントの詳細画面の下にある参加予約を送信。開催者から連絡を待ちましょう</p>
+              <%= image_tag 'undraw_Booking_re_gw4j.svg', width: '200px', class: 'text-center p-3' %>
             </div>
           </div>
         </div>
@@ -58,6 +59,7 @@
               <div class="mb-3"><i class="mdi mdi-finance mdi-48px text-primary lh-1 "></i></div>
               <h3 class="mb-2">イベントへ</h3>
               <p class="mb-0">当日になったらイベントへGO!思いっきり楽しんで！わからないことは開催者にDMでお問い合わせを。</p>
+              <%= image_tag 'undraw_group_video_el8e.svg', width: '200px', class: 'text-center p-3' %>
             </div>
           </div>
         </div>
@@ -65,16 +67,98 @@
     </div>
   </div>
    <!-- Team -->
-  <div class="py-lg-12 py-6 bg-white">
-    <div class="container">
+  <div class="py-lg-6 py-3 bg-white">
+    <div class="container px-md-6">
       <div class="row">
-        <div class="col-md-6 offset-right-md-6 col-12 mb-6">
+        <div class="col-md-6 offset-right-md-6 col-12 mb-3">
            <!-- heading -->
           <h2 class="display-4 mb-3 font-weight-bold">よくある質問</h2>
-           <!-- lead -->
-          <p class="lead mb-5">使い方がわかりません</p>
         </div>
       </div>
+  <div class="accordion accordion-flush" id="accordionExample">
+    <div class="border-bottom py-3" id="headingOne">
+        <h3 class="mb-0 font-weight-bold">
+          <a href="#!" class="d-flex align-items-center text-inherit text-decoration-none" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <span class="mr-auto">
+          What is the cost of an online course
+          </span>
+          <span class="collapse-toggle ml-4">
+          <i class="material-icons-outlined text-primary md-36">add</i>
+          </span>
+          </a>
+        </h3>
+    </div>
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="py-3 font-size-md">
+          Create beautiful website with this Geeks UI template. Get started building a site today.
+        </div>
+    </div>
+    <!-- Card  -->
+    <!-- Card header  -->
+    <div class="border-bottom py-3" id="headingTwo">
+        <h3 class="mb-0 font-weight-bold">
+          <a href="#!" class="d-flex align-items-center text-inherit text-decoration-none" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <span class="mr-auto">
+          What do I need to take a course?
+          </span>
+          <span class="collapse-toggle ml-4">
+          <i class="material-icons-outlined text-primary md-36">add</i>
+          </span>
+          </a>
+        </h3>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="py-3 font-size-md">
+          Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+          nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        </div>
+    </div>
+    <!-- Card  -->
+    <!-- Card header  -->
+    <div class="border-bottom py-3 " id="headingThree">
+        <h3 class="mb-0 font-weight-bold">
+          <a href="#!" class="d-flex align-items-center text-inherit text-decoration-none" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <span class="mr-auto">
+          What do I receive for taking this course?
+          </span>
+          <span class="collapse-toggle ml-4">
+          <i class="material-icons-outlined text-primary md-36">add</i>
+          </span>
+          </a>
+        </h3>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div class="py-3 font-size-md">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+          squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+          quinoa nesciunt laborum eiusmod.
+        </div>
+    </div>
+    <!-- Card  -->
+    <!-- Card header  -->
+    <div class="pt-3 " id="headingFour">
+        <h3 class="mb-0 font-weight-bold">
+          <a href="#!" class="d-flex align-items-center text-inherit text-decoration-none" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          <span class="mr-auto">
+          What willI get if I subscribe to this Certificate?
+          </span>
+          <span class="collapse-toggle ml-4">
+          <i class="material-icons-outlined text-primary md-36">add</i>
+          </span>
+          </a>
+        </h3>
+    </div>
+    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+        <div class="py-3 font-size-md">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+          squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+          quinoa nesciunt laborum eiusmod.
+        </div>
+    </div>
+  </div>
+  <div class="mt-10 text-center">
+    <p class="btn btn-outline-white">質問ある方は、製作者までTwitterのDMでお問い合わせを！ <a href="https://twitter.com/toshiki_okamoto" class="text-primary">おかもっち</a></p>
+  </div>
     </div>
   </div>
   <!-- cta -->

@@ -124,7 +124,7 @@ end
       start_time: start,
       finish_time: finish,
       number: number,
-      image: File.open("./app/assets/images/events/#{image}.jpg"),
+      image: File.open("./app/assets/images/events/東京ぶらり.jpg"),
       fee: fee,
       user_id: user_id
     }
