@@ -12,6 +12,7 @@ class Event < ApplicationRecord
   has_many :tagmaps, dependent: :destroy
   has_many :tags, through: :tagmaps
 
+  validates :user_id, presence: true
   validates :title, presence: true, length: { maximum: 30 }
   validates :content, presence: true, length: { maximum: 1000 }
   validates :venue, presence: true
@@ -19,7 +20,7 @@ class Event < ApplicationRecord
   validates :start_time, presence: true
   validates :finish_time, presence: true
   validates :number, presence: true, length: { minimum: 1 }
-  validates :fee, presence: true, length: { minimum: 0 }
+  validates :fee, presence: true, numericality: true
 
   validate :start_finish_check
   validate :start_check

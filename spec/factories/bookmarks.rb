@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :bookmark do
     association :user
-    association :post
+    association :event
   end
 end

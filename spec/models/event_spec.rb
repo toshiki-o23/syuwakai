@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :model do
   before do
-    @event = FactoryBot.build(:event)
+    user = FactoryBot.create(:user)
+    @event = FactoryBot.build(:event, user_id: user.id)
   end
 
   describe '新規投稿' do
@@ -14,13 +15,25 @@ RSpec.describe Event, type: :model do
         @event.title = 'a' * 30
         expect(@event).to be_valid  
       end
+      it "contentが1000文字以下" do
+        @event.content = 'a' * 1000
+        expect(@event).to be_valid
+      end
       it "imageが空" do
         @event.image = ''
+        expect(@event).to be_valid
+      end
+      it "numberが1人以上" do
+        @event.number = 1
         expect(@event).to be_valid
       end
     end
 
     context "新規投稿が不可の場合" do
+      it "投稿者がいない" do
+        @event.user_id = ''
+        expect(@event).to be_invalid
+      end
       it "titleが空" do
         @event.title = ''
         @event.valid?
