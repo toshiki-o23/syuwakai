@@ -14,6 +14,8 @@ ja:
         tag_name: タグ
       tag:
         tag_name: タグ
+      comment:
+        content: お知らせ内容
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

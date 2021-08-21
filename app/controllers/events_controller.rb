@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   before_action :baria_user, only: %i[edit destroy]
   before_action :set_event, only: %i[show edit update destroy]
   before_action :index_case, only: %i[index]
+  before_action :authenticate_user!, only: %i[new create update destroy]
 
   def index
     @q = Event.ransack(params[:q])
