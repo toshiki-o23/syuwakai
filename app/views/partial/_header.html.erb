@@ -1,7 +1,8 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-default mb-3 sticky-top">
 	<div class="container-fluid px-0">
-    <%= link_to image_tag('syuwakai.png', width: '120px'), root_path, class: 'navbar-brand p-2 pr-lg-6 img-fluid' %>
+    <%= link_to image_tag('syuwakai.png', width: '120px'), root_path, class: 'navbar-brand p-2 pr-lg-6 block d-sm-none' %>
+    <%= link_to image_tag('syuwakai.png', width: '200px'), root_path, class: 'navbar-brand p-2 pr-lg-6 d-none d-sm-block' %>
     <% if user_signed_in? %>
       
       <!-- Mobile view nav wrap -->
