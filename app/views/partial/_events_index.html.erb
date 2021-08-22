@@ -13,7 +13,13 @@
                 <% if signed_in? && user_events %>
                   <% user_events.each do |user_event| %>
                     <% if event.id == user_event.event_id %>
-                      <%= link_to '参加予約済み', event_user_event_path(user_event, event), class: "badge badge-primary" %>
+                      <%= link_to event_user_event_path(user_event, event), class: "badge badge-primary" do %>
+                        <% if event.user_id == current_user.id %>
+                          開催者
+                        <% else %>
+                          予約済み
+                        <% end %>
+                      <% end %>
                     <% end %>
                   <% end %>
                 <% end %>

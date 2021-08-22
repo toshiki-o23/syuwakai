@@ -275,3 +275,8 @@ end
 )
 end
 
+Comment.create!(
+  content: ,
+  user_id: ,
+  event_id: 
+)
