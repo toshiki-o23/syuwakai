@@ -125,7 +125,7 @@ end
       finish_time: finish,
       number: number,
       fee: fee,
-      image: File.open("./app/assets/images/events/#{ image }.png"),
+      image: File.open("./app/assets/images/events/#{ image }.webp"),
       user_id: user_id
     }
   )
