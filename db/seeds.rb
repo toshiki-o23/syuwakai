@@ -131,10 +131,72 @@ end
   )
 end
 
-Bookmark.create!(
-  user_id: 1,
-  event_id: 1
-)
+[
+  '1',
+  '1',
+  '1',
+  '2',
+  '2',
+  '2',
+  '3',
+  '3',
+  '3',
+  '4',
+  '4',
+  '5',
+  '5',
+  '6',
+  '7',
+  '7',
+  '7',
+  '7',
+  '8',
+  '9',
+  '10',
+  '10',
+  '10',
+  '10',
+  '10',
+  '10'
+].each do |user|
+  Bookmark.create!(
+    user_id: user,
+    event_id: Faker::Number.between(from: 1, to: 10)
+  )
+end
+[
+  '1',
+  '1',
+  '1',
+  '2',
+  '2',
+  '2',
+  '3',
+  '3',
+  '3',
+  '4',
+  '4',
+  '5',
+  '5',
+  '6',
+  '7',
+  '7',
+  '7',
+  '7',
+  '8',
+  '9',
+  '10',
+  '10',
+  '10',
+  '10',
+  '10',
+  '10'
+].each do |user|
+  Relationship.create!(
+    user_id: user,
+    follow_id: Faker::Number.between(from: 1, to: 10)
+  )
+end
 
 Room.create!(
   name: '手話を覚えるコツありますか？',
@@ -145,11 +207,6 @@ Message.create!(
   content: '私は手話通訳士です。一気に上達したなと感じたのは、実際に手話を使う人とおしゃべりすることです。なかなか知らない人とおしゃべりするのはハードル高いですが、勇気を出してしゅわかいのイベントに参加してみるのもいいと思いますよ！',
   user_id: 1,
   room_id: 1
-)
-
-Relationship.create!(
-  user_id: 1,
-  follow_id: 2,
 )
 
 
