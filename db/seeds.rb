@@ -276,7 +276,7 @@ end
 end
 
 Comment.create!(
-  content: ,
-  user_id: ,
-  event_id: 
+  content: 'お知らせです！',
+  user_id: 2,
+  event_id: 2
 )
