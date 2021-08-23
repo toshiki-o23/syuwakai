@@ -66,4 +66,6 @@ https://syuwakai.net
 
 ![](https://github.com/toshiki-o23/syuwakai/blob/master/erd.png)
 
+## ネットワーク構成図
 
+![](https://github.com/toshiki-o23/syuwakai/blob/master/aws.png)
