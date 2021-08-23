@@ -38,7 +38,7 @@ https://syuwakai.net
     - ソート(参加人数/開催日時/参加費)
     - タグ検索(最も使われるタグ10個)
     - カレンダー(ブックマーク/応募)
-    - イベント参加後の評価(メルカリ似/5点満点)
+    - イベント後の評価(メルカリ似/5点満点)
     - Twitterシェア
 
 ## 使用技術一覧
@@ -56,7 +56,7 @@ https://syuwakai.net
     - CircleCI
     - AWS(Routes53/EC2/ALB/VPC/ACM)
 - テスト
-    - RSpec
+    - RSpec(単体39個)
 - バージョン管理
     - Git/GitHub
 - 開発環境
