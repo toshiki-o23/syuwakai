@@ -1,4 +1,6 @@
-<% if @evaluations.empty? && @event.finish_time < DateTime.now %>
+<% if @event.user_id != current_user.id %>
+<%# <% if @evaluations.empty? && @event.finish_time < DateTime.now %> ↓開催以降、評価ができるようになります。(ポートフォリオのため「開催以降」の条件をはずしています。)
+  
 <div class="smooth-shadow-lg p-3 bg-white rounded">
   <h3>
     評価してください（評価したら変更できません）
@@ -27,6 +29,7 @@
   <% end %>
 </div>
 <% end %>
+<%# <% end %>
 
 
 <div class="pt-md-8 py-6">
