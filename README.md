@@ -1,6 +1,6 @@
 ## アプリ名
 
-![](https://github.com/toshiki-o23/syuwakai/blob/master/app/assets/images/syuwakai.png)
+<img src="https://github.com/toshiki-o23/syuwakai/blob/master/app/assets/images/syuwakai.png" width="200">
 
 しゅわかい
 
