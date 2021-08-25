@@ -281,7 +281,14 @@ Comment.create!(
   event_id: 2
 )
 
-# UserEvent.create!(
-#   user_id: 4,
-#   event_id: 2
-# )
+UserEvent.create!(
+  user_id: 4,
+  event_id: 2
+)
+
+10.times do |n|
+UserEvent.create!(
+  user_id: n + 1,
+  event_id: n + 1
+)
+end
