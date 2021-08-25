@@ -24,3 +24,4 @@ sudo service mysqld restart
 
 bundle exec rails db:migrate:reset RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1
 rails db:seed RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+
