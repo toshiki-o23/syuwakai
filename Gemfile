@@ -94,7 +94,7 @@ gem 'devise-i18n-views'
 # https://techtechmedia.com/carrierwave-minimagick-image/
 gem 'carrierwave'
 # 画像自動調整
-gem 'mini_magick', '7.1.0'
+gem 'mini_magick'
 # bootstrap導入(techpitgram)
 # https://qiita.com/kazutosato/items/d47b7705ee545de4cb1a
 gem 'bootstrap', '~> 4.3.1'
