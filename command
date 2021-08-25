@@ -19,5 +19,8 @@ alias dcl='docker-compose logs'
 
 ssh -i ~/.ssh/aws-keypair-syuwakai.pem ec2-user@35.74.194.26
 
+sudo service nginx restart
+sudo service mysqld restart
+
 bundle exec rails db:migrate:reset RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1
 rails db:seed RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1
