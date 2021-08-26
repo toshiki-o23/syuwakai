@@ -292,3 +292,25 @@ UserEvent.create!(
   event_id: n + 1
 )
 end
+
+event =  Event.new(
+    title: 'シュワハウス会',
+    content: '座談会をはじめ、ボーリングや宴会などのお楽しみも盛り沢山のイベントです!!途中参加も途中退室もOK!! 参加条件は「手話で話せる方」です♪',
+    venue: '博多市内のレンタルルーム',
+    level: '中級',
+    start_time: '2021/8/18 12:00',
+    finish_time: '2021/8/18 19:00',
+    number: '2',
+    fee: '5000',
+    image: File.open("./app/assets/images/events/シュワハウス会.png"),
+    user_id: '2'
+)
+
+event.save(validate: false)
+
+Evaluation.create!(
+  evaluation: '5',
+  comment: 'すごく良かったです！！',
+  event_id: 11 ,
+  user_id: 3
+)
