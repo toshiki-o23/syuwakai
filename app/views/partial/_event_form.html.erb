@@ -53,6 +53,11 @@
         <%= f.datetime_field :finish_time, class: "form-control", :required => true  %>
     </div>
 
+    <div class="form-group col-12">
+        <%= f.label :youtube_url %>
+        <%= f.text_field :youtube_url, class: "form-control", placeholder: "YouTubeのURL" %>
+    </div>
+
     <div class="field form-group custom-file">
         <%= f.label :image, class: "custom-file-label" %>
         <%= f.file_field :image, accept: 'image/jpeg, image/gif, image/png', id: "image-select-btn", class: "custom-file-input form-control-file" %>

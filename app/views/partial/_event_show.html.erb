@@ -56,9 +56,17 @@
               <p class="lead text-dark">
                 <%= @event.content %>
               </p>
+              <p>
+              </p>
             </div>
           </div>
         </div>
+          <div class="embed-responsive embed-responsive-16by9 m-md-3">
+              <% if @event.youtube_url %>
+                <iframe src="https://www.youtube.com/embed/<%= @event.youtube_url[32..42]%>" class="embed-responsive-item" allowfullscreen>
+                </iframe>
+              <% end %> 
+          </div>
 
             <%= render 'partial/event_show_column', locals: { event: @event } %>
 
