@@ -3,9 +3,10 @@ class UserEventsController < ApplicationController
 
   def index
     require 'date'
-    @user_events = UserEvent.where(user_id: current_user.id)
     @events = Event.all
-    @finish_events = Event.joins(:user_events).where('finish_time < ?', DateTime.now).where(user_events: { user_id: current_user.id })
+    @user_events = UserEvent.where(user_id: current_user.id)
+    @finish_events = Event.joins(:user_events).where('finish_time < ?',
+                                                     DateTime.now).where(user_events: { user_id: current_user.id })
   end
 
   def create
@@ -20,11 +21,14 @@ class UserEventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @comments = @event.comments
     @comment = Comment.new
+    @comments = @event.comments
+    # イベント詳細
     @user_event = UserEvent.find_by(user_id: current_user, event_id: params[:id])
+    # 参加する人数やユーザー表示
     @user_events = UserEvent.where(event_id: params[:id])
     @evaluation = Evaluation.new
+    # 評価済みなら評価フォームを表示しない
     @evaluations = Evaluation.where(user_id: current_user.id, event_id: @event.id)
   end
 

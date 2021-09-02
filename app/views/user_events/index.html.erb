@@ -17,46 +17,43 @@
 </div>
 
 <% if @events.present? %>
-  <!-- Page Content -->
   <div class="py-3">
     <div class="container">
       <div class="row">
         <% @events.each do |event| %>
           <% @user_events.each do |user_event|  %>
-          <% if event.id == user_event.event_id %>
-          <div class="col-xl-4 col-lg-4 col-md-6 col-12">
-            <!-- Card -->
-            <div class="card mb-4 shadow-lg ">
-                <%= link_to event_path(event), class: "card-img-top" do %>
-                  <%= image_tag event.image.url, class: "card-img-top rounded-top" %>
-                <% end %>
-                <% if signed_in? %>
-                  <% @user_events.each do |user_event| %>
-                    <% if event.id == user_event.event_id %>
-                      <%= link_to '参加予約済み', event_user_event_path(user_event, event), class: "badge badge-primary" %>
+            <% if event.id == user_event.event_id %>
+              <div class="col-xl-4 col-lg-4 col-md-6 col-12">
+                <div class="card mb-4 shadow-lg ">
+                  <%= link_to event_path(event), class: "card-img-top" do %>
+                    <%= image_tag event.image.url, class: "card-img-top rounded-top" %>
+                  <% end %>
+                  <% if signed_in? %>
+                    <% @user_events.each do |user_event| %>
+                      <% if event.id == user_event.event_id %>
+                        <%= link_to '参加予約済み', event_user_event_path(user_event, event), class: "badge badge-primary" %>
+                      <% end %>
                     <% end %>
                   <% end %>
-                <% end %>
-              <!-- Card body -->
-              <div class="card-body">
-              <div class="d-flex bd-highlight">
-                <%= link_to "#{ event.level }", event_path(event), class: "font-size-sm font-weight-semi-bold d-block mb-3 text-danger flex-grow-1 bd-highlight" %>
-                <div class="bd-highlight">
-                <%= render 'partial/bookmark', event: event %>
-                </div>
-              </div>
-                <p class="font-size-xs mb-0">
-                  <%= l event.updated_at, format: :short %>
-                </p>
-                <h3>
-                  <%= link_to "#{ event.title }", event_path(event), class: "text-inherit" %>
-                </h3>
-                <p class="box-read">
-                  <%= safe_join(event.content.split("\n"),tag(:br)) %>
-                </p>
+                  <div class="card-body">
+                    <div class="d-flex bd-highlight">
+                      <%= link_to "#{ event.level }", event_path(event), class: "font-size-sm font-weight-semi-bold d-block mb-3 text-danger flex-grow-1 bd-highlight" %>
+                      <div class="bd-highlight">
+                        <%= render 'partial/bookmark', event: event %>
+                      </div>
+                    </div>
+                    <p class="font-size-xs mb-0">
+                      <%= l event.updated_at, format: :short %>
+                    </p>
+                    <h3>
+                      <%= link_to "#{ event.title }", event_path(event), class: "text-inherit" %>
+                    </h3>
+                    <p class="box-read">
+                      <%= safe_join(event.content.split("\n"),tag(:br)) %>
+                    </p>
 
-                <div class="card-header" id="headingOne">
-                  <a href="" class="d-flex align-items-center text-inherit text-decoration-none active" data-toggle="collapse" data-target="#collapse<%= event.id %>" aria-expanded="false" aria-controls="collapse<%= event.id %>">
+                  <div class="card-header" id="headingOne">
+                    <a href="" class="d-flex align-items-center text-inherit text-decoration-none active" data-toggle="collapse" data-target="#collapse<%= event.id %>" aria-expanded="false" aria-controls="collapse<%= event.id %>">
                       
                       <div class="mr-auto">
                           <h4 class="mb-0"> 詳細</h4>
@@ -64,107 +61,103 @@
                       <span class="chevron-arrow ml-4">
                           <i class="fe fe-chevron-down font-size-md"></i>
                       </span>
-                  </a>
-                </div>
-                <div class="collapse" id="collapse<%= event.id %>">
-                  <div class="card card-body">
-                    <ul class="list-group list-group-flush">
-                  <li class="list-group-item">
-                    <div class="d-flex">
-                        <span class="material-icons-outlined md-24 fit pr-0 list-inline-item d-none d-xl-block">
-                          place
-                        </span>
-                      <div class="ml-2">
-                          <h5 class="mb-1">
-                            <div class="text-inherit">
-                              <%= event.venue %>
-                            </div>
-                          </h5>
-                          <p class="mb-0 font-size-xs">
-                            <span class="mr-2">
-                              開催会場
-                            </span>
-                          </p>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li class="list-group-item">
-                    <div class="d-flex">
-                        <span class="material-icons-outlined md-24 fit pr-0 list-inline-item d-none d-xl-block">
-                          groups
-                        </span>
-                      <div class="ml-2">
-                          <h5 class="mb-1">
-                            <div class="text-inherit">
-                              <%= event.number %>人
-                            </div>
-                          </h5>
-                          <p class="mb-0 font-size-xs">
-                            <span class="mr-2">
-                              最大人数
-                            </span>
-                          </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item">
-                    <div class="d-flex">
-                        <span class="material-icons-outlined md-24 fit pr-0 list-inline-item d-none d-xl-block">
-                          schedule
-                        </span>
-                      <div class="ml-2">
-                          <h5 class="mb-1">
-                            <div class="text-inherit">
-                              <%= l event.start_time, format: :default_short if event.start_time %>~
-                            </div>
-                          </h5>
-                          <p class="mb-0 font-size-xs">
-                            <span class="mr-2">
-                              開催時刻
-                            </span>
-                          </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item">
-                    <div class="d-flex">
-                        <span class="material-icons-outlined md-24 fit pr-0 list-inline-item d-none d-xl-block">
-                          payments
-                        </span>
-                      <div class="ml-2">
-                          <h5 class="mb-1">
-                            <div class="text-inherit">
-                              <%= event.fee %>円
-                            </div>
-                          </h5>
-                          <p class="mb-0 font-size-xs">
-                            <span class="mr-2">
-                              参加費
-                            </span>
-                          </p>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+                    </a>
                   </div>
-                </div>
-                <!-- Media content -->
-                <div class="align-items-center no-gutters mt-4">
-                  <%= link_to user_path(event.user_id) do %>
-                    <div class="col-auto">
-                      <%= image_tag event.user.image.url, class: "rounded-circle avatar-sm mr-2" %>
-                        <%= event.user.name %>
+                  <div class="collapse" id="collapse<%= event.id %>">
+                    <div class="card card-body">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                          <div class="d-flex">
+                              <span class="material-icons-outlined md-24 fit pr-0 list-inline-item d-none d-xl-block">
+                                place
+                              </span>
+                            <div class="ml-2">
+                                <h5 class="mb-1">
+                                  <div class="text-inherit">
+                                    <%= event.venue %>
+                                  </div>
+                                </h5>
+                                <p class="mb-0 font-size-xs">
+                                  <span class="mr-2">
+                                    開催会場
+                                  </span>
+                                </p>
+                            </div>
+                          </div>
+                        </li>
+
+                        <li class="list-group-item">
+                          <div class="d-flex">
+                              <span class="material-icons-outlined md-24 fit pr-0 list-inline-item d-none d-xl-block">
+                                groups
+                              </span>
+                            <div class="ml-2">
+                                <h5 class="mb-1">
+                                  <div class="text-inherit">
+                                    <%= event.number %>人
+                                  </div>
+                                </h5>
+                                <p class="mb-0 font-size-xs">
+                                  <span class="mr-2">
+                                    最大人数
+                                  </span>
+                                </p>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="d-flex">
+                              <span class="material-icons-outlined md-24 fit pr-0 list-inline-item d-none d-xl-block">
+                                schedule
+                              </span>
+                            <div class="ml-2">
+                                <h5 class="mb-1">
+                                  <div class="text-inherit">
+                                    <%= l event.start_time, format: :default_short if event.start_time %>~
+                                  </div>
+                                </h5>
+                                <p class="mb-0 font-size-xs">
+                                  <span class="mr-2">
+                                    開催時刻
+                                  </span>
+                                </p>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="d-flex">
+                              <span class="material-icons-outlined md-24 fit pr-0 list-inline-item d-none d-xl-block">
+                                payments
+                              </span>
+                            <div class="ml-2">
+                                <h5 class="mb-1">
+                                  <div class="text-inherit">
+                                    <%= event.fee %>円
+                                  </div>
+                                </h5>
+                                <p class="mb-0 font-size-xs">
+                                  <span class="mr-2">
+                                    参加費
+                                  </span>
+                                </p>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
                     </div>
-                  <% end %>
+                  </div>
+                  <div class="align-items-center no-gutters mt-4">
+                    <%= link_to user_path(event.user_id) do %>
+                      <div class="col-auto">
+                        <%= image_tag event.user.image.url, class: "rounded-circle avatar-sm mr-2" %>
+                          <%= event.user.name %>
+                      </div>
+                    <% end %>
+                  </div>       
                 </div>
-                 
-                       
               </div>
-            </div>
-          </div>
-        <% end %>
-        <% end %>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     </div>

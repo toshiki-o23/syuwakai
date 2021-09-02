@@ -1,108 +1,91 @@
 <div class="smooth-shadow-sm p-3 mb-5 bg-white rounded">
-<!-- Content -->
-    <div class="py-4 py-lg-8 pb-14 ">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-xl-8 col-lg-8 col-md-12 col-12 mb-2">
-            <div class="text-center mb-4">
-              <div class="font-size-sm font-weight-semi-bold d-block mb-4 text-primary"><%= @event.level %></div>
-              <h1 class="display-3 font-weight-bold mb-4"><%= @event.title %></h1>
-              <span class="mb-3 d-inline-block">開催時刻 <%= l @event.start_time, format: :short %></span>
-              <%= link_to "https://twitter.com/share?url=#{request.url}/&text=#{ @event.title }/&hashtags=しゅわかい", title: 'Twitter', target: '_blank', class: "mx-3 text-muted" do %>
-                <i class="fab fa-twitter"></i>
-                <% end %>
-            </div>
-            <!-- Media -->
-            <div class="d-flex justify-content-between align-items-center mb-4 row">
-              <%= link_to user_path(@event.user_id) do %>
+  <div class="py-4 py-lg-8 pb-14 ">
+    <div class="container">
+
+      <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-8 col-md-12 col-12 mb-2">
+          <div class="text-center mb-4">
+            <div class="font-size-sm font-weight-semi-bold d-block mb-4 text-primary"><%= @event.level %></div>
+            <h1 class="display-3 font-weight-bold mb-4"><%= @event.title %></h1>
+            <span class="mb-3 d-inline-block">開催時刻 <%= l @event.start_time, format: :short %></span>
+            <%= link_to "https://twitter.com/share?url=#{request.url}/&text=#{ @event.title }/&hashtags=しゅわかい", title: 'Twitter', target: '_blank', class: "mx-3 text-muted" do %>
+              <i class="fab fa-twitter"></i>
+            <% end %>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mb-4 row">
+            <%= link_to user_path(@event.user_id) do %>
               <div class="d-flex align-items-center col-dm m-1">
                 <%= image_tag @event.user.image.url, class: "rounded-circle avatar-md" %>
                 <div class="ml-2 lh-1">
                   <h5 class="mb-1 ">開催者 <%= @event.user.name %></h5>
                 </div>
               </div>
-              <% end %>
-              <div class="col-dm m-1">
-                <% if user_signed_in? && current_user.id == @event.user_id %>
-                  <% if @event.start_time > DateTime.now %>
-                    <%= link_to 'イベント編集', edit_event_path(@event), class: "btn btn-primary" %>
-                  <% else %>
+            <% end %>
+            <div class="col-dm m-1">
+              <% if user_signed_in? && current_user.id == @event.user_id %>
+                <% if @event.start_time > DateTime.now %>
+                  <%= link_to 'イベント編集', edit_event_path(@event), class: "btn btn-primary" %>
+                <% else %>
                   <div class="row">
-                    <div class="col-lg m-1">
-                      開催時刻が過ぎたため編集できません
-                    </div>
-                    <div class="col-lg m-1">
-                      <%= link_to '削除', event_path(@event), method: :delete, class: "btn btn-primary" %>
-                    </div>
+                    <div class="col-lg m-1">開催時刻が過ぎたため編集できません</div>
                   </div>
-                  
-              </div>
-                    
-                  <% end %>
                 <% end %>
-            </div>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-          <!-- Image -->
-          <div class="col-xl-10 col-lg-10 col-md-12 col-12 mb-6">
-            <%= image_tag @event.image.url, class: 'img-fluid ronded-lg' %>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-          <div class="col-xl-8 col-lg-8 col-md-12 col-12 mb-2">
-            <!-- Descriptions -->
-            <div class="mb-4">
-              <p class="lead text-dark">
-                <%= @event.content %>
-              </p>
-              <p>
-              </p>
-            </div>
-          </div>
-        </div>
-              <% if @event.youtube_url.present? %>
-          <div class="embed-responsive embed-responsive-16by9 m-md-3">
-                <iframe src="https://www.youtube.com/embed/<%= @event.youtube_url[32..42]%>" class="embed-responsive-item" allowfullscreen>
-                </iframe>
-          </div>
-              <% end %> 
-
-            <%= render 'partial/event_show_column', locals: { event: @event } %>
-
-            <!-- Subscribe to Newsletter -->
-            <div class="py-12">
-              
-              <!-- Form -->
-              <form class="form-row justify-content-center">
-                <div class="form-group row justify-content-center">
-                  <% if user_signed_in? %>
-                    <% if current_user.id != @event.user_id %>
-                      <% if @user_event %>
-                        <%= link_to '参加予定詳細', event_user_event_path(@user_event), class: "btn btn-primary rounded-pill" %>
-                      <% else %>
-                        <div class="text-center mb-6">
-                          <h2 class="display-4 font-weight-bold">参加したい方はこちらへ！</h2>
-                          <p class="mb-0 lead"><%= @event.title %>のイベントへ参加する方はボタンをクリック</p>
-                        </div>
-                        <div class="text-center">
-                        <%= link_to 'イベント参加予約する', event_user_events_path(@user_event, event_id: @event.id), method: :post, class: "btn btn-primary rounded-pill" %>
-                        </div>
-                      <% end %>
-                    <% else %>
-                      <% if @user_event %>
-                        <%= link_to 'お知らせを送る', event_user_event_path(@user_event), class: "btn btn-primary rounded-pill" %>
-                      <% else %>
-                        <%= link_to 'お知らせを送る', event_user_events_path(@user_event, event_id: @event.id), method: :post, class: "btn btn-primary rounded-pill" %>
-                      <% end %>
-                    <% end %>
-                  <% end %>
-                </div>
-              </form>
+              <% end %>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-10 col-md-12 col-12 mb-6">
+          <%= image_tag @event.image.url, class: 'img-fluid ronded-lg' %>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-8 col-md-12 col-12 mb-2">
+          <div class="mb-4">
+            <p class="lead text-dark"><%= @event.content %></p>
+          </div>
+        </div>
+      </div>
+
+      <% if @event.youtube_url.present? %>
+        <div class="embed-responsive embed-responsive-16by9 m-md-3">
+          <iframe src="https://www.youtube.com/embed/<%= @event.youtube_url[32..42]%>" class="embed-responsive-item" allowfullscreen>
+          </iframe>
+        </div>
+      <% end %> 
+
+      <%= render 'partial/event_show_column', locals: { event: @event } %>
+
+      <div class="py-12">
+        <form class="form-row justify-content-center">
+          <div class="form-group row justify-content-center">
+            <% if user_signed_in? &&  current_user.id != @event.user_id%>
+              <% if @user_event %>
+                <%= link_to '参加予定詳細', event_user_event_path(@user_event), class: "btn btn-primary rounded-pill" %>
+              <% else %>
+                <div class="text-center mb-6">
+                  <h2 class="display-4 font-weight-bold">参加したい方はこちらへ！</h2>
+                  <p class="mb-0 lead"><%= @event.title %>のイベントへ参加する方はボタンをクリック</p>
+                </div>
+                <div class="text-center">
+                  <%= link_to 'イベント参加予約する', event_user_events_path(@user_event, event_id: @event.id), method: :post, class: "btn btn-primary rounded-pill" %>
+                </div>
+              <% end %>
+            <% else %>
+              <% if @user_event %>
+                <%= link_to 'お知らせを送る', event_user_event_path(@user_event), class: "btn btn-primary rounded-pill" %>
+              <% else %>
+                <%= link_to 'お知らせを送る', event_user_events_path(@user_event, event_id: @event.id), method: :post, class: "btn btn-primary rounded-pill" %>
+              <% end %>
+            <% end %>
+          </div>
+        </form>
+      </div>
+
     </div>
+  </div>
 </div>
 

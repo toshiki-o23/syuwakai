@@ -1,14 +1,12 @@
 <div class="p-3">
   <%= link_to 'list', rooms_path, class: "material-icons-outlined md-36 nonelink btn" %>
 </div>
-<!-- media -->
+
 <div class="col-xl-9 col-lg-12 col-md-12 col-12">
-  <!-- chat list -->
   <div class=" chat-body">
     <div class="bg-white border-top border-bottom px-4 py-3 sticky-top">
       <div class="d-flex justify-content-between align-items-center">
         <div class="media align-items-center">
-          <!-- media body -->
           <div class="media-body ml-2">
             <h4 class="mb-0"><%= @room.name %></h4>
             <p class="mb-0 text-muted"><%= @room.content %></p>
@@ -32,6 +30,5 @@
     <% end %>
   </div>
 </div>
-
 
 <%= render 'partial/room_show' %>

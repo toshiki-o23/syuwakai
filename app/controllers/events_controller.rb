@@ -26,7 +26,6 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     tag_list = params[:event][:tag_name].split(/[[:blank:]]+/)
-    @event.user_id = current_user.id
     if @event.save
       @event.save_events(tag_list)
       redirect_to event_path(@event.id)
@@ -66,9 +65,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-  # 投稿者以外投稿を編集削除しないように
-  # https://asalworld.com/1534/
   def baria_user
+    # 投稿者以外投稿を編集削除しないように
     return unless Event.find(params[:id]).user_id == current_user.id do;
       flash[:notice] = '権限がありません'
       redirect_to user_path(@user.id)
@@ -76,6 +74,7 @@ class EventsController < ApplicationController
   end
 
   def index_case
+    # 検索結果orタグ検索結果or一覧
     if params[:q].present?
       @q = Event.ransack(params[:q])
       @events = @q.result.where('start_time > ?', DateTime.now)

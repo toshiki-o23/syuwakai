@@ -1,14 +1,11 @@
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-default mb-3 sticky-top">
 	<div class="container-fluid px-0">
     <%= link_to image_tag('syuwakai.png', width: '120px'), root_path, class: 'navbar-brand p-2 pr-lg-6 block d-sm-none' %>
     <%= link_to image_tag('syuwakai.png', width: '200px'), root_path, class: 'navbar-brand p-2 pr-lg-6 d-none d-sm-block' %>
     <% if user_signed_in? %>
       
-      <!-- Mobile view nav wrap -->
-      <ul
-        class="navbar-nav navbar-right-wrap ml-auto d-lg-none d-flex nav-top-wrap"
-      >
+      <!-- モバイル用画面 -->
+      <ul class="navbar-nav navbar-right-wrap ml-auto d-lg-none d-flex nav-top-wrap">
         <li class="dropdown ml-2">
           <a
             class="rounded-circle"
@@ -23,10 +20,7 @@
               <%= image_tag current_user.image.url, class: "rounded-circle" %>
             </div>
           </a>
-          <div
-            class="dropdown-menu dropdown-menu-right shadow"
-            aria-labelledby="dropdownUser"
-          >
+          <div class="dropdown-menu dropdown-menu-right shadow" aria-labelledby="dropdownUser">
             <div class="dropdown-item">
               <%= link_to mypage_path do %>
                 <div class="d-flex">
@@ -42,31 +36,21 @@
             </div>
             <div class="dropdown-divider"></div>
             <ul class="list-unstyled">
-              <li>
-                <%= link_to '通知', notifications_path, class: "mx-2 dropdown-item" %>
-              </li>
-              <li>
-                <%= link_to 'ブックマーク', user_bookmarks_path(current_user), class: "mx-2 dropdown-item" %>
-              </li>
+              <li><%= link_to '通知', notifications_path, class: "mx-2 dropdown-item" %></li>
+              <li><%= link_to 'ブックマーク', user_bookmarks_path(current_user), class: "mx-2 dropdown-item" %></li>
               <% if current_user.id != 2 %>
-                <li>
-                <%= link_to 'プロフィール設定', edit_user_registration_path, class: "mx-2 dropdown-item" %>
-              </li>
+                <li><%= link_to 'プロフィール設定', edit_user_registration_path, class: "mx-2 dropdown-item" %></li>
               <% end %>
-              <li>
-                <%= link_to '参加予定イベント', event_user_events_path(current_user), class: "mx-2 dropdown-item" %>
-              </li>
+              <li><%= link_to '参加予定イベント', event_user_events_path(current_user), class: "mx-2 dropdown-item" %></li>
             </ul>
             <div class="dropdown-divider"></div>
             <ul class="list-unstyled">
-              <li>
-                <%= link_to 'ログアウト', destroy_user_session_path, class: "mx-2 dropdown-item" %>
-              </li>
+              <li><%= link_to 'ログアウト', destroy_user_session_path, class: "mx-2 dropdown-item" %></li>
             </ul>
           </div>
         </li>
       </ul>
-      <!-- Button -->
+
       <button
         class="navbar-toggler collapsed"
         type="button"
@@ -80,7 +64,7 @@
         <span class="icon-bar middle-bar"></span>
         <span class="icon-bar bottom-bar"></span>
       </button>
-      <!-- Collapse -->
+      <!-- PC画面用 -->
       <div class="collapse navbar-collapse" id="navbar-default">
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -147,8 +131,9 @@
           </li>
         </ul>
       </div>
-    <% else %>		
 
+    <% else %>		
+      <!-- ログインしていない場合 -->
       <button
         class="navbar-toggler collapsed"
         type="button"
@@ -163,7 +148,6 @@
         <span class="icon-bar bottom-bar"></span>
       </button>
       <div id="navbar-default" class="collapse navbar-collapse">
-      <!-- Collapse -->
         <ul class="navbar-nav">
           <li class="nav-item">
             <%= link_to new_user_registration_path do %>

@@ -7,13 +7,9 @@
             place
           </div>
           <div class="ml-2 list-inline-item">
-            <h4 class="mb-1">
-              <%= @event.venue %>
-            </h4>
+            <h4 class="mb-1"><%= @event.venue %></h4>
             <p class="mb-0 font-size-xs">
-              <span class="mr-2">
-                  会場
-              </span>
+              <span class="mr-2">会場</span>
             </p>
           </div>
         </div>
@@ -28,8 +24,7 @@
           </div>
           <div class="ml-2">
             <h4 class="mb-1">
-              <a href="course-path-single.html" class="text-inherit">
-              </a>
+              <a href="course-path-single.html" class="text-inherit"></a>
               <%= l @event.start_time, format: :short %>
             </h4>
             <p class="mb-0 font-size-xs">
@@ -52,13 +47,9 @@
             group
           </div>
           <div class="ml-2">
-            <h4 class="mb-1">
-              <%= @event.number %>
-            </h4>
+            <h4 class="mb-1"><%= @event.number %></h4>
             <p class="mb-0 font-size-xs">
-              <span class="mr-2">
-                参加できる最大人数
-              </span>
+              <span class="mr-2">参加できる最大人数</span>
             </p>
           </div>
         </div>
@@ -77,9 +68,7 @@
               <%= Bookmark.where(event_id: @event.id).count %>
             </h4>
             <p class="mb-0 font-size-xs">
-              <span class="mr-2">
-                ブックマークされた数
-              </span>
+              <span class="mr-2">ブックマークされた数</span>
             </p>
           </div>
         </div>
@@ -96,13 +85,9 @@
           </div>
         </div>
           <div class="ml-2">
-            <h4 class="mb-1">
-              <%= @event.fee %>円
-            </h4>
+            <h4 class="mb-1"><%= @event.fee %>円</h4>
             <p class="mb-0 font-size-xs">
-              <span class="mr-2">
-                参加費
-              </span>
+              <span class="mr-2">参加費</span>
             </p>
           </div>
         </div>

@@ -1,50 +1,51 @@
 <% if @event.user_id != current_user.id %>
-<%# <% if @evaluations.empty? && @event.finish_time < DateTime.now %> ↓開催以降、評価ができるようになります。(ポートフォリオのため「開催以降」の条件をはずしています。)
-  
-<div class="smooth-shadow-lg p-3 bg-white rounded">
-  <h3>
-    評価してください（評価したら変更できません）
-  </h3>
-  <%= form_with model: @evaluation, locals: true do |f| %>
-    <div class="form-group">
-      <%= f.text_area :comment, class: "form-control", placeholder: "感想を入力", rows: 3 %>
+  <%# <% if @evaluations.empty? && @event.finish_time < DateTime.now %> ↓開催以降、評価ができるようになります。(ポートフォリオのため「開催以降」の条件をはずしています。)
+    <div class="smooth-shadow-lg p-3 bg-white rounded">
+      <h3>
+        評価してください（評価したら変更できません）
+      </h3>
+      <%= form_with model: @evaluation, locals: true do |f| %>
+
+        <div class="form-group">
+          <%= f.text_area :comment, class: "form-control", placeholder: "感想を入力", rows: 3 %>
+        </div>
+
+        <div class="form-group">
+          <div class="custom-control custom-radio custom-control-inline">
+            <%= f.radio_button :evaluation, 5, class: "custom-control-input", id: "cardRadioone" %>
+            <label class="custom-control-label " for="cardRadioone">
+              <span class="text-dark material-icons-outlined">thumb_up_alt</span>
+            </label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <%= f.radio_button :evaluation, 1, class: "custom-control-input", id: "cardRadioTwo" %>
+            <label class="custom-control-label" for="cardRadioTwo">
+              <span class="material-icons-outlined text-dark">thumb_down_alt</span>
+            </label>
+          </div>
+        </div>
+
+        <%= f.hidden_field :event_id, { value: @event.id } %>
+        <%= f.hidden_field :user_id, { value: current_user.id } %>
+        <%= f.submit '評価する', class: "btn btn-primary rounded-pill" %>
+      <% end %>
     </div>
-    <div class="form-group">
-      <div class="custom-control custom-radio custom-control-inline">
-          <%= f.radio_button :evaluation, 5, class: "custom-control-input", id: "cardRadioone" %>
-
-        <label class="custom-control-label " for="cardRadioone"><span class="  text-dark material-icons-outlined">thumb_up_alt</span></label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-
-          <%= f.radio_button :evaluation, 1, class: "custom-control-input", id: "cardRadioTwo" %>
-        <label class="custom-control-label" for="cardRadioTwo"><span
-          class="material-icons-outlined text-dark">thumb_down_alt</span></label>
-      </div>
-    </div>
-
-    <%= f.hidden_field :event_id, { value: @event.id } %>
-    <%= f.hidden_field :user_id, { value: current_user.id } %>
-    <%= f.submit '評価する', class: "btn btn-primary rounded-pill" %>
-  <% end %>
-</div>
+  <%# <% end %>
 <% end %>
-<%# <% end %>
 
 
 <div class="pt-md-8 py-6">
   <div class="container">
-    <!-- Hero Section -->
     <div class="row">
       <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 shadow-sm bg-white">
+
         <div class="m-md-4 mb-xl-0 text-center">
           <span class="badge badge-light-success badge-pill font-size-sm m-3">
             <span class="font-weight-bold pb-3"><%= @event.title %> </span><br class="d-md-none">- <%= l @event.start_time %>
           </span>
-            <!-- Caption -->
-          <h1 class="display-2 ls-sm mt-2 font-weight-bold "></h1>
+          <h1 class="display-2 ls-sm mt-2 font-weight-bold"></h1>
           <p class="mb-6 h2 text-muted px-md-8">
-              参加人数 <%= "#{ @user_events.count } 人/ #{ @event.number } 人" %>
+            <%= "参加人数 #{ @user_events.count } / #{ @event.number } 人" %>
           </p>
           <div class="d-lg-flex">
             <div class="avatar-group mr-5">
@@ -64,51 +65,48 @@
               お知らせ
           </p>
           <div class="d-lg-flex">
-              <% if @comments.present? %>
-            <div class="avatar-group mr-5">
-                
+            <% if @comments.present? %>
+              <div class="avatar-group mr-5">  
                 <% @comments.each do |comment| %>
                   <div class="card m-3">
                     <div class="card-body">
                       <%= simple_format(comment.content) %>
                     </div>
                   </div>
-            </div>
                 <% end %>
-              <% else %>
-                <div class="alert alert-primary">
-                  まだ開催者からのお知らせがありません
-                </div>
-              <% end %>
+              </div>
+            <% else %>
+              <div class="alert alert-primary">
+                まだ開催者からのお知らせがありません
+              </div>
+            <% end %>
           </div><%= image_tag 'undraw/undraw_festivities_tvvj.svg', width: '200px' %>
         </div>
+
       </div>
     </div>
   </div>
 </div>
 
 <div class="container">
-
-
   <% if current_user.id == @event.user_id %>
     <%= form_with model: [ @event, @comment ], url: event_comments_path(event_id: @event.id) do |f| %>
       <%= f.text_area :content, class: "form-control", placeholder: "お知らせを入力", rows: "4" %>
       <%= f.submit '送信', class: "btn btn-primary rounded-pill my-3" %>
     <% end %>
   <% end %>
-
 </div>
 
 <div class="accordion accordion-flush" id="accordionExample">
   <div class="border-bottom py-3" id="headingOne">
     <h3 class="mb-0 font-weight-bold">
       <a href="#!" class="d-flex align-items-center text-inherit text-decoration-none" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-      <span class="">
-        イベント詳細
-      </span>
-      <span class="collapse-toggle ml-4">
-      <i class="material-icons-outlined text-primary md-36 fit">add</i>
-      </span>
+        <span>
+          イベント詳細
+        </span>
+        <span class="collapse-toggle ml-4">
+          <i class="material-icons-outlined text-primary md-36 fit">add</i>
+        </span>
       </a>
     </h3>
   </div>

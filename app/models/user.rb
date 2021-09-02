@@ -8,7 +8,8 @@ class User < ApplicationRecord
 
   has_many :relationships, dependent: :destroy
   has_many :followings, through: :relationships, source: :follow
-  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id', dependent: :destroy, inverse_of: :relationship
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id', dependent: :destroy,
+                                      inverse_of: :relationship
   has_many :followers, through: :reverse_of_relationships, source: :user
 
   has_many :messages, dependent: :destroy
@@ -21,8 +22,10 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
-  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy, inverse_of: 'visitor'
-  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy, inverse_of: 'visited'
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy,
+                                  inverse_of: 'visitor'
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy,
+                                   inverse_of: 'visited'
 
   has_many :evaluations, dependent: :destroy
 

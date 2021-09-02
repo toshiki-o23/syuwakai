@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:mypage]
   before_action :set_user, only: %i[show]
   before_action :set_user_id, only: %i[evaluation following follower bookmarks]
-  before_action :authenticate_user!, only: [:mypage]
   before_action :show_user, only: %i[show evaluation following follower]
   before_action :evaluation_number, only: %i[show evaluation following follower]
 

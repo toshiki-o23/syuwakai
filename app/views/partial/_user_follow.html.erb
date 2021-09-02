@@ -2,9 +2,7 @@
   <div class="row">
     <% @users.each do |user| %>
       <div class="col-xl-4 col-lg-4 col-md-6 col-12">
-        <!-- Card -->
         <div class="card mb-4 shadow-sm">
-          <!-- Card Body -->
           <%= link_to user_path(user) do %>
             <div class="card-body ">
               <div class="text-center">

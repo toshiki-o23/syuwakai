@@ -37,8 +37,6 @@ Style/HashTransformKeys:
 Style/HashTransformValues:
   Enabled: true
 
-##################### Style ##################################
-
 # 日本語のコメントを許可する
 Style/AsciiComments:
   Enabled: false
@@ -59,12 +57,6 @@ Style/FrozenStringLiteralComment:
 Style/RedundantSelf:
   Enabled: false
 
-##################### Lint ##################################
-
-
-
-##################### Metrics ##################################
-
 # 変数の代入(A)、メソッドの呼び出し等(B)、条件分岐(C)から算出される複雑度
 Metrics/AbcSize:
   Max: 30
@@ -74,8 +66,8 @@ Metrics/CyclomaticComplexity:
   Max: 10
 
 # 1行の文字数
-Metrics/LineLength:
-  Max: 160
+Layout/LineLength:
+  Max: 120
   Exclude:
     - "db/migrate/*.rb"
 
@@ -86,5 +78,4 @@ Metrics/MethodLength:
     - "db/migrate/*.rb"
 
 ClassAndModuleChildren:
-  EnforcedStyle: nested
   EnforcedStyle: compact

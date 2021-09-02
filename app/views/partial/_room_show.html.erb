@@ -1,11 +1,9 @@
 <% if @messages.present? %>
   <% @messages.each do |m| %>
     <div class="px-2 py-1">
-      <!-- media -->
       <div class="w-lg-40 mb-4">
         <%= link_to user_path(m.user_id)  do %>
           <%= image_tag m.user.image.url, class: "rounded-circle avatar-md" %>
-        <!-- media body -->
           <span class="ml-3">
             <small><%= m.user.name %> , <%= l m.created_at, format: :short%></small>
             <div class="d-flex">
