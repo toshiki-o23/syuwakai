@@ -125,6 +125,7 @@ end
       finish_time: finish,
       number: number,
       fee: fee,
+      youtube_url: "https://www.youtube.com/watch?v=XR2Lz8VnlqQ",
       image: File.open("./app/assets/images/events/#{ image }.png"),
       user_id: user_id
     }

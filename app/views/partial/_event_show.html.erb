@@ -48,7 +48,16 @@
             <p class="lead text-dark"><%= @event.content %></p>
           </div>
         </div>
+<<<<<<< HEAD
       </div>
+=======
+              <% if @event.youtube_url %>
+          <div class="embed-responsive embed-responsive-16by9 m-3">
+                <iframe src="https://www.youtube.com/embed/<%= @event.youtube_url[32..42]%>" class="embed-responsive-item" allowfullscreen>
+                </iframe>
+          </div>
+              <% end %> 
+>>>>>>> ee999fa17570c04bdf6ad011d5be828700f5a2e5
 
       <% if @event.youtube_url.present? %>
         <div class="embed-responsive embed-responsive-16by9 m-md-3">
