@@ -81,6 +81,9 @@ class EventsController < ApplicationController
     elsif params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
       @events = @tag.events.where('start_time > ?', DateTime.now)
+    elsif params[:follow_event_id].present?
+      @current_user = User.find(params[:follow_event_id])
+      @events = Event.where(user_id: @current_user.following_ids)
     else
       @events = Event.all.where('start_time > ?', DateTime.now)
     end
