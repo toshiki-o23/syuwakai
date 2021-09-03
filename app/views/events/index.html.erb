@@ -15,6 +15,8 @@
       </button>
     </div>
 
+
+
     <div class="shadow p-3 mb-5 bg-white rounded">
       <div class="offset-xl-2 col-xl-8 offset-lg-1 col-lg-10 col-md-12 col-12">
         <!-- Form -->
@@ -41,7 +43,7 @@
                   </span>
                 <% end %>
               <% end %>
-              <%= link_to "フォローイベント", root_path(follow_event_id: current_user.id), class: "btn btn-light btn-xs mb-2 mr-2" %>
+              <%= link_to "フォローイベント", root_path(follow_event_id: current_user.id), class: "btn btn-light btn-xs mb-2 mr-2" if current_user %>
             </div>
           </div>
         </form>
