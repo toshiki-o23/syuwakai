@@ -15,6 +15,11 @@
       </button>
     </div>
 
+    <%= search_form_for @q, url: events_path do |f| %>
+
+      <%= f.select( :sorts, {'並び替え': 'id desc', '参加費の安い順': 'fee asc', '参加費の高い順': 'fee desc', '開催日時が近い順': 'start_time asc', '開催日時が遠い順': 'start_time desc', '参加人数が少ない順': 'number asc', '参加人数が多い順': 'number desc'}, {}, class: 'form-control' ) %>
+      <%= f.submit '並び替える', class: 'btn btn-primary btn-sm' %>
+    <% end %>
 
 
     <div class="shadow p-3 mb-5 bg-white rounded">

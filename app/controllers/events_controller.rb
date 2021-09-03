@@ -74,7 +74,7 @@ class EventsController < ApplicationController
   end
 
   def index_case
-    # 検索結果orタグ検索結果or一覧
+    # 検索結果orタグ検索結果orフォローしたユーザーの投稿一覧or投稿一覧
     if params[:q].present?
       @q = Event.ransack(params[:q])
       @events = @q.result.where('start_time > ?', DateTime.now)
