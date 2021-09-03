@@ -3,25 +3,6 @@
 <!-- Page header -->
 <div class="pt-0 pb-0">
   <div class="container">
-    <div class=" shadow p-3 mb-3 bg-white rounded" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-outline-light btn-sm m-1">
-        <%= sort_link(@q, :number, "人数") %>
-      </button>
-      <button type="button" class="btn btn-outline-light btn-sm m-1">
-        <%= sort_link(@q, :start_time, "日時") %>
-      </button>
-      <button type="button" class="btn btn-outline-light btn-sm m-1">
-        <%= sort_link(@q, :fee, "費用") %>
-      </button>
-    </div>
-
-    <%= search_form_for @q, url: events_path do |f| %>
-
-      <%= f.select( :sorts, {'並び替え': 'id desc', '参加費の安い順': 'fee asc', '参加費の高い順': 'fee desc', '開催日時が近い順': 'start_time asc', '開催日時が遠い順': 'start_time desc', '参加人数が少ない順': 'number asc', '参加人数が多い順': 'number desc'}, {}, class: 'form-control' ) %>
-      <%= f.submit '並び替える', class: 'btn btn-primary btn-sm' %>
-    <% end %>
-
-
     <div class="shadow p-3 mb-5 bg-white rounded">
       <div class="offset-xl-2 col-xl-8 offset-lg-1 col-lg-10 col-md-12 col-12">
         <!-- Form -->
@@ -38,6 +19,13 @@
               </div>
             <% end %>
           </div>
+            <%= search_form_for @q, url: events_path, class: 'form-inline' do |f| %>
+          <div class="form-group col">
+              <%= f.select( :sorts, {'並び替え': 'id desc', '参加費の安い順': 'fee asc', '参加費の高い順': 'fee desc', '開催日時が近い順': 'start_time asc', '開催日時が遠い順': 'start_time desc', '参加人数が少ない順': 'number asc', '参加人数が多い順': 'number desc'}, { selected: params[:q][:sorts] },  { class: 'form-control'} ) %>
+              <%= f.submit 'sort', class: 'material-icons-outlined md-36 btn' %>
+          </div>
+            <% end %>
+          
           <div class="card-body p-2">
             <div class="mt-1">
               <% @tag_lists.each do |list| %>

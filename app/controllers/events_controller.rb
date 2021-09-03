@@ -85,6 +85,7 @@ class EventsController < ApplicationController
       @current_user = User.find(params[:follow_event_id])
       @events = Event.where(user_id: @current_user.following_ids)
     else
+      params[:q] = { sorts: 'id desc' }
       @events = Event.all.where('start_time > ?', DateTime.now)
     end
   end
