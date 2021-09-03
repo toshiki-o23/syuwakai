@@ -79,9 +79,11 @@ class EventsController < ApplicationController
       @q = Event.ransack(params[:q])
       @events = @q.result.where('start_time > ?', DateTime.now)
     elsif params[:tag_id].present?
+      params[:q] = { sorts: 'id desc' }
       @tag = Tag.find(params[:tag_id])
       @events = @tag.events.where('start_time > ?', DateTime.now)
     elsif params[:follow_event_id].present?
+      params[:q] = { sorts: 'id desc' }
       @current_user = User.find(params[:follow_event_id])
       @events = Event.where(user_id: @current_user.following_ids)
     else
