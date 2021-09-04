@@ -8,6 +8,7 @@ class EventsController < ApplicationController
 
   def index
     @q = Event.ransack(params[:q])
+    # 現在ユーザーが参加するイベント
     @user_events = UserEvent.where(user_id: current_user.id) if current_user
     @tag_lists = Tag.joins(:tagmaps).group(:tag_id).order('count(tag_name) desc').limit(10)
     @events = Kaminari.paginate_array(@events).page(params[:page]).per(10)
@@ -25,9 +26,9 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    tag_list = params[:event][:tag_name].split(/[[:blank:]]+/)
+    tag_list = params[:event][:tag_name].split(/[[:blank:]]+/) if params[:tag_name]
     if @event.save
-      @event.save_events(tag_list)
+      @event.save_events(tag_list) if tag_list
       redirect_to event_path(@event.id)
     else
       render 'new'
