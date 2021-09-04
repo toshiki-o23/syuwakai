@@ -19,8 +19,10 @@ class Event < ApplicationRecord
   validates :level, presence: true
   validates :start_time, presence: true
   validates :finish_time, presence: true
-  validates :number, presence: true, length: { minimum: 1 }
+  validates :number, presence: true, numericality: { greater_than_or_equal_to: 2 }
   validates :fee, presence: true, numericality: true
+
+  validates :number, numericality: { greater_than_or_equal_to: :number }, on: :update
 
   validate :start_finish_check
   validate :start_check
