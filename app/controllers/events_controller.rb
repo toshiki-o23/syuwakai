@@ -78,18 +78,18 @@ class EventsController < ApplicationController
     # 検索結果orタグ検索結果orフォローしたユーザーの投稿一覧or投稿一覧
     if params[:q].present?
       @q = Event.ransack(params[:q])
-      @events = @q.result.where('start_time > ?', DateTime.now)
+      @events = @q.result.includes(%i[user tags tagmaps]).where('start_time > ?', DateTime.now)
     elsif params[:tag_id].present?
       params[:q] = { sorts: 'id desc' }
       @tag = Tag.find(params[:tag_id])
-      @events = @tag.events.where('start_time > ?', DateTime.now)
+      @events = @tag.events.includes(%i[user tags tagmaps]).where('start_time > ?', DateTime.now)
     elsif params[:follow_event_id].present?
       params[:q] = { sorts: 'id desc' }
       @current_user = User.find(params[:follow_event_id])
-      @events = Event.where(user_id: @current_user.following_ids)
+      @events = Event.includes(%i[user tags tagmaps]).where(user_id: @current_user.following_ids)
     else
       params[:q] = { sorts: 'id desc' }
-      @events = Event.all.where('start_time > ?', DateTime.now)
+      @events = Event.all.includes(%i[user tags tagmaps]).where('start_time > ?', DateTime.now)
     end
   end
 end
