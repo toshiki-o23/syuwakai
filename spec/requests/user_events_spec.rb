@@ -11,7 +11,7 @@ RSpec.describe "UserEvents", type: :request do
     it "参加予約する" do
       sign_in @user
       post event_user_events_path(@user_event, event_id: @event.id)
-      expect(response).to redirect_to event_user_event_path(event_id: 2, id: @event.id)
+      expect(response).to redirect_to event_user_event_path(event_id: @user_event.id+1, id: @event.id)
     end
   end
 end
