@@ -23,8 +23,8 @@ RSpec.describe Event, type: :model do
         @event.image = ''
         expect(@event).to be_valid
       end
-      it "numberが1人以上" do
-        @event.number = 1
+      it "numberが2人以上" do
+        @event.number = 2
         expect(@event).to be_valid
       end
     end
