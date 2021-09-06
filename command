@@ -27,3 +27,4 @@ bundle exec cap production deploy
 
 うーん、ローカルでは問題ないのに本番環境ではUIが崩れる問題
 
+
