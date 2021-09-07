@@ -87,4 +87,10 @@ class Event < ApplicationRecord
       self.tags << event_tag
     end
   end
+
+  # ブックマークされた数
+  ransacker :bookmarks_count do
+    query = '(SELECT COUNT(bookmarks.event_id) FROM bookmarks where bookmarks.event_id = events.id GROUP BY bookmarks.event_id)'
+    Arel.sql(query)
+  end
 end
