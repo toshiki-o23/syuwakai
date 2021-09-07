@@ -20,28 +20,14 @@
   <div class="py-3">
     <div class="container">
       <div class="row">
+        <% @user_events.each do |user_event| %>
         <% @events.each do |event| %>
-          <% @user_events.each do |user_event| %>
-            <% if event.id == user_event.event_id %>
+        <% if event.id == user_event.event_id %>
           <div class="col-xl-4 col-lg-4 col-md-6 col-12">
             <div class="card mb-4 shadow-lg ">
 
               <%= link_to event_path(event), class: "card-img-top" do %>
                 <%= image_tag event.image.url, class: "card-img-top rounded-top" %>
-              <% end %>
-
-              <% if signed_in? && user_event %>
-                <% @user_events.each do |user_event| %>
-                  <% if event.id == user_event.event_id %>
-                    <%= link_to event_user_event_path(user_event, event), class: "badge badge-primary" do %>
-                      <% if event.user_id == current_user.id %>
-                        開催者
-                      <% else %>
-                        予約済み
-                      <% end %>
-                    <% end %>
-                  <% end %>
-                <% end %>
               <% end %>
 
               <div class="card-body">
@@ -151,11 +137,10 @@
                   <% end %>
                 </div>
               </div>
-              
             </div>
           </div>
-          <% end %>
-          <% end %>
+        <% end %>
+        <% end %>
         <% end %>
       </div>
     </div>
@@ -183,3 +168,5 @@
     <%= finish_event.title %>
   <% end %>
 <% end %>
+
+
