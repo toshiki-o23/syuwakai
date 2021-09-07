@@ -1,12 +1,12 @@
 Rails.application.configure do
   config.after_initialize do
-    Bullet.enable        = true
-    Bullet.alert         = true
-    Bullet.bullet_logger = true
-    Bullet.console       = true
-  # Bullet.growl         = true
-    Bullet.rails_logger  = true
-    Bullet.add_footer    = true
+  #   Bullet.enable        = true
+  #   # Bullet.alert         = true
+  #   Bullet.bullet_logger = true
+  #   Bullet.console       = true
+  # # Bullet.growl         = true
+  #   Bullet.rails_logger  = true
+  #   Bullet.add_footer    = true
   end
 
   config.web_console.whitelisted_ips = '172.27.0.1', '192.168.16.1'

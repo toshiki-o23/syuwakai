@@ -3,8 +3,8 @@ class UserEventsController < ApplicationController
 
   def index
     require 'date'
-    @events = Event.all
     @user_events = UserEvent.where(user_id: current_user.id)
+    @events = Event.all
     @finish_events = Event.joins(:user_events).where('finish_time < ?',
                                                      DateTime.now).where(user_events: { user_id: current_user.id })
   end
