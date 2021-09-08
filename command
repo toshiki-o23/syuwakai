@@ -25,7 +25,5 @@ bundle exec rails db:migrate:reset RAILS_ENV=production DISABLE_DATABASE_ENVIRON
 
 bundle exec cap production deploy
 
-うーん、ローカルでは問題ないのに本番環境ではUIが崩れる問題
-
 
 
