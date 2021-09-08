@@ -20,7 +20,8 @@ class Event < ApplicationRecord
   validates :start_time, presence: true
   validates :finish_time, presence: true
   validates :number, presence: true, numericality: { greater_than_or_equal_to: 2 }
-  validates :fee, presence: true, numericality: true
+  validates :max_fee, presence: true, numericality: true
+  validates :min_fee, presence: true, numericality: true
 
   validates :number, numericality: { greater_than_or_equal_to: :number }, on: :update
 

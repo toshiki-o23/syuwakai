@@ -9,6 +9,7 @@ FactoryBot.define do
     start_time {"2021/9/27 9:00"}
     finish_time {"2021/9/27 20:00"}
     number {"3"}
-    fee { 100 }
+    min_fee { 100 }
+    max_fee { 100 }
   end
 end
