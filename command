@@ -25,5 +25,3 @@ bundle exec rails db:migrate:reset RAILS_ENV=production DISABLE_DATABASE_ENVIRON
 
 bundle exec cap production deploy
 
-
-
