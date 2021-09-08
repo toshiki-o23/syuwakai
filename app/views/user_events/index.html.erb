@@ -1,4 +1,4 @@
-<h2><span><%= image_tag 'undraw/undraw_events_2p66.svg', width: '200px', class: 'm-3' %></span>参加するイベント</h2>
+<h2 class="p-3">参加するイベント</h2>
 
 <div class="container">
   <%= month_calendar events: @events do |date, events| %>
@@ -7,7 +7,7 @@
     <% events.each do |event| %>
       <% @user_events.each do |user_event| %>
         <% if event.id == user_event.event_id %>
-          <span class="avatar avatar-xs">
+          <span class="avatar avatar-xs m-1">
             <%= link_to event_user_event_path( user_event.event_id, event.id) do %>
               <%= image_tag event.image.url, class: "rounded-circle" %>
             <% end %>
@@ -167,8 +167,8 @@
 <div>参加したイベント一覧</div>
 <% if @finish_events %>
   <% @finish_events.each do |finish_event| %>
-    <%= finish_event.title %>
+    <%= link_to finish_event.title, event_path(finish_event) %>
   <% end %>
 <% end %>
 
-
+<span><%= image_tag 'undraw/undraw_events_2p66.svg', width: '200px', class: 'm-3' %></span>
