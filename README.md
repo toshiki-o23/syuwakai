@@ -44,6 +44,17 @@ https://syuwakai.net
     - イベント後の評価(メルカリ似/5点満点)
     - Twitterシェア
 
+## 工夫点
+
+・SNSを意識したシンプルなUI/UXデザイン
+・どのデバイスでも使えるレスポンシブ対応
+・N+1問題によるSQL処理負担の軽減のためinludesメソッドを使用
+・イベント開催後の評価機能により参加者の安心感を獲得
+
+## ER図
+
+![](https://github.com/toshiki-o23/syuwakai/blob/master/erd.svg)
+
 ## 使用技術一覧
 
 - フロントエンド
@@ -59,15 +70,11 @@ https://syuwakai.net
     - CircleCI
     - AWS(Routes53/EC2/ALB/VPC/ACM)
 - テスト
-    - RSpec(単体39個)
+    - RSpec(単体39個,統合14個)
 - バージョン管理
     - Git/GitHub
 - 開発環境
     - VScode
-
-## ER図
-
-![](https://github.com/toshiki-o23/syuwakai/blob/master/erd.svg)
 
 ## ネットワーク構成図
 

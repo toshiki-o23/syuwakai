@@ -21,7 +21,7 @@
           </div>
           <%= search_form_for @q, url: events_path, class: 'form-inline' do |f| %>
             <div class="form-group col">
-              <%= f.select( :sorts, {'並び替え': 'id desc', '参加費の安い順': 'fee asc', '参加費の高い順': 'fee desc', '開催日時が近い順': 'start_time asc', '開催日時が遠い順': 'start_time desc', '参加人数が少ない順': 'number asc', '参加人数が多い順': 'number desc'}, { selected: params[:q][:sorts] },  { class: 'form-control'} ) %>
+              <%= f.select( :sorts, {'並び替え': 'id desc', '参加費が安い順': 'max_fee asc', '参加費が高い順': 'max_fee desc', '開催日時が近い順': 'start_time asc', '開催日時が遠い順': 'start_time desc', '参加人数が少ない順': 'number asc', '参加人数が多い順': 'number desc', 'ブックマークが多い順': 'bookmarks_count desc'}, { selected: params[:q][:sorts] },  { class: 'form-control'} ) %>
               <%= f.submit 'swap_vert', class: 'material-icons-outlined md-36 btn'%>
             </div>
           <% end %>
@@ -80,10 +80,16 @@
                       </div>
 
                       <div class="form-group">
-                          <%= f.label :開催日時 %>
-                          <%= f.datetime_field :start_time_gteq, class: "form-control" %>
+                          <%= f.label :参加費 %>
+                          <%= f.number_field  :max_fee_gteq, class: "form-control" %><p>円から</p>
+                          <%= f.number_field  :min_fee_lteq, class: "form-control" %>円まで
                       </div>
 
+                        <div class="form-group">
+                          <%= f.date_field :start_time_gt , class: "form-control p-1" %><p>から</p>
+                          <%= f.date_field :start_time_lteq_end_of_day, class: "form-control p-1" %>まで
+                        </div>
+                      
                         <%= f.submit "search", class: "material-icons-outlined md-36 btn" %>
 
                     </div>

@@ -97,7 +97,8 @@ ActiveRecord::Schema.define(version: 2021_08_27_130738) do
     t.datetime "start_time"
     t.datetime "finish_time"
     t.integer "number"
-    t.integer "fee"
+    t.integer "max_fee"
+    t.integer "min_fee"
     t.string "youtube_url"
   end
 
