@@ -70,19 +70,15 @@
                       </div>
 
                       <div class="form-group">
-                          <%= f.label :最大人数 %>
-                          <%= f.number_field  :number_lteq, class: "form-control" %>
-                      </div>
-
-                      <div class="form-group">
-                          <%= f.label :最低人数 %>
-                          <%= f.number_field  :number_gteq, class: "form-control" %>
+                          <%= f.label :人数 %>
+                          <%= f.number_field  :number_gteq, class: "form-control" %><p>から</p>
+                          <%= f.number_field  :number_lteq, class: "form-control" %>人まで
                       </div>
 
                       <div class="form-group">
                           <%= f.label :参加費 %>
-                          <%= f.number_field  :max_fee_gteq, class: "form-control" %><p>円から</p>
-                          <%= f.number_field  :min_fee_lteq, class: "form-control" %>円まで
+                          <%= f.number_field  :min_fee_gteq, class: "form-control" %><p>円から</p>
+                          <%= f.number_field  :max_fee_lteq, class: "form-control" %>円まで
                       </div>
 
                         <div class="form-group">
