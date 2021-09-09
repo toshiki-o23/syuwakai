@@ -78,4 +78,4 @@ https://syuwakai.net
 
 ## ネットワーク構成図
 
-![](https://github.com/toshiki-o23/syuwakai/blob/master/aws.svg)
+![](https://github.com/toshiki-o23/syuwakai/blob/master/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9%E6%A7%8B%E6%88%90%E5%9B%B3(AWS).png)
