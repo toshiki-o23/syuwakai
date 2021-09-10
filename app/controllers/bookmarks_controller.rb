@@ -1,4 +1,5 @@
 class BookmarksController < ApplicationController
+  before_action :authenticate_user!
   def create
     bookmark = current_user.bookmarks.build(event_id: params[:event_id])
     bookmark.save
