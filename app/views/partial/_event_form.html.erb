@@ -42,9 +42,10 @@
     <div class="form-group col-12 col-md-4">
         <%= f.label :number, for: "numberInput" %>
         <% if current_page?(action: 'new') %>
-          <%= f.number_field  :number, min: 1, class: "form-control", placeholder: "最大人数を入力(開催者も含む)", :required => true  %>
+          <%= f.number_field  :number, min: 1, class: "form-control", placeholder: "最大人数を入力", :required => true  %>
+              <small>開催者も含む</small>
         <% else %>
-          <%= f.number_field  :number, min: 1, class: "form-control", placeholder: "最大人数を入力(開催者も含む)", :required => true, disabled: "" %>
+          <%= f.number_field  :number, min: 1, class: "form-control", placeholder: "最大人数を入力", :required => true, disabled: "" %>
         <% end %>
     </div>
 
