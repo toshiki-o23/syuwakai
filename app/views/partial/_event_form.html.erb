@@ -1,12 +1,20 @@
-<%= javascript_pack_tag 'events' %>
-<%= javascript_pack_tag 'dropzone.js' %>
-
-
-<form>
-  <div class="form-row">
+<!-- Card -->
+<div class="card border-0 mb-4">
+  <!-- Card header -->
+  <div class="card-header">
+    <h4 class="mb-0">イベント投稿</h4>
+  </div>
+  <!-- Card Body -->
+  <div class="card-body">
+    <div class="form-row">
     <div class="form-group col-12 col-md-12">
-        <%= f.label :title, for: "textInput" %>
-        <%= f.text_field :title, class: "form-control", placeholder: "タイトルを入力", :required => true  %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">タイトル</span>
+          </div>
+          <%= f.text_field :title, class: "form-control", placeholder: "タイトルを入力", "aria-label": "Sizing example input", "aria-describedby": "inputGroup-sizing-default", :required => true  %>
+        </div>
+          <small>30文字まで</small>
     </div>
 
     <div class="form-group col-12 col-md-12">
@@ -17,20 +25,21 @@
     <div class="form-group col-12 col-md-12">
         <%= f.label :content, for: "textareaInput", class: "input-label" %>
         <%= f.text_area :content, id: "textareaInput", class: "form-control", placeholder: "コンテンツを入力", rows: "4", :required => true  %>
+    <small>1000文字まで</small>
     </div> 
 
-    <div class="form-group col-12 col-md-3">
+    <div class="form-group col-12 col-md-4">
         <%= f.label :level, for: "selectOne", class: "input-label" %>
         <%= f.select :level, {'初級': '初級', '中級': '中級', '上級': '上級'}, { include_blank: '選択してください'}, { id: "selectOne", class: "form-control", :required => true  } %>
     </div>
 
 
-    <div class="form-group col-12 col-md-3">
+    <div class="form-group col-12 col-md-4">
         <%= f.label :venue, for: "textInput", class: "input-label" %>
         <%= f.text_field :venue, class: "form-control", placeholder: "会場を入力", :required => true  %>
     </div>
 
-    <div class="form-group col-12 col-md-3">
+    <div class="form-group col-12 col-md-4">
         <%= f.label :number, for: "numberInput" %>
         <% if current_page?(action: 'new') %>
           <%= f.number_field  :number, min: 1, class: "form-control", placeholder: "最大人数を入力(開催者も含む)", :required => true  %>
@@ -39,12 +48,16 @@
         <% end %>
     </div>
 
-    <div class="form-group col-12 col-md-3">
-        <%= f.label :fee, for: "numberInput" %>
+    <div class="form-group col-12 col-md-6">
+        <%= f.label :min_fee, for: "numberInput" %>
         <%= f.number_field  :min_fee, min: 0, class: "form-control", placeholder: "最低参加費を入力"  %>
-        <%= f.number_field  :max_fee, min: 0, class: "form-control", placeholder: "最高参加費を入力"  %>
     </div>
 
+    <div class="form-group col-12 col-md-6">
+      <%= f.label :max_fee, for: "numberInput" %>
+      <%= f.number_field  :max_fee, min: 0, class: "form-control", placeholder: "最高参加費を入力"  %>
+    </div>
+    
     <div class="form-group col-12 col-md-6">
         <%= f.label :start_time %>
         <%= f.datetime_field :start_time, class: "form-control", :required => true  %>
@@ -85,5 +98,5 @@
     <%= image_tag 'undraw/undraw_Add_post_re_174w.svg', width: '250px', class: 'p-2 text-right' %>
  
   </div>
-</form>
-
+  </div>
+</div>
