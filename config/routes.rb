@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     get :following, :follower
     get :evaluation
   end
+
+  resources :users, only: [:index]
   
   resources :evaluations, only: [:create]
   

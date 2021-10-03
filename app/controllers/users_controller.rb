@@ -5,6 +5,10 @@ class UsersController < ApplicationController
   before_action :show_user, only: %i[show evaluation following follower]
   before_action :evaluation_number, only: %i[show evaluation following follower]
 
+  def index
+    @users = User.all
+  end
+
   def show
     @bookmark_events = @user.bookmark_events
     @user_events = UserEvent.where(user_id: current_user.id) if current_user
