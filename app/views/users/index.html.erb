@@ -1,30 +1,32 @@
+<div class="container">
+<div class="row">
 <% @users.each do |user| %>
-  <%= user.name %>
+    <div class="col-lg-4 col-md-6 col-12">
+        <!-- Card -->
+  <%= link_to user_path(user.id) do %>
+        <div class="card mb-4">
+            <!-- Card Body -->
+            <div class="card-body ">
+                <div class="text-center">
+                    <%= image_tag user.image.url, class: "rounded-circle avatar-xl mb-3" %>
 
-<div class="col-lg-4 col-md-6 col-12">
-  <!-- Card -->
-  <div class="card mb-4">
-      <!-- Card Body -->
-      <div class="card-body ">
-          <div class="text-center">
-              <%= image_tag user.image.url, class: "rounded-circle avatar-xl mb-3" %>
+                    <h4 class="mb-1"><%= user.name %></h4>
+                    <p class="mb-0 font-size-xs"><i class="fe fe-map-pin mr-1"></i><%= user.introduce %></p>              
 
-              <h4 class="mb-1"><%= user.name %></h4>
-              <p class="mb-0 font-size-xs"><i class="fe fe-map-pin mr-1"></i><%= user.introduce %></p>
-              <a href="#" class="btn btn-sm btn-outline-white mt-3 ">Message</a>
-               
+                </div>
+                <div class="d-flex justify-content-between border-bottom py-2 mt-4 font-size-xs">
 
-          </div>
-          <div class="d-flex justify-content-between border-bottom py-2 mt-4 font-size-xs">
-
-              <span>作成日</span>
-              <span class="text-dark"><%= l user.created_at, format: :long %></span>
-          </div>
-          <div class="d-flex justify-content-between pt-2 font-size-xs">
-              <span>開催数</span>
-              <span class="text-success"> <%= user.events.count %> </span>
-          </div>
-      </div>
-  </div>
-</div>
+                    <span>作成日</span>
+                    <span class="text-dark"><%= l user.created_at, format: :long %></span>
+                </div>
+                <div class="d-flex justify-content-between pt-2 font-size-xs">
+                    <span>開催数</span>
+                    <span class="text-success"> <%= user.events.count %> </span>
+                </div>
+            </div>
+        </div>
+  <% end %>
+    </div>
 <% end %>
+</div>
+</div>
