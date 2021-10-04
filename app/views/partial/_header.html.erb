@@ -36,16 +36,16 @@
             </div>
             <div class="dropdown-divider"></div>
             <ul class="list-unstyled">
-              <li><%= link_to '通知', notifications_path, class: "mx-2 dropdown-item" %></li>
-              <li><%= link_to 'ブックマーク', user_bookmarks_path(current_user), class: "mx-2 dropdown-item" %></li>
+              <li><%= link_to '通知', notifications_path, class: "dropdown-item" %></li>
+              <li><%= link_to 'ブックマーク', user_bookmarks_path(current_user), class: "dropdown-item" %></li>
               <% if current_user.id != 2 %>
-                <li><%= link_to 'プロフィール設定', edit_user_registration_path, class: "mx-2 dropdown-item" %></li>
+                <li><%= link_to 'プロフィール設定', edit_user_registration_path, class: "dropdown-item" %></li>
               <% end %>
-              <li><%= link_to '参加予定イベント', event_user_events_path(current_user), class: "mx-2 dropdown-item" %></li>
+              <li><%= link_to '参加予定イベント', event_user_events_path(current_user), class: "dropdown-item" %></li>
             </ul>
             <div class="dropdown-divider"></div>
             <ul class="list-unstyled">
-              <li><%= link_to 'ログアウト', destroy_user_session_path, class: "mx-2 dropdown-item" %></li>
+              <li><%= link_to 'ログアウト', destroy_user_session_path, class: "dropdown-item" %></li>
             </ul>
           </div>
         </li>
@@ -67,6 +67,11 @@
       <!-- PC画面用 -->
       <div class="collapse navbar-collapse" id="navbar-default">
         <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to users_path do %>
+              <h3 class="nav-link">ユーザー一覧</h3>
+            <% end %>
+          </li>
           <li class="nav-item">
             <%= link_to new_event_path do %>
                 <h3 class="nav-link">イベント投稿</h3>
@@ -107,18 +112,18 @@
               <div class="dropdown-divider"></div>
               <ul class="list-unstyled">
                 <li>
-                  <%= link_to '通知', notifications_path, class: "mx-2 dropdown-item" %>
+                  <%= link_to '通知', notifications_path, class: "dropdown-item" %>
                 </li>
                 <li>
-                  <%= link_to 'ブックマーク', user_bookmarks_path(current_user), class: "mx-2 dropdown-item" %>
+                  <%= link_to 'ブックマーク', user_bookmarks_path(current_user), class: "dropdown-item" %>
                 </li>
                 <% if current_user.id != 2 %>
                   <li>
-                    <%= link_to 'プロフィール編集', edit_user_registration_path, class: "mx-2 dropdown-item" %>
+                    <%= link_to 'プロフィール編集', edit_user_registration_path, class: "dropdown-item" %>
                   </li>
                 <% end %>
                 <li>
-                  <%= link_to '参加予定イベント', event_user_events_path(current_user), class: "mx-2 dropdown-item" %>
+                  <%= link_to '参加予定イベント', event_user_events_path(current_user), class: "dropdown-item" %>
                 </li>
               </ul>
               <div class="dropdown-divider"></div>
@@ -149,6 +154,11 @@
       </button>
       <div id="navbar-default" class="collapse navbar-collapse">
         <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to users_path do %>
+                <h3 class="nav-link">ユーザー一覧</h3>
+            <% end %>
+          </li>
           <li class="nav-item">
             <%= link_to new_user_registration_path do %>
                 <h3 class="nav-link">新規登録</h3>
