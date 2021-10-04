@@ -6,10 +6,10 @@
     <div class="shadow p-3 mb-5 bg-white rounded">
       <div class="offset-xl-2 col-xl-8 offset-lg-1 col-lg-10 col-md-12 col-12">
         <!-- Form -->
-        <form class="px-md-3 white-space">
+        <form class=" white-space">
           <div class="form-group">
             <%= search_form_for @q, url: events_path do |f| %>
-              <div class="form-group col pl-1 ">
+              <div class="form-group col d-md-flex">
                 <%= f.search_field :title_or_content_cont, class: "form-control", placeholder: "検索キーワード" %><br>
                 <%= f.submit "search", class: "nav-link material-icons-outlined md-36 btn" %>
                 <!-- Button trigger modal -->

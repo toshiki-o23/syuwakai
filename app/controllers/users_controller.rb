@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   before_action :evaluation_number, only: %i[show evaluation following follower]
 
   def index
-    @users = User.all
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true)
   end
 
   def show
