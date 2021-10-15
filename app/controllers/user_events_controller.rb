@@ -1,5 +1,6 @@
 class UserEventsController < ApplicationController
   after_action :chat, only: %i[show]
+  before_action :authenticate_user!
 
   def index
     require 'date'

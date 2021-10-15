@@ -1,4 +1,5 @@
 class EvaluationsController < ApplicationController
+  before_action :authenticate_user!
   def create
     @evaluation = Evaluation.new(evaluation_params)
     @evaluation.user_id = current_user.id
