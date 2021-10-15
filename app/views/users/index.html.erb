@@ -1,0 +1,56 @@
+<!-- Page header -->
+<div class="pt-0 pb-0">
+  <div class="container">
+    <div class="shadow p-3 mb-5 bg-white rounded">
+      <div class="offset-xl-2 col-xl-8 offset-lg-1 col-lg-10 col-md-12 col-12">
+        <!-- Form -->
+        <form class="px-md-3 white-space">
+          <div class="form-group">
+            <%= search_form_for @q, url: users_path do |f| %>
+              <div class="form-group col d-md-flex">
+                <%= f.search_field :name_or_introduce_cont, class: "form-control", placeholder: "検索" %><br>
+                <%= f.submit "search", class: "nav-link material-icons-outlined md-36 btn" %>
+              </div>
+            <% end %>
+          </div>
+          
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+<div class="row">
+<% @users.each do |user| %>
+    <div class="col-lg-4 col-md-6 col-12">
+        <!-- Card -->
+  <%= link_to user_path(user.id) do %>
+        <div class="card mb-4">
+            <!-- Card Body -->
+            <div class="card-body ">
+                <div class="text-center">
+                    <%= image_tag user.image.url, class: "rounded-circle avatar-xl mb-3" %>
+
+                    <h4 class="mb-1"><%= user.name %></h4>
+                    <p class="mb-0 font-size-xs"><i class="fe fe-map-pin mr-1"></i><%= user.introduce %></p>              
+
+                </div>
+                <div class="d-flex justify-content-between border-bottom py-2 mt-4 font-size-xs">
+
+                    <span>作成日</span>
+                    <span class="text-dark"><%= l user.created_at, format: :long %></span>
+                </div>
+                <div class="d-flex justify-content-between pt-2 font-size-xs">
+                    <span>開催数</span>
+                    <span class="text-success"> <%= user.events.count %> </span>
+                </div>
+            </div>
+        </div>
+  <% end %>
+    </div>
+<% end %>
+</div>
+</div>

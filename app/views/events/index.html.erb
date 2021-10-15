@@ -6,34 +6,40 @@
     <div class="shadow py-6 mb-5 bg-white rounded">
       <div class="offset-xl-1 col-xl-10 offset-lg-1 col-lg-10 col-md-12 col-12">
         <!-- Form -->
-        <form class="form-inline p-1">
-          <%= search_form_for @q, url: events_path do |f| %>
-            <%= f.search_field :title_or_content_cont, class: "form-control", placeholder: "検索キーワード", size: 40 %>
-            <%= f.submit "search", class: "nav-link material-icons-outlined md-36 btn" %>
-          <div class="nav-link material-icons-outlined md-36 btn" data-toggle="modal" data-target="#exampleModal">
-            filter_alt
+        <form class=" white-space">
+          <div class="form-group">
+            <%= search_form_for @q, url: events_path do |f| %>
+              <div class="form-group col d-md-flex">
+                <%= f.search_field :title_or_content_cont, class: "form-control", placeholder: "検索キーワード" %><br>
+                <%= f.submit "search", class: "nav-link material-icons-outlined md-36 btn" %>
+                <!-- Button trigger modal -->
+                <div class="nav-link material-icons-outlined md-36 btn" data-toggle="modal" data-target="#exampleModal">
+                  filter_alt
+                </div>
+              </div>
+            <% end %>
           </div>
-          <% end %>
-        </form>
-
-
-          <%= search_form_for @q, url: events_path, class: 'form-inline p-1' do |f| %>
+          <%= search_form_for @q, url: events_path, class: 'form-inline' do |f| %>
+            <div class="form-group col">
               <%= f.select( :sorts, {'並び替え': 'id desc', '参加費が安い順': 'max_fee asc', '参加費が高い順': 'max_fee desc', '開催日時が近い順': 'start_time asc', '開催日時が遠い順': 'start_time desc', '参加人数が少ない順': 'number asc', '参加人数が多い順': 'number desc', 'ブックマークが多い順': 'bookmarks_count desc'}, { selected: params[:q][:sorts] },  { class: 'form-control'} ) %>
               <%= f.submit 'swap_vert', class: 'material-icons-outlined md-36 btn'%>
+            </div>
           <% end %>
-        <form class="p-1">
-
-          <% @tag_lists.each do |list| %>
-            <%= link_to root_path(tag_id: list.id), class: "btn btn-light btn-xs mb-2 mr-2" do %>
-              <%= list.tag_name %>
-              <span class="text-muted">
-                <%= list.events.count %>
-              </span>
-            <% end %>
-          <% end %>
-          <%= link_to "フォローイベント", root_path(follow_event_id: current_user.id), class: "btn btn-light btn-xs mb-2 mr-2" if current_user %>
+          
+          <div class="card-body p-2">
+            <div class="mt-1">
+              <% @tag_lists.each do |list| %>
+                <%= link_to root_path(tag_id: list.id), class: "btn btn-light btn-xs mb-2 mr-2" do %>
+                  <%= list.tag_name %>
+                  <span class="text-muted">
+                    <%= list.events.count %>
+                  </span>
+                <% end %>
+              <% end %>
+              <%= link_to "フォローイベント", root_path(follow_event_id: current_user.id), class: "btn btn-light btn-xs mb-2 mr-2" if current_user %>
+            </div>
+          </div>
         </form>
-
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
