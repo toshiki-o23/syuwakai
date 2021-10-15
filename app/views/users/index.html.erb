@@ -8,7 +8,7 @@
           <div class="form-group">
             <%= search_form_for @q, url: users_path do |f| %>
               <div class="form-group col d-md-flex">
-                <%= f.search_field :name_or_introduce_cont, class: "form-control", placeholder: "検索キーワード" %><br>
+                <%= f.search_field :name_or_introduce_cont, class: "form-control", placeholder: "検索" %><br>
                 <%= f.submit "search", class: "nav-link material-icons-outlined md-36 btn" %>
               </div>
             <% end %>
