@@ -6,8 +6,8 @@ FactoryBot.define do
     image   { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/syuwakai.png'), 'image/png') }
     venue   { "東京駅" }
     level {"上級"}
-    start_time {"2021/11/27 9:00"}
-    finish_time {"2021/11/27 20:00"}
+    start_time {"2021/12/27 9:00"}
+    finish_time {"2021/12/27 20:00"}
     number {"3"}
     min_fee { 100 }
     max_fee { 100 }
